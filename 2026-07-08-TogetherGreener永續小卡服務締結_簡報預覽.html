@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>TogetherGreener 永續小卡服務締結</title>
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Cambria", "Times New Roman", "PMingLiU", serif;
+    background: #e8e8e2;
+  }
+  .slide {
+    width: 1280px;
+    height: 720px;
+    margin: 0 auto 40px auto;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  }
+  .frame {
+    position: absolute;
+    top: 28px; left: 28px; right: 28px; bottom: 28px;
+    border: 1px solid #c9c9bc;
+  }
+  .logo {
+    position: absolute;
+    top: 56px; left: 64px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .logo .dot { width: 16px; height: 16px; border-radius: 50%; background: #8bc53f; }
+  .logo .word { font-size: 22px; color: #6b6b5f; letter-spacing: 1px; font-family: "Calibri", sans-serif; }
+  .footer-tag {
+    position: absolute;
+    bottom: 56px; left: 64px;
+    font-size: 11px; letter-spacing: 6px; color: #9a9a8c;
+    font-family: "Calibri", sans-serif;
+  }
+  .page-num {
+    position: absolute;
+    bottom: 56px; right: 64px;
+    font-size: 12px; color: #b0b0a2;
+    font-family: "Calibri", sans-serif;
+  }
+
+  /* Slide 1 : title */
+  .s1 { display: flex; align-items: center; justify-content: center; }
+  .s1 .center {
+    text-align: center;
+  }
+  .s1 .eyebrow {
+    font-size: 16px; color: #8f8f7f; letter-spacing: 3px;
+    font-family: "Calibri", sans-serif; margin-bottom: 28px;
+  }
+  .s1 h1 {
+    font-size: 40px; color: #5f6b4a; font-weight: 400; line-height: 1.5;
+  }
+  .s1 .sub {
+    margin-top: 26px; font-size: 20px; color: #7a7a6d;
+    font-family: "Calibri", sans-serif;
+  }
+
+  /* Slide 2 : 15s script */
+  .s2 { padding: 130px 100px 0 100px; }
+  .s2 h2 { font-size: 30px; color: #5f6b4a; font-weight: 400; margin-bottom: 8px; }
+  .s2 .en { font-family:"Calibri",sans-serif; font-size:13px; color:#a8a89a; letter-spacing:2px; margin-bottom: 40px;}
+  .s2 .script-box {
+    background: #f4f4ef; border-left: 3px solid #8bc53f;
+    padding: 34px 40px; font-size: 20px; color: #4a4a40; line-height: 2;
+    font-family: "Calibri", "Microsoft JhengHei", sans-serif;
+  }
+  .s2 .keys { display: flex; gap: 24px; margin-top: 34px; }
+  .s2 .key { flex: 1; }
+  .s2 .key .kt { font-size: 14px; color: #8bc53f; font-family:"Calibri",sans-serif; letter-spacing:1px; margin-bottom: 6px;}
+  .s2 .key .kd { font-size: 15px; color: #6b6b5f; line-height: 1.6; font-family: "Microsoft JhengHei", sans-serif; }
+
+  /* Slide 3 : 3 steps */
+  .s3 { padding: 110px 90px 0 90px; }
+  .s3 h2 { font-size: 30px; color: #5f6b4a; font-weight: 400; margin-bottom: 8px; }
+  .s3 .en { font-family:"Calibri",sans-serif; font-size:13px; color:#a8a89a; letter-spacing:2px; margin-bottom: 38px;}
+  .s3 .steps { display: flex; gap: 26px; }
+  .s3 .step {
+    flex: 1; background: #f7f7f2; padding: 30px 24px; position: relative;
+  }
+  .s3 .step .num {
+    font-size: 42px; color: #d7ddc4; font-family: "Calibri", sans-serif; font-weight: bold; margin-bottom: 14px;
+  }
+  .s3 .step .title { font-size: 18px; color: #4a4a40; margin-bottom: 12px; font-family:"Microsoft JhengHei",sans-serif; font-weight:bold;}
+  .s3 .step .desc { font-size: 13.5px; color: #6b6b5f; line-height: 1.75; font-family:"Microsoft JhengHei",sans-serif;}
+  .s3 .step .why { margin-top: 14px; font-size: 12.5px; color: #8bc53f; font-family:"Microsoft JhengHei",sans-serif; line-height:1.6;}
+
+  /* Slide 4 : pitfalls + value */
+  .s4 { padding: 120px 90px 0 90px; }
+  .s4 h2 { font-size: 30px; color: #5f6b4a; font-weight: 400; margin-bottom: 8px; }
+  .s4 .en { font-family:"Calibri",sans-serif; font-size:13px; color:#a8a89a; letter-spacing:2px; margin-bottom: 36px;}
+  .s4 .cols { display: flex; gap: 40px; }
+  .s4 .col { flex: 1; }
+  .s4 .col h3 { font-size: 15px; color:#8bc53f; font-family:"Calibri",sans-serif; letter-spacing:1px; margin-bottom:16px; }
+  .s4 .item { font-size: 14.5px; color: #5c5c50; line-height: 1.9; margin-bottom: 12px; font-family:"Microsoft JhengHei",sans-serif; }
+  .s4 .item::before { content: "· "; color:#c7c7b8; }
+  .s4 .value-box { background:#5f6b4a; color:#fff; padding: 24px 28px; margin-top: 6px; font-size: 15px; line-height: 1.9; font-family:"Microsoft JhengHei",sans-serif;}
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide s1">
+  <div class="frame"></div>
+  <div class="center">
+    <div class="eyebrow">T O G E T H E R G R E E N E R</div>
+    <h1>服務的最後 15 秒<br>決定顧客記不記得妳</h1>
+    <div class="sub">永續小卡 × 服務締結 3 步驟</div>
+  </div>
+  <div class="page-num">01</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide s2">
+  <div class="frame"></div>
+  <div class="logo"><div class="dot"></div><div class="word">O'right</div></div>
+  <h2>前線 15 秒理念分享</h2>
+  <div class="en">THE 15-SECOND OPENING</div>
+  <div class="script-box">
+    「（微笑，拿出小卡）這張是我們送給您的永續小禮物。<br>
+    O'right 歐萊德堅持用 100% 綠電生產、製造過程廢水零排放，<br>
+    今天您買的商品也都在這個承諾裡面。<br>
+    等一下您掃這個 QR Code，會看到專屬於您自己的<br>
+    『永續貢獻證書』，看看你為地球留下的改變。」
+  </div>
+  <div class="keys">
+    <div class="key"><div class="kt">01 破題</div><div class="kd">是「我們送給您的」，不是活動、不是公司規定</div></div>
+    <div class="key"><div class="kt">02 事實</div><div class="kd">講一個具體事實，綠電或零排放擇一即可</div></div>
+    <div class="key"><div class="kt">03 邀請</div><div class="kd">自然帶到「等一下您掃這個」，銜接下一步</div></div>
+  </div>
+  <div class="footer-tag">SUSTAINABLE BEAUTY</div>
+  <div class="page-num">02</div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide s3">
+  <div class="frame"></div>
+  <div class="logo"><div class="dot"></div><div class="word">O'right</div></div>
+  <h2>服務締結 3 步驟</h2>
+  <div class="en">3 STEPS, NONE OPTIONAL</div>
+  <div class="steps">
+    <div class="step">
+      <div class="num">01</div>
+      <div class="title">引導掃碼，看見證書</div>
+      <div class="desc">遞卡同時，引導顧客掃描 QR Code，當場看到自己姓名的永續貢獻證書。</div>
+      <div class="why">沒掃碼，卡片價值等於零。</div>
+    </div>
+    <div class="step">
+      <div class="num">02</div>
+      <div class="title">遞卡前，確認已簽名</div>
+      <div class="desc">在小卡簽名欄簽下自己的名字，讓顧客把這張卡跟「妳」連在一起，記得妳服務時的溫度。</div>
+      <div class="why">這個簽名，讓顧客帶走的不只是卡片，還有妳的用心。</div>
+    </div>
+    <div class="step">
+      <div class="num">03</div>
+      <div class="title">雙手遞交＋歡送語</div>
+      <div class="desc">「期待下次再度服務您，我是（姓名），謝謝您。」雙手遞交，眼神看著顧客。</div>
+      <div class="why">顧客記得妳的名字，下次才會指名回訪。</div>
+    </div>
+  </div>
+  <div class="page-num">03</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide s4">
+  <div class="frame"></div>
+  <div class="logo"><div class="dot"></div><div class="word">O'right</div></div>
+  <h2>常見地雷 × 妳的業績，藏在這三步裡</h2>
+  <div class="en">MISTAKES TO AVOID</div>
+  <div class="cols">
+    <div class="col">
+      <h3>常見地雷</h3>
+      <div class="item">只給卡不引導掃碼，證書永遠不會被看到</div>
+      <div class="item">提前簽好名放收銀台，少了當場的儀式感</div>
+      <div class="item">單手遞卡、沒說姓名，顧客記不住是誰服務她</div>
+      <div class="item">話術背得太生硬，像在念稿不是聊天</div>
+    </div>
+    <div class="col">
+      <h3>做到位的效益</h3>
+      <div class="value-box">
+        三步驟做到位，是讓顧客下次「指名回訪」的關鍵動作。<br><br>
+        指名回訪率提升，代表妳的業績跟獎金更穩定，不用每次都靠新客從頭賣起。
+      </div>
+    </div>
+  </div>
+  <div class="page-num">04</div>
+</div>
+
+</body>
+</html>
