@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>洗髮精到指名回訪｜門市顧客體驗三閉環SOP</title>
+<style>
+  :root{
+    --green-deep:#4a5638;
+    --green-mid:#8bc53f;
+    --green-line:#5f6b4a;
+    --gold:#a8925a;
+    --ivory:#faf8f2;
+    --card:#ffffff;
+    --ink:#332f26;
+    --ink-soft:#6b6558;
+    --line:#e2ddd0;
+    --warn-bg:#f8ece7;
+    --warn-ink:#96412c;
+    --ok-bg:#eef2e3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Microsoft JhengHei","PMingLiU",sans-serif;
+    background:var(--ivory);
+    color:var(--ink);
+    line-height:1.8;
+  }
+  .serif{font-family:"Cambria","Times New Roman",serif;}
+  .en{font-family:"Calibri","Segoe UI",sans-serif;}
+
+  header.top{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,248,242,0.94);
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 48px;
+  }
+  header.top .brand{display:flex; align-items:center; gap:12px;}
+  header.top .dot{width:13px;height:13px;border-radius:50%;background:var(--green-mid);}
+  header.top .word{font-size:17px;color:var(--ink-soft);letter-spacing:2px;font-family:"Cambria",serif;}
+  nav.quick{display:flex; gap:26px; flex-wrap:wrap;}
+  nav.quick a{font-size:12px; color:var(--ink-soft); text-decoration:none; letter-spacing:1px; padding-bottom:3px; border-bottom:1px solid transparent;}
+  nav.quick a:hover{color:var(--green-line); border-bottom-color:var(--gold);}
+
+  .hero{max-width:1000px; margin:0 auto; padding:100px 48px 60px 48px; text-align:center; position:relative;}
+  .hero::after{content:""; display:block; width:64px; height:2px; background:var(--gold); margin:36px auto 0 auto;}
+  .hero .eyebrow{font-family:"Calibri",sans-serif; font-size:13px; letter-spacing:8px; color:var(--gold); margin-bottom:26px; text-transform:uppercase;}
+  .hero h1{font-family:"Cambria",serif; font-size:44px; font-weight:400; color:var(--green-deep); line-height:1.55;}
+  .hero .sub{margin-top:18px; font-size:17px; color:var(--ink-soft); letter-spacing:1px;}
+  .hero .badges{margin-top:32px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
+  .badge{border:1px solid var(--gold); color:var(--green-deep); font-size:12.5px; padding:7px 18px; border-radius:2px; letter-spacing:0.5px;}
+
+  main{max-width:1000px; margin:0 auto; padding:20px 48px 120px 48px;}
+  section{padding-top:88px; scroll-margin-top:90px;}
+  section .kicker{display:flex; align-items:center; gap:16px; margin-bottom:8px;}
+  section .kicker .idx{font-family:"Cambria",serif; font-size:15px; color:var(--gold); letter-spacing:3px;}
+  section .kicker .line{flex:1; height:1px; background:var(--line);}
+  section h2{font-family:"Cambria",serif; font-size:30px; font-weight:400; color:var(--green-deep); margin-bottom:6px;}
+  section .section-en{font-family:"Calibri",sans-serif; font-size:11.5px; letter-spacing:3px; color:#b3ac9a; margin-bottom:32px; text-transform:uppercase;}
+  section > p.lead{font-size:15.5px; color:var(--ink); margin-bottom:22px; max-width:800px;}
+
+  h3.sub-h{font-family:"Cambria",serif; font-size:19px; color:var(--green-deep); margin:34px 0 14px 0; font-weight:400; padding-bottom:6px; border-bottom:1px solid var(--line);}
+
+  .summary-grid{display:flex; gap:1px; margin-top:16px; flex-wrap:wrap; background:var(--line);}
+  .summary-card{flex:1; min-width:260px; background:var(--card); padding:30px 26px;}
+  .summary-card .tag{font-family:"Cambria",serif; font-size:13px; letter-spacing:1px; color:var(--gold); margin-bottom:12px;}
+  .summary-card .title{font-size:17px; font-weight:700; margin-bottom:12px; color:var(--ink);}
+  .summary-card .desc{font-size:13.5px; color:var(--ink-soft); line-height:1.8;}
+
+  table{width:100%; border-collapse:collapse; margin:18px 0 8px 0; font-size:13.5px;}
+  thead th{background:var(--green-deep); color:#f3f1e9; text-align:left; padding:13px 16px; font-weight:600; letter-spacing:0.5px;}
+  tbody td{padding:13px 16px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink);}
+  tbody tr:nth-child(even){background:#f5f2ea;}
+  .note{font-size:12px; color:var(--ink-soft); font-style:italic; margin-top:8px;}
+
+  .journey{display:flex; gap:0; margin-top:16px; flex-wrap:wrap; counter-reset:step;}
+  .journey .step{flex:1; min-width:170px; background:var(--card); padding:26px 20px 22px 20px; margin:1px; position:relative; border-top:2px solid var(--green-mid);}
+  .journey .step .num{font-family:"Cambria",serif; font-size:28px; font-weight:400; color:var(--gold); margin-bottom:10px;}
+  .journey .step .t{font-size:14.5px; font-weight:700; color:var(--ink); margin-bottom:8px;}
+  .journey .step .d{font-size:12px; color:var(--ink-soft); line-height:1.7;}
+
+  .quote{background:var(--card); border:1px solid var(--line); border-left:3px solid var(--gold); padding:20px 26px; margin:16px 0; font-size:15px; color:var(--ink); line-height:1.9; font-style:italic;}
+  .quote.plain{border-left-color:#c7c2b0;}
+
+  .profile-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; margin-top:18px; background:var(--line);}
+  .profile-card{background:var(--card); padding:24px 24px;}
+  .profile-card.hot{box-shadow: inset 3px 0 0 var(--warn-ink);}
+  .profile-card .name{font-family:"Cambria",serif; font-size:17px; font-weight:400; color:var(--green-deep); margin-bottom:5px;}
+  .profile-card .name .star{color:var(--warn-ink); margin-left:6px; font-size:11px; font-family:"Calibri",sans-serif; letter-spacing:0.5px; vertical-align:middle;}
+  .profile-card .meta{font-size:12px; color:var(--ink-soft); margin-bottom:12px;}
+  .profile-card .prod{display:inline-block; font-size:11px; border:1px solid var(--gold); color:var(--green-deep); padding:4px 12px; margin-bottom:12px; letter-spacing:0.3px;}
+  .profile-card .line{font-size:13.5px; color:var(--ink); line-height:1.75; border-top:1px dashed var(--line); padding-top:12px; margin-top:2px;}
+
+  .formula{display:flex; align-items:center; gap:0; margin:22px 0; flex-wrap:wrap;}
+  .formula .f-item{background:var(--green-deep); color:#f3f1e9; font-size:13.5px; padding:12px 22px; font-weight:600; letter-spacing:1px;}
+  .formula .arrow{color:var(--gold); font-size:18px; padding:0 12px;}
+
+  .steps5{display:flex; flex-direction:column; gap:1px; margin-top:18px; background:var(--line);}
+  .steps5 .step{background:var(--card); padding:18px 24px; display:flex; align-items:center; gap:22px;}
+  .steps5 .step .num{font-family:"Cambria",serif; font-size:22px; color:var(--gold); flex:0 0 30px;}
+  .steps5 .step .body{flex:1;}
+  .steps5 .step .title{font-size:14.5px; font-weight:700; color:var(--ink); margin-bottom:4px;}
+  .steps5 .step .desc{font-size:13px; color:var(--ink-soft); line-height:1.7;}
+  .steps5 .step .say{font-size:12.5px; color:var(--green-deep); font-style:italic; margin-top:4px;}
+
+  .facet-card{background:var(--card); border:1px solid var(--line); margin-top:18px;}
+  .facet-head{display:flex; align-items:baseline; gap:16px; padding:18px 24px; background:var(--green-deep); color:#f3f1e9;}
+  .facet-head .name{font-family:"Cambria",serif; font-size:19px;}
+  .facet-head .chat{font-size:12.5px; color:#d7d1bd; letter-spacing:0.5px;}
+  .facet-body{display:flex; flex-wrap:wrap;}
+  .facet-body .col{flex:1; min-width:220px; padding:18px 22px; border-top:1px solid var(--line); border-left:1px solid var(--line);}
+  .facet-body .col:first-child{border-left:none;}
+  .facet-body .col .tag{font-family:"Calibri",sans-serif; font-size:11px; letter-spacing:1.5px; color:var(--gold); margin-bottom:8px; text-transform:uppercase;}
+  .facet-body .col .txt{font-size:13px; color:var(--ink); line-height:1.75;}
+
+  .scenario-grid{display:flex; gap:1px; margin-top:16px; flex-wrap:wrap; background:var(--line);}
+  .scenario{flex:1; min-width:230px; padding:20px 22px; background:var(--card);}
+  .scenario.good{border-top:2px solid #6f8c3f;}
+  .scenario.neutral{border-top:2px solid #b3ac9a;}
+  .scenario .label{font-size:12.5px; font-weight:700; margin-bottom:10px; letter-spacing:0.5px;}
+  .scenario.good .label{color:#4f7a2e;}
+  .scenario.neutral .label{color:var(--ink-soft);}
+  .scenario .body{font-size:13px; color:var(--ink); line-height:1.8;}
+
+  ul.pitfall{list-style:none; margin-top:14px;}
+  ul.pitfall li{font-size:13.5px; color:var(--ink); padding:12px 0; border-bottom:1px solid var(--line); display:flex; gap:18px;}
+  ul.pitfall li .stage{flex:0 0 76px; font-weight:700; color:var(--green-deep); font-size:12.5px;}
+  ul.pitfall li .body b{color:var(--warn-ink);}
+
+  .closing{margin-top:70px; background:var(--green-deep); color:#f3f1e9; padding:56px 60px; text-align:center; position:relative;}
+  .closing::before, .closing::after{content:""; display:block; width:40px; height:1px; background:var(--gold); margin:0 auto 24px auto;}
+  .closing .en{display:block; font-size:11px; letter-spacing:4px; color:#c8c2ad; margin-bottom:22px; text-transform:uppercase;}
+  .closing p{font-family:"Cambria",serif; font-size:19px; line-height:2.1;}
+
+  footer{text-align:center; padding:48px 20px 70px 20px; font-size:11.5px; color:#b3ac9a; font-family:"Calibri",sans-serif; letter-spacing:1px;}
+
+  @media (max-width:720px){
+    .profile-grid{grid-template-columns:1fr;}
+    nav.quick{display:none;}
+    .hero h1{font-size:30px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand"><div class="dot"></div><div class="word">O'right</div></div>
+  <nav class="quick">
+    <a href="#journey">顧客旅程</a>
+    <a href="#loop1">服務閉環</a>
+    <a href="#loop2">產品閉環</a>
+    <a href="#loop3">關係閉環</a>
+    <a href="#pitfall">常見地雷</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="eyebrow en">SALES &amp; SERVICE PLAYBOOK</div>
+  <h1>洗髮精到指名回訪<br>門市顧客體驗三閉環 SOP</h1>
+  <div class="sub">從一瓶洗髮精，到讓客人記得妳的名字</div>
+</div>
+
+<main>
+
+  <section id="summary">
+    <p class="lead">三個閉環，分別對應櫃點最常卡住的三個業績關卡：</p>
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="tag">閉環一・服務閉環</div>
+        <div class="title">客人買一次就不見了</div>
+        <div class="desc">頭皮檢測 → 回訪追蹤，把路過客養成常客。</div>
+      </div>
+      <div class="summary-card">
+        <div class="tag">閉環二・產品閉環</div>
+        <div class="title">客單價卡住</div>
+        <div class="desc">依檢測結果推薦洗髮精 → 養髮液，提升連帶率與客單價。</div>
+      </div>
+      <div class="summary-card">
+        <div class="tag">閉環三・關係閉環</div>
+        <div class="title">客人不記得是誰服務她</div>
+        <div class="desc">小卡締結＋售後關心，提升指名回訪率。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="journey">
+    <div class="kicker"><div class="idx serif">壹</div><div class="line"></div></div>
+    <h2>顧客旅程總覽</h2>
+    <div class="section-en">The Customer Journey, End to End</div>
+    <div class="journey">
+      <div class="step"><div class="num">01</div><div class="t">推薦洗髮精</div><div class="d">客人進店/挑選洗髮精時，對照8大切點找客群輪廓</div></div>
+      <div class="step"><div class="num">02</div><div class="t">開場邀請檢測</div><div class="d">客人挑選洗髮精/猶豫不決時，邀請免費頭皮檢測</div></div>
+      <div class="step"><div class="num">03</div><div class="t">產品串連</div><div class="d">洗髮精確定後，萬用四步驟帶出養髮液</div></div>
+      <div class="step"><div class="num">04</div><div class="t">服務締結</div><div class="d">結帳收尾，永續小卡三步驟</div></div>
+      <div class="step"><div class="num">05</div><div class="t">售後關心</div><div class="d">購買後5-7天，CALL客確認使用狀況</div></div>
+    </div>
+  </section>
+
+  <section id="loop1">
+    <div class="kicker"><div class="idx serif">貳</div><div class="line"></div></div>
+    <h2>閉環一・服務閉環：頭皮檢測先行</h2>
+    <div class="section-en">Loop One · Scalp Test First</div>
+    <p class="lead">顧客挑選洗髮精時邀約頭皮檢測。先看數據再推薦，比先推薦再解釋更有說服力。</p>
+
+    <h3 class="sub-h">邀請話術</h3>
+    <p class="lead"><b>情境一｜客人剛進店，還在瀏覽</b></p>
+    <div class="quote">您好，歡迎光臨！請問今天是想看洗髮精，還是頭皮最近有什麼比較在意的地方？我可以依照您的狀況幫您挑最適合的。</div>
+    <p class="lead"><b>情境二｜客人已經在看某款洗髮精</b></p>
+    <div class="quote">如果方便的話，我們現在有提供免費的AI頭皮檢測（15-20分鐘），看看您現在的頭皮實際狀況，等一下再依照您的頭皮狀況幫您挑選最適合的洗髮精，這樣選出來的會更精準。</div>
+
+    <h3 class="sub-h">常見情境應對</h3>
+    <div class="scenario-grid">
+      <div class="scenario neutral"><div class="label">客人說沒時間</div><div class="body">「沒有關係，如果趕時間的話可以幫您使用快速版的，只要3分鐘，看完數據再挑洗髮精，反而更快又精準找到適合的。」</div></div>
+      <div class="scenario neutral"><div class="label">客人有戒心</div><div class="body">「這台是AI光學儀器，很多沙龍跟醫美都在用，純粹讓您更了解自己的頭皮狀況，沒有壓力。」</div></div>
+    </div>
+
+    <h3 class="sub-h">儀器信任建立（一句話定位）</h3>
+    <p class="lead">Sentra Smart AI智能頭皮檢測儀，30年以上光學研發經驗、21項專利，全球超過3,000家美髮沙龍與頭皮養護中心採用，台灣曼都集團也導入同一套系統。不用背整段，抓「大家都在用、有專利、不是隨便的機器」三個重點就好。</p>
+
+    <h3 class="sub-h">6大檢測面向 × 回訪節奏摘要</h3>
+
+    <div class="facet-card">
+      <div class="facet-head"><div class="name">皮脂</div><div class="chat">聊天切點｜下午出油扁塌</div></div>
+      <div class="facet-body">
+        <div class="col"><div class="tag">初次檢測與衛教重點</div><div class="txt">分辨真油vs代償性出油，建立觀念：頭皮皮脂腺密度為臉部之2-3倍，需重視皮脂平衡。</div></div>
+        <div class="col"><div class="tag">階段性療程追蹤（第2-3次）</div><div class="txt">油水平衡重建，驗證出油頻率。</div></div>
+        <div class="col"><div class="tag">長效管理與高階保養（第4次以上）</div><div class="txt">分區或分時保養的進階保養觀念。</div></div>
+      </div>
+    </div>
+
+    <div class="facet-card">
+      <div class="facet-head"><div class="name">皮屑</div><div class="chat">聊天切點｜深色衣服尷尬</div></div>
+      <div class="facet-body">
+        <div class="col"><div class="tag">初次檢測與衛教重點</div><div class="txt">角質層屏障受損評估，首重舒緩抗炎，建立抗菌防禦與修復觀念。</div></div>
+        <div class="col"><div class="tag">階段性療程追蹤（第2-3次）</div><div class="txt">角質生理代謝追蹤，檢視角質透亮感，確保無異常增生或堆積。</div></div>
+        <div class="col"><div class="tag">長效管理與高階保養（第4次以上）</div><div class="txt">強化皮脂膜防禦機制，預防外在環境刺激。</div></div>
+      </div>
+    </div>
+
+    <div class="facet-card">
+      <div class="facet-head"><div class="name">敏感</div><div class="chat">聊天切點｜頭皮慢性發炎</div></div>
+      <div class="facet-body">
+        <div class="col"><div class="tag">初次檢測與衛教重點</div><div class="txt">頭皮老化速度是臉的6倍。頭皮鬆弛將直接導致臉部輪廓線下垂。</div></div>
+        <div class="col"><div class="tag">階段性療程追蹤（第2-3次）</div><div class="txt">壓力＋睡眠品質對頭皮微血管擴張的影響。</div></div>
+        <div class="col"><div class="tag">長效管理與高階保養（第4次以上）</div><div class="txt">頭皮防禦＋按摩手法強化微循環。</div></div>
+      </div>
+    </div>
+
+    <div class="facet-card">
+      <div class="facet-head"><div class="name">髮量</div><div class="chat">聊天切點｜視覺髮量/法式高顱頂（視覺減齡）</div></div>
+      <div class="facet-body">
+        <div class="col"><div class="tag">初次檢測與衛教重點</div><div class="txt">毛囊資產概念（不談恐怖落髮）。</div></div>
+        <div class="col"><div class="tag">階段性療程追蹤（第2-3次）</div><div class="txt">追蹤新生細髮狀態。</div></div>
+        <div class="col"><div class="tag">長效管理與高階保養（第4次以上）</div><div class="txt">穩定毛囊週期，整體視覺豐盈度。</div></div>
+      </div>
+    </div>
+
+    <div class="facet-card">
+      <div class="facet-head"><div class="name">髮徑</div><div class="chat">聊天切點｜毛髮直徑（髮徑值）變化</div></div>
+      <div class="facet-body">
+        <div class="col"><div class="tag">初次檢測與衛教重點</div><div class="txt">髮徑變細是毛囊萎縮的初期臨床徵兆。</div></div>
+        <div class="col"><div class="tag">階段性療程追蹤（第2-3次）</div><div class="txt">髮幹結構強化，與驗證髮徑粗細的數據追蹤。</div></div>
+        <div class="col"><div class="tag">長效管理與高階保養（第4次以上）</div><div class="txt">將定期檢測納入常規保養，持續追蹤毛囊健康指數。</div></div>
+      </div>
+    </div>
+
+    <div class="facet-card">
+      <div class="facet-head"><div class="name">毛孔</div><div class="chat">聊天切點｜淨化與微生態平衡</div></div>
+      <div class="facet-body">
+        <div class="col"><div class="tag">初次檢測與衛教重點</div><div class="txt">點出微生態失衡，皮屑芽孢菌增生等共生菌群異常增殖對毛囊的潛在危害。</div></div>
+        <div class="col"><div class="tag">階段性療程追蹤（第2-3次）</div><div class="txt">防禦力與吸收率（對比清潔前後的紅點變化）。</div></div>
+        <div class="col"><div class="tag">長效管理與高階保養（第4次以上）</div><div class="txt">從深層淨化提升至長期防禦，自然帶入高階抗老產品線。</div></div>
+      </div>
+    </div>
+
+    <p class="note">完整逐字話術請參考《6大話術小卡教材》。</p>
+
+    <h3 class="sub-h">回訪排程動作</h3>
+    <ul class="pitfall">
+      <li><div class="stage">當場排定</div><div class="body">每次檢測結束，當場排定下次回櫃時間，不要只說「下次再來」</div></li>
+      <li><div class="stage">節奏建議</div><div class="body">首次檢測後3-4週安排第2次，之後每月1次，第4次以後轉為每季的高階維繫</div></li>
+      <li><div class="stage">留下聯繫</div><div class="body">排定時間後，同步請客人留下LINE或電話，作為閉環三售後關心的聯繫依據</div></li>
+    </ul>
+  </section>
+
+  <section id="loop2">
+    <div class="kicker"><div class="idx serif">參</div><div class="line"></div></div>
+    <h2>閉環二・產品閉環：依檢測結果推薦洗髮精 → 養髮液</h2>
+    <div class="section-en">Loop Two · Scalp Data to Shampoo to Scalp Serum</div>
+
+    <h3 class="sub-h">核心觀念</h3>
+    <p class="lead">洗髮精只做到清潔，養髮液才做到養護。跟保養品邏輯一樣：洗面乳只負責清潔，精華液才做修護、抗老、鎖水。頭皮是頭髮生長的土壤，願意做頭皮檢測的客人，已經有「頭皮保養」的意識，這是串連養髮液最好的時機。</p>
+
+    <h3 class="sub-h">銜接：從檢測結果到洗髮精推薦，再到養髮液</h3>
+    <p class="lead">頭皮檢測結果出來後，先依照數據對照下方8大切點找到客群輪廓，用對應話術推薦洗髮精；洗髮精確定後，再用萬用四步驟公式，順勢帶到養髮液，完成一次消費的產品串連。</p>
+
+    <h3 class="sub-h">萬用四步驟公式</h3>
+    <div class="formula">
+      <div class="f-item">破冰提問</div><div class="arrow">→</div>
+      <div class="f-item">痛點放大</div><div class="arrow">→</div>
+      <div class="f-item">跨類串連</div><div class="arrow">→</div>
+      <div class="f-item">降低門檻促成</div>
+    </div>
+
+    <h3 class="sub-h">8大髮質切點速查</h3>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <div class="name">一般髮質</div>
+        <div class="meta">綠茶／零度C　｜　容易被誤認沒需求，其實是預防保養黃金客群</div>
+        <div class="prod">全系列養髮液</div>
+        <div class="line">「現在頭皮狀況健康真是太好了！頭皮跟臉部肌膚一樣，沒問題時就是最好保養的時機。」</div>
+      </div>
+      <div class="profile-card">
+        <div class="name">漂染燙受損髮質</div>
+        <div class="meta">曠野玫瑰　｜　化學處理後頭皮敏感，緊繃刺癢</div>
+        <div class="prod">咖啡因麥拉寧養髮液／四胜肽賦活養髮液(女)</div>
+        <div class="line">「做完漂染燙頭皮，會不會覺得髮質變得很乾，頭皮因藥劑而變得敏感？這時候最需要先修護下來。」</div>
+      </div>
+      <div class="profile-card">
+        <div class="name">染燙護色</div>
+        <div class="meta">香檳玫瑰／紫玫瑰　｜　長期染燙、注重髮色維持</div>
+        <div class="prod">咖啡因麥拉寧養髮液／四胜肽賦活養髮液(女)</div>
+        <div class="line">「如果您平常會定期染燙，頭皮健康狀態其實會影響髮色持久度和光澤。」</div>
+      </div>
+      <div class="profile-card">
+        <div class="name">乾燥受損髮質</div>
+        <div class="meta">竹萃保濕　｜　髮絲乾燥毛躁易斷，常伴頭皮乾癢脫屑</div>
+        <div class="prod">咖啡因麥拉寧養髮液／四胜肽賦活養髮液(女)／四胜肽經典養髮液</div>
+        <div class="line">「頭皮跟臉一樣，缺水久了髮根吸收養分能力也會變差。」</div>
+      </div>
+      <div class="profile-card">
+        <div class="name">細軟扁塌髮質</div>
+        <div class="meta">桃花／枸杞豐盈　｜　髮量少髮絲細軟，容易扁塌無支撐力</div>
+        <div class="prod">咖啡因養髮液／四胜肽賦活養髮液(女)</div>
+        <div class="line">「頭髮到下午容易扁塌、沒蓬鬆感？很多時候是髮根力量不夠，撐不住髮絲重量。」</div>
+      </div>
+      <div class="profile-card hot">
+        <div class="name">問題頭皮<span class="star">★ 轉換率最強</span></div>
+        <div class="meta">辣木／咖啡因／茶樹　｜　頭皮屑、頭皮癢、異味等明確困擾</div>
+        <div class="prod">咖啡因系列養髮液、四胜肽賦活養髮液(女)、四胜肽經典養髮液</div>
+        <div class="line">「檢測看到您的頭皮有點反覆的困擾，是不是常有頭皮屑、癢或異味的狀況？洗髮精在頭皮上只停留幾分鐘就沖掉，反覆性問題需要不沖洗留在頭皮上的產品才能真正處理。」</div>
+      </div>
+      <div class="profile-card">
+        <div class="name">油性頭皮</div>
+        <div class="meta">茶花／香桃木控油　｜　頭皮出油快，髮根扁塌油膩</div>
+        <div class="prod">咖啡因養髮液／四胜肽賦活養髮液(男)／四胜肽經典養髮液</div>
+        <div class="line">「早上洗完頭到下午髮根就出油扁塌嗎？等一下幫您挑的控油洗髮精能洗掉當下的油，但沒辦法調節出油機制的根本。」</div>
+      </div>
+      <div class="profile-card">
+        <div class="name">兒童／失衡頭皮</div>
+        <div class="meta">蒲公英溫和　｜　家長買給孩子，或極敏感脆弱肌，家庭客延伸</div>
+        <div class="prod">全系列（推薦給家長本人）</div>
+        <div class="line">「這麼細心幫小朋友顧頭皮，想問您自己的頭皮平常有在顧嗎？很多媽媽都是最後才想到自己。」</div>
+      </div>
+    </div>
+    <p class="note">★ 完整逐字話術（含痛點放大細節）請參考《洗髮精串銷養髮液切點話術》原教材。</p>
+  </section>
+
+  <section id="loop3">
+    <div class="kicker"><div class="idx serif">肆</div><div class="line"></div></div>
+    <h2>閉環三・關係閉環：永續小卡締結＋售後關心</h2>
+    <div class="section-en">Loop Three · The Sustainable Card &amp; The Follow-up Call</div>
+
+    <h3 class="sub-h">Part A｜結帳當下：永續小卡服務締結5步驟</h3>
+    <div class="steps5">
+      <div class="step">
+        <div class="num">01</div>
+        <div class="body"><div class="title">開場說明</div><div class="desc">結帳包裝時，主動向顧客介紹這張卡片。</div><div class="say">「這是我們送給您的永續小卡。」</div></div>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <div class="body"><div class="title">說明意義</div><div class="desc">用聊天的方式，挑一句妳覺得最順口分享。</div><div class="say">歐萊德堅持用100%綠電製造＆製造過程0廢水排放。</div></div>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <div class="body"><div class="title">引導掃碼</div><div class="desc">遞卡同時引導掃描QR Code，看見專屬證書。</div><div class="say">「您可以現在掃看看，這是專屬您的證書，上面會有您的名字。」</div></div>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <div class="body"><div class="title">遞卡前簽名</div><div class="desc">現場當著客人的面簽下自己的名字。</div><div class="say">（簽名動作，不需多說話，讓客人看見）</div></div>
+      </div>
+      <div class="step">
+        <div class="num">05</div>
+        <div class="body"><div class="title">雙手遞交</div><div class="desc">雙手遞卡，眼神注視，口說送客語。</div><div class="say">「期待下次再度服務您，我是（姓名），謝謝您。」</div></div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:14px;">地雷提醒：不引導掃碼＝卡片價值等於零；單手遞卡、不報姓名＝客人記不住是誰服務她，下次不會指名。</p>
+
+    <h3 class="sub-h">Part B｜售後CALL客話術</h3>
+    <p class="lead"><b>撥打時機：</b>購買養髮液後第5-7天。太早客人還沒感受到變化，容易像推銷；太晚關心的意義就淡了。若當天已排定7天內的回櫃檢測時間，可以用回櫃取代電話，不必重複打擾。</p>
+    <p class="lead"><b>目的（依優先順序）：</b>先確認使用方式正確／建立「被記得」的感受，這是關係閉環的核心／視狀況邀約回櫃或提醒回購時間點。</p>
+    <p class="lead"><b>話術架構：</b>關心開場 → 使用狀況確認 → 問題排除或情感強化 → 回櫃/回購銜接 → 感謝收尾</p>
+    <div class="quote">您好，我是O'right（櫃位）的（姓名），前幾天您在我們這邊選了養髮液，想跟您確認一下，最近使用上還順手嗎？</div>
+
+    <div class="scenario-grid">
+      <div class="scenario good">
+        <div class="label">客人反應順手／還不錯</div>
+        <div class="body">「太好了！這款養護是需要一點時間累積效果，建議持續每天使用，大概到下個月我們可以再幫您做一次頭皮檢測，用數據追蹤看看有沒有進步，到時候再幫您留時段。」</div>
+      </div>
+      <div class="scenario neutral">
+        <div class="label">客人反應沒感覺／沒空用</div>
+        <div class="body">「這個很正常，頭皮代謝週期比較長，通常要3-4週才會比較明顯。想跟您確認一下使用方式，是洗完頭直接噴在頭皮上、不用沖洗喔，這樣吸收才會完整。」</div>
+      </div>
+    </div>
+
+    <p class="lead" style="margin-top:22px;"><b>感謝收尾：</b></p>
+    <div class="quote plain">謝謝您撥空接電話，有任何頭皮或使用上的問題都可以隨時找我。</div>
+
+    <h3 class="sub-h">常見情境應對</h3>
+    <ul class="pitfall">
+      <li><div class="stage">沒接通</div><div class="body">改用LINE傳文字關心，保留「順手打字」的溫度，不貼公版罐頭訊息</div></li>
+      <li><div class="stage">語氣冷淡</div><div class="body">不要硬聊，簡短留一句「有任何需要都可以找我」即可收尾</div></li>
+      <li><div class="stage">主動回購</div><div class="body">順勢直接約定回櫃時間，或協助線上/電話續購流程</div></li>
+    </ul>
+  </section>
+
+  <section id="pitfall">
+    <div class="kicker"><div class="idx serif">伍</div><div class="line"></div></div>
+    <h2>常見地雷總表</h2>
+    <div class="section-en">Mistakes to Avoid</div>
+    <ul class="pitfall">
+      <li><div class="stage">閉環一</div><div class="body">檢測邀約話術念稿生硬，像在推銷儀器 → <b>客人抗拒，還沒開始就先設防</b></div></li>
+      <li><div class="stage">閉環一</div><div class="body">檢測結束沒有排定下次時間 → <b>客人回去就忘記，回訪率低</b></div></li>
+      <li><div class="stage">閉環一</div><div class="body">話術深度沒有依回訪次數調整 → <b>老客人聽到跟第一次一樣的內容，感覺不被重視</b></div></li>
+      <li><div class="stage">閉環二</div><div class="body">沒有依檢測結果對照切點，憑感覺推薦 → <b>推薦不準，降低專業信任</b></div></li>
+      <li><div class="stage">閉環二</div><div class="body">一律背話術念稿，語氣生硬 → <b>客人感覺被推銷，降低信任</b></div></li>
+      <li><div class="stage">閉環三</div><div class="body">小卡沒引導掃碼／沒簽名／沒報姓名 → <b>客人記不住是誰服務她，指名率上不去</b></div></li>
+      <li><div class="stage">閉環三</div><div class="body">CALL客時間點抓太緊或太鬆 → <b>太快像推銷，太慢關心失去意義</b></div></li>
+      <li><div class="stage">閉環三</div><div class="body">客訴狀況在電話中自行承諾處理方式 → <b>超出授權範圍，造成後續糾紛</b></div></li>
+    </ul>
+  </section>
+
+  <div class="closing">
+    <span class="en">One-Line Takeaway</span>
+    <p>頭皮檢測是起點，不是噱頭。先看數據再推薦，客人才會信任這是為她量身打造。<br>
+    永續小卡跟售後關心讓客人記得回來找的是「妳」。<br>
+    三個閉環顧好，業績跟獎金才不會只靠運氣。</p>
+  </div>
+
+</main>
+
+<footer>O'right 歐萊德　SUSTAINABLE BEAUTY　｜　門市顧客體驗三閉環SOP　2026-07-13</footer>
+
+</body>
+</html>
