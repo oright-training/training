@@ -10,18 +10,18 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --green: #2d6a4f;
-  --green-mid: #40916c;
-  --green-light: #d8f3dc;
+  --green:      #2d6a4f;
+  --green-mid:  #40916c;
+  --green-light:#d8f3dc;
   --green-pale: #ebf5ef;
-  --gold: #c9a84c;
-  --gold-pale: #fdf6e3;
-  --ink: #1a1a1a;
-  --paper: #f8f5f0;
-  --white: #ffffff;
-  --muted: #888;
-  --border: #e0dbd3;
-  --line: #d1e8df;
+  --gold:       #c9a84c;
+  --gold-pale:  #fdf6e3;
+  --ink:        #1a1a1a;
+  --paper:      #f8f5f0;
+  --white:      #ffffff;
+  --muted:      #888;
+  --border:     #e0dbd3;
+  --line:       #d1e8df;
 }
 
 body {
@@ -218,124 +218,146 @@ body {
   background: var(--border);
 }
 
-/* ── HOW-TO STEPS ── */
-.steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
-.step-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 18px 18px 18px 20px;
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  position: relative;
-  overflow: hidden;
-}
-.step-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 4px; height: 100%;
-  background: var(--green);
-  border-radius: 14px 0 0 14px;
-}
-.step-num {
-  width: 34px; height: 34px;
-  min-width: 34px;
-  border-radius: 50%;
-  background: var(--green);
-  color: #fff;
-  font-family: 'Noto Serif TC', serif;
-  font-weight: 900;
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.step-body { flex: 1; }
-.step-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--ink); }
-.step-desc  { font-size: 12px; color: #666; line-height: 1.7; }
-.step-tag {
-  display: inline-block;
-  background: var(--green-light);
-  color: var(--green);
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 10px;
-  margin-top: 6px;
-}
-
-/* ── THIS WEEK PREVIEW ── */
-.week-preview {
+/* ── INTRO BOX ── */
+.intro-box {
   background: var(--green-pale);
   border-left: 4px solid var(--green);
   border-radius: 0 12px 12px 0;
   padding: 16px 18px;
   margin-bottom: 28px;
   font-size: 12px;
-  line-height: 1.8;
+  line-height: 1.9;
   color: #2d4a3e;
 }
-.week-preview strong { color: var(--green); }
+.intro-box strong { color: var(--green); }
 
 /* ── CASE CARDS ── */
-.case-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+.case-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
 .case-card {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 .case-header {
   background: var(--green);
-  padding: 14px 18px 12px;
+  padding: 14px 18px 13px;
 }
 .case-num {
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 1.5px;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 2px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 3px;
 }
 .case-title {
   font-size: 15px;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
-.case-type {
-  font-size: 11px;
-  color: rgba(255,255,255,0.75);
+.case-type-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
-.case-body { padding: 16px 18px; }
+.case-tag {
+  background: rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.92);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+.case-body { padding: 16px 18px 18px; }
+
+/* 引言框 */
 .case-quote {
   background: var(--green-pale);
   border-left: 3px solid var(--green-mid);
   border-radius: 0 8px 8px 0;
-  padding: 10px 14px;
+  padding: 11px 14px;
   font-size: 12px;
   color: #2d4a3e;
-  line-height: 1.7;
-  margin-bottom: 12px;
+  line-height: 1.8;
+  margin-bottom: 14px;
   font-style: italic;
 }
+
+/* 核心技巧標題 */
 .case-core {
   font-size: 12px;
   font-weight: 700;
   color: var(--green);
   margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
+
+/* 內文 */
+.case-desc {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+/* 步驟列 */
+.mini-steps { display: flex; flex-direction: column; gap: 7px; margin-bottom: 12px; }
+.mini-step {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+}
+.mini-step-num {
+  width: 22px; height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+.mini-step-text {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.7;
+  flex: 1;
+}
+.mini-step-text strong { color: var(--green); }
+
+/* 話術金句 */
+.script-line {
+  background: var(--green-pale);
+  border-left: 3px solid var(--green-mid);
+  border-radius: 0 8px 8px 0;
+  padding: 9px 13px;
+  font-size: 12px;
+  color: #2d4a3e;
+  line-height: 1.7;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+/* 可複製要點 */
 .case-tip {
   background: var(--gold-pale);
   border: 1px solid #f0d88a;
-  border-radius: 8px;
-  padding: 10px 14px;
-  font-size: 11px;
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 11.5px;
   color: #7a5c00;
-  line-height: 1.7;
-  margin-top: 10px;
+  line-height: 1.8;
+  margin-top: 12px;
 }
+.case-tip strong { color: #5a4000; }
 
 /* ── TIP BOX ── */
 .tip-box {
@@ -418,44 +440,11 @@ body {
 
 <div class="container">
 
-  <!-- ── HOW TO USE ── -->
-  <div class="section-label">怎麼用｜3步驟</div>
-  <div class="steps">
-    <div class="step-card">
-      <div class="step-num">1</div>
-      <div class="step-body">
-        <div class="step-title">點上方連結進入知識庫</div>
-        <div class="step-desc">不需要登入、不需要下載任何東西。手機或電腦都可以開。</div>
-        <span class="step-tag">✓ 免登入</span>
-      </div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">2</div>
-      <div class="step-body">
-        <div class="step-title">找到音頻「前線銷售三則｜養髮液高績效實戰經驗彙整」，按 ▶ 播放</div>
-        <div class="step-desc">
-          💻 <strong>電腦版</strong>：進入頁面後，右下角可以看到音頻，按 ▶ 直接播放。<br><br>
-          📱 <strong>手機版</strong>：點上方「工作室」分頁，找到音頻後按 ▶ 播放。<br><br>
-          本月是三則真實案例合輯，聽完大約3分鐘，通勤、休息時間聽剛好。
-        </div>
-        <span class="step-tag">🎧 約 3 分鐘</span>
-      </div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">3</div>
-      <div class="step-body">
-        <div class="step-title">想問問題？右側對話框直接打</div>
-        <div class="step-desc">像問真人一樣輸入問題，例如：「南部客人不喜歡廢話怎麼開口？」或「如何讓顧客坐下來體驗？」它會直接給你答案。</div>
-        <span class="step-tag">💬 即問即答</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── THIS WEEK PREVIEW ── -->
-  <div class="week-preview">
+  <!-- ── INTRO ── -->
+  <div class="intro-box">
     💡 <strong>本月三則案例摘要</strong><br>
     📍 台中三井｜從「怕被拒絕」到「傾聽先行」，等顧客放鬆再切入養髮液<br>
-    📍 南紡購物中心｜觀察三線索→天氣開場→不問意願直接帶走→以退為進收單<br>
+    📍 南紡購物中心｜觀察三線索 → 天氣開場 → 不問意願直接帶走 → 以退為進收單<br>
     📍 嘉義新光｜「先坐下來感受看看」一句話，把路過瀏覽變成專注體驗
   </div>
 
@@ -465,45 +454,109 @@ body {
   <div class="section-label">本月三則案例</div>
   <div class="case-list">
 
+    <!-- 案例一 -->
     <div class="case-card">
       <div class="case-header">
-        <div class="case-num">案例一</div>
+        <div class="case-num">CASE 01</div>
         <div class="case-title">台中三井｜心態轉變型</div>
-        <div class="case-type">需求挖掘型 · 傾聽建立信任型</div>
+        <div class="case-type-row">
+          <span class="case-tag">需求挖掘型</span>
+          <span class="case-tag">傾聽建立信任型</span>
+        </div>
       </div>
       <div class="case-body">
         <div class="case-quote">「最大的改變是心態。以前比較擔心被客人拒絕，所以有時候不太敢主動介紹；現在把重點放在了解客人的需求，先聊天、傾聽，再依照困擾提供建議，心態也比以前更有自信。」</div>
         <div class="case-core">💡 核心技巧</div>
-        <div class="step-desc">先完成洗髮精介紹建立互動，再自然切入養髮液。讓顧客感受到「你是在幫我解決問題」，而不是「要我多買一樣東西」。</div>
-        <div class="case-tip">🏆 可複製要點：遇到對養髮液無主動需求的顧客，先把主力商品服務好，等顧客放鬆了再問困擾。「幫他解決問題」的出發點，比任何話術都有說服力。</div>
+        <div class="case-desc">先完成洗髮精介紹建立互動，再自然切入養髮液。讓顧客感受到「你是在幫我解決問題」，而不是「要我多買一樣東西」。</div>
+        <div class="mini-steps">
+          <div class="mini-step">
+            <div class="mini-step-num">1</div>
+            <div class="mini-step-text"><strong>先完成洗髮精介紹</strong>，讓顧客對品牌有好感，降低防衛心。</div>
+          </div>
+          <div class="mini-step">
+            <div class="mini-step-num">2</div>
+            <div class="mini-step-text">等互動建立後，自然詢問：<strong>「近期有沒有掉髮、頭皮出油的困擾？」</strong></div>
+          </div>
+          <div class="mini-step">
+            <div class="mini-step-num">3</div>
+            <div class="mini-step-text">切入養髮液時，<strong>用親身心得取代規格說明</strong>，顧客更容易相信。</div>
+          </div>
+        </div>
+        <div class="case-tip">🏆 <strong>可複製要點</strong>：遇到對養髮液無主動需求的顧客，先把主力商品服務好，等顧客放鬆了再問困擾。「幫他解決問題」的出發點，比任何話術都有說服力。</div>
       </div>
     </div>
 
+    <!-- 案例二 -->
     <div class="case-card">
       <div class="case-header">
-        <div class="case-num">案例二</div>
+        <div class="case-num">CASE 02</div>
         <div class="case-title">南紡購物中心｜主動出擊型</div>
-        <div class="case-type">快速決策型 · 南部氣候需求型</div>
+        <div class="case-type-row">
+          <span class="case-tag">快速決策型</span>
+          <span class="case-tag">南部氣候需求型</span>
+        </div>
       </div>
       <div class="case-body">
         <div class="case-quote">「南紡的客人大多偏向快速、不喜歡廢話，所以只要有客人靠櫃，一定要有能吸引他的問候方式，讓他願意跟你開口聊天，你才有機會介紹產品。」</div>
         <div class="case-core">💡 核心技巧</div>
-        <div class="step-desc">觀察三線索（頭髮狀況、試聞產品、眼睛停留）→ 天氣痛點開場 → 不問意願直接帶走體驗 → 以退為進引起更大興趣 → 日夜雙效收單。</div>
-        <div class="case-tip">💬 話術金句：「最近頭皮是不是覺得很悶熱，還有頭皮搔癢？」→ 直接走向養髮液區 → 試香紙直接噴 → 「如果目前沒有嚴重落髮，可以先帶四胜肽就好。」</div>
+        <div class="case-desc">觀察三線索 → 天氣痛點開場 → 不問意願直接帶走體驗 → 以退為進引起更大興趣 → 日夜雙效收單。</div>
+        <div class="mini-steps">
+          <div class="mini-step">
+            <div class="mini-step-num">1</div>
+            <div class="mini-step-text">觀察：<strong>頭髮狀況・試聞產品・眼睛停留的商品</strong>，找到切入點。</div>
+          </div>
+          <div class="mini-step">
+            <div class="mini-step-num">2</div>
+            <div class="mini-step-text">天氣開場：<strong>「最近頭皮是不是覺得很悶熱，還有頭皮搔癢？」</strong></div>
+          </div>
+          <div class="mini-step">
+            <div class="mini-step-num">3</div>
+            <div class="mini-step-text">不問意願，<strong>直接走向養髮液區</strong>，試香紙直接噴，讓體驗先發生。</div>
+          </div>
+          <div class="mini-step">
+            <div class="mini-step-num">4</div>
+            <div class="mini-step-text">以退為進：<strong>「目前沒有嚴重落髮，先帶四胜肽就好。」</strong>顧客反而對咖啡因更感興趣。</div>
+          </div>
+        </div>
+        <div class="script-line">💬 收單話術：「早上出門噴四胜肽，香香的還能養護頭皮；晚上睡前噴咖啡因深度修護，日夜保養不間斷。」</div>
+        <div class="case-tip">🏆 <strong>可複製要點</strong>：「不問意願、直接帶走行動」是最值得複製的核心能力——讓顧客跟著你走，而不是站在原地等顧客說好。</div>
       </div>
     </div>
 
+    <!-- 案例三 -->
     <div class="case-card">
       <div class="case-header">
-        <div class="case-num">案例三</div>
+        <div class="case-num">CASE 03</div>
         <div class="case-title">嘉義新光｜體驗帶動型</div>
-        <div class="case-type">體驗感受型 · 無壓力成交型 · 同伴互助型</div>
+        <div class="case-type-row">
+          <span class="case-tag">體驗感受型</span>
+          <span class="case-tag">無壓力成交型</span>
+          <span class="case-tag">同伴互助型</span>
+        </div>
       </div>
       <div class="case-body">
         <div class="case-quote">「這個月遇到的顧客我都會以四胜肽養髮液能讓頭皮涼涼舒服讓他們感受；每賣出一瓶就會更有自信，想著怎麼跟下一個顧客介紹會更順利。」</div>
         <div class="case-core">💡 核心技巧</div>
-        <div class="step-desc">讓顧客「坐下來感受」是最關鍵的動作。邀請坐下 → 讓顧客選喜歡的味道 → 直接噴在頭皮 → 問感受讓顧客自己說出好 → 配班一主一輔服務同行家人。</div>
-        <div class="case-tip">🏆 可複製要點：「先坐下來感受看看」把顧客從路過瀏覽變成專注體驗，不讓顧客感受壓力，體驗後的感受由顧客自己說出來，比 BC 說一百句都有效。</div>
+        <div class="case-desc">讓顧客「坐下來感受」是最關鍵的動作。坐下來的顧客防衛心降低，成交率大幅提升。</div>
+        <div class="mini-steps">
+          <div class="mini-step">
+            <div class="mini-step-num">1</div>
+            <div class="mini-step-text">結帳前自然切入：<strong>「要不要來感受看看？讓頭皮涼涼的，先坐下來感受看看。」</strong></div>
+          </div>
+          <div class="mini-step">
+            <div class="mini-step-num">2</div>
+            <div class="mini-step-text">先問<strong>「你比較喜歡哪個味道？」</strong>讓顧客有選擇感，降低被推銷的感受。</div>
+          </div>
+          <div class="mini-step">
+            <div class="mini-step-num">3</div>
+            <div class="mini-step-text"><strong>直接噴在頭皮</strong>，讓身體說話，再問「您感覺怎麼樣？」讓顧客自己說出好。</div>
+          </div>
+          <div class="mini-step">
+            <div class="mini-step-num">4</div>
+            <div class="mini-step-text">配班<strong>一主一輔</strong>——一人服務主客，一人照顧同行家人，服務覆蓋翻倍。</div>
+          </div>
+        </div>
+        <div class="case-tip">🏆 <strong>可複製要點</strong>：「先坐下來感受看看」把顧客從路過瀏覽變成專注體驗。體驗後的感受由顧客自己說出來，比 BC 說一百句好話都有效。</div>
       </div>
     </div>
 
@@ -537,12 +590,11 @@ body {
 
   <div class="tip-box">
     💡 <strong>本月帶走一句話</strong>：<br>
-    不管你是傾聽型、主動型、還是體驗型——三個人，三種方式，但有一件事是一樣的：都不是一開始就推養髮液，而是等對的時機，讓顧客先有感受，再讓顧客自己說出「好」。
+    三個人，三種方式，但有一件事是一樣的——都不是一開始就推養髮液，而是等對的時機，讓顧客先有感受，再讓顧客自己說出「好」。
   </div>
 
   <div class="footer">
-    O'right 歐萊德｜百貨教育訓練　2026<br>
-    全省銷售共學系列 · 有問題請聯繫直屬主管
+    O'right 歐萊德｜百貨教育訓練　2026
   </div>
 
 </div>
