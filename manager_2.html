@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全省銷售共學｜櫃長管理實戰心法</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:       #1b3a4b;
+  --navy-mid:   #2e5f6e;
+  --navy-light: #d4e8ee;
+  --navy-pale:  #ebf4f7;
+  --copper:     #a0522d;
+  --copper-mid: #c1693a;
+  --copper-pale:#fbf3ee;
+  --ink:        #1a1a1a;
+  --paper:      #f4f6f8;
+  --white:      #ffffff;
+  --muted:      #888;
+  --border:     #d8e4e8;
+  --line:       #c8dce3;
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  padding: 52px 28px 44px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; right: -40px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: rgba(160,82,45,0.15);
+}
+.hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #d4a88a;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+.hero h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.hero-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 300;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 14px;
+  position: relative;
+  z-index: 1;
+}
+.hero-tag {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.9);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--copper);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 20px;
+  margin-top: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── TOP CTA ── */
+.top-cta {
+  background: var(--white);
+  border-bottom: 3px solid var(--copper);
+  padding: 20px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.top-cta-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--copper);
+  text-align: center;
+  text-transform: uppercase;
+}
+.btn-primary-large {
+  display: block;
+  background: var(--navy);
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  padding: 18px 48px 18px 24px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.5;
+  position: relative;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn-primary-large .sub {
+  font-size: 11px;
+  font-weight: 400;
+  opacity: 0.75;
+  display: block;
+  margin-bottom: 3px;
+  letter-spacing: 0.5px;
+}
+.btn-primary-large::after {
+  content: '↗';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  opacity: 0.7;
+}
+.btn-primary-large:active { transform: scale(0.97); background: #0f2535; }
+.btn-secondary-outline {
+  display: block;
+  background: transparent;
+  color: var(--navy);
+  text-decoration: none;
+  text-align: center;
+  padding: 13px 40px 13px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 13px;
+  border: 1.5px solid var(--navy);
+  position: relative;
+  transition: background 0.15s;
+}
+.btn-secondary-outline::after {
+  content: '↗';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+}
+.btn-secondary-outline:active { background: var(--navy-pale); }
+
+/* ── CONTAINER ── */
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--navy-mid);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── INTRO BOX ── */
+.intro-box {
+  background: var(--navy-pale);
+  border-left: 4px solid var(--navy-mid);
+  border-radius: 0 12px 12px 0;
+  padding: 16px 18px;
+  margin-bottom: 28px;
+  font-size: 12px;
+  line-height: 1.9;
+  color: #1e3a47;
+}
+.intro-box strong { color: var(--navy); }
+
+/* ── CASE CARDS ── */
+.case-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
+
+.case-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.case-header {
+  background: var(--navy-mid);
+  padding: 14px 18px 12px;
+}
+.case-num {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 2px;
+}
+.case-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.case-type {
+  font-size: 11px;
+  color: #bdd8e0;
+}
+.case-body { padding: 16px 18px; }
+
+/* Q 區塊 */
+.q-block {
+  background: var(--copper);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+}
+.q-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 2px;
+}
+.q-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.5;
+}
+
+/* 策略內文 */
+.strategy-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy-mid);
+  margin-bottom: 6px;
+}
+.strategy-body {
+  font-size: 12px;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+/* 腳本卡 */
+.script-card {
+  background: var(--navy-pale);
+  border-left: 3px solid var(--navy-mid);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+.script-situation {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--navy-mid);
+  margin-bottom: 4px;
+}
+.script-text {
+  font-size: 12px;
+  color: #333;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* 管理步驟卡 */
+.mgmt-steps { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+.mgmt-step {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.mgmt-step-num {
+  width: 28px; height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: var(--copper);
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mgmt-step-body { flex: 1; }
+.mgmt-step-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+.mgmt-step-desc {
+  font-size: 11px;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* 可複製要點 */
+.tip-box {
+  background: var(--copper-pale);
+  border: 1px solid #e0b898;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: #6b3010;
+  line-height: 1.8;
+  margin-top: 14px;
+}
+.tip-box strong { color: var(--copper); }
+
+/* 引言框 */
+.quote-box {
+  background: var(--navy-pale);
+  border-left: 3px solid var(--navy);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: #1e3a47;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* ── SUMMARY ── */
+.summary-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.summary-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.summary-num {
+  width: 32px; height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 900;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.summary-body { flex: 1; }
+.summary-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.summary-desc {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: var(--border); margin: 24px 0; }
+
+/* ── FAQ ── */
+.faq { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.faq-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.faq-q {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy-mid);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+.faq-q::before { content: 'Q'; font-family: 'Noto Serif TC', serif; }
+.faq-a {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.7;
+  padding-left: 18px;
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  line-height: 1.8;
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-eyebrow">O'right 歐萊德 · 全省銷售共學</div>
+  <h1>養髮液｜櫃長管理實戰心法<br>找到同仁的卡點，業績自然跟上來</h1>
+  <div class="hero-sub">來自嘉義新光・台中三井Lalaport<br>如何讓同仁有目標感＋現場卡關時怎麼帶</div>
+  <div class="hero-tags">
+    <span class="hero-tag">情境導入型管理</span>
+    <span class="hero-tag">信心重建型管理</span>
+  </div>
+  <div class="hero-badge">📋 本月管理共學｜2026年7月</div>
+</div>
+
+<!-- ── TOP CTA ── -->
+<div class="top-cta">
+  <div class="top-cta-label">📄 本月話術情境卡</div>
+  <a href="https://docs.google.com/document/d/1XHFYt8OOLvqlZpIF97tX19syk7KSZdWu/edit" target="_blank" class="btn-primary-large">
+    <span class="sub">前線銷售三則｜養髮液高績效實戰經驗彙整</span>
+    📄 點此查看完整話術情境卡
+  </a>
+  <a href="https://notebooklm.google.com/notebook/6f6af04a-828d-44be-8d41-048d28d1f09c" target="_blank" class="btn-secondary-outline">
+    🔍 進入知識庫查詢案例
+  </a>
+</div>
+
+<div class="container">
+
+  <!-- ── 前言 ── -->
+  <div class="intro-box">
+    📌 <strong>本月管理聚焦：兩個核心問題</strong><br>
+    ① 妳是用什麼方式讓同仁對養髮液有目標感，甚至願意主動去推？<br>
+    ② 看到同仁卡關時，妳通常怎麼現場帶她們或給予調整？
+  </div>
+
+  <!-- ── 案例一 ── -->
+  <div class="section-label">案例一｜嘉義新光</div>
+  <div class="case-list">
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-num">CASE 01</div>
+        <div class="case-title">嘉義新光｜情境導入型管理</div>
+        <div class="case-type">用天氣與時事給同仁開口的理由，讓服務自然發生</div>
+      </div>
+      <div class="case-body">
+
+        <div class="q-block">
+          <div class="q-label">Q1</div>
+          <div class="q-text">妳是用什麼方式讓同仁有目標感、願意主動推？</div>
+        </div>
+
+        <div class="strategy-title">核心策略：不從「業績目標」切入，從「天氣與時事」給同仁開口的理由</div>
+        <div class="strategy-body">
+          讓同仁理解：天氣本身就是最好的銷售素材。<br>
+          天氣炎熱 → 頭皮泛紅、大量出油、悶熱、皮屑——這些都是顧客正在感受的真實困擾，同仁只要開口問，顧客幾乎都有共鳴。
+        </div>
+
+        <div class="strategy-title">給同仁的服務開場邏輯</div>
+        <div class="mgmt-steps">
+          <div class="mgmt-step">
+            <div class="mgmt-step-num">1</div>
+            <div class="mgmt-step-body">
+              <div class="mgmt-step-title">觀察頭皮，說出顧客感受</div>
+              <div class="mgmt-step-desc">顧客靠櫃先以「頭皮降溫舒適」為話題邀請體驗，不直接推產品，先讓顧客感受到「你懂我現在的不舒服」。</div>
+            </div>
+          </div>
+          <div class="mgmt-step">
+            <div class="mgmt-step-num">2</div>
+            <div class="mgmt-step-body">
+              <div class="mgmt-step-title">肉眼觀察＋指腹按摩確認</div>
+              <div class="mgmt-step-desc">肉眼觀察顧客頭皮狀況，再以指腹按摩頭皮，感受到穴道緊繃感時，再切入詢問頭皮困擾，自然不突兀。</div>
+            </div>
+          </div>
+          <div class="mgmt-step">
+            <div class="mgmt-step-num">3</div>
+            <div class="mgmt-step-body">
+              <div class="mgmt-step-title">頭皮檢測，推薦商品</div>
+              <div class="mgmt-step-desc">進行頭皮檢測，依結果推薦適合商品，搭配生活習慣改變建議，讓顧客感受到「這是為我量身設計的」。</div>
+            </div>
+          </div>
+          <div class="mgmt-step">
+            <div class="mgmt-step-num">4</div>
+            <div class="mgmt-step-body">
+              <div class="mgmt-step-title">購買後預約免費護理</div>
+              <div class="mgmt-step-desc">提供一次免費頭皮護理保養，確認顧客回家後是否正常使用，加深顧客黏著度與回訪意願。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="q-block">
+          <div class="q-label">Q2</div>
+          <div class="q-text">看到同仁卡關時，妳通常怎麼現場帶？</div>
+        </div>
+
+        <div class="strategy-title">策略：直接介入示範話術，讓同仁有腳本可以跟</div>
+
+        <div class="script-card">
+          <div class="script-situation">📍 情境｜天氣熱，顧客還沒進入狀態</div>
+          <div class="script-text">「先生／小姐您好，今天天氣好熱捏，嘉義天氣真的超棒的，跟我們一樣熱情，請坐！我幫你用一款將空調帶進頭皮的商品好嗎？很舒服的，不會出油還很蓬鬆輕盈。」</div>
+        </div>
+
+        <div class="script-card">
+          <div class="script-situation">📍 情境｜天氣潮濕，顧客頭髮毛躁</div>
+          <div class="script-text">「外面濕氣很重，頭髮很容易打結毛躁，頭皮也很容易悶癢，請問方便讓我幫妳恢復美麗的秀髮好嗎？」</div>
+        </div>
+
+        <div class="strategy-title" style="margin-top:14px;">👨‍👩‍👧 家庭客擴大服務策略</div>
+        <div class="strategy-body">嘉義大多是家庭客——主要同仁服務購買顧客，櫃長在旁協助家人體驗商品。一個人服務主客，一個人服務同行家人，讓整個家庭都能找到適合的商品，客單自然放大。</div>
+
+        <div class="tip-box">
+          🏆 <strong>可複製要點</strong><br>
+          給同仁「天氣話術腳本」，讓開口有依據、不尷尬。現場卡關時，直接介入示範，而不是在旁邊糾正——讓同仁看到「原來可以這樣說」，比事後說教有效十倍。
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 案例二 ── -->
+  <div class="section-label">案例二｜台中三井Lalaport</div>
+  <div class="case-list">
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-num">CASE 02</div>
+        <div class="case-title">台中三井Lalaport｜信心重建型管理</div>
+        <div class="case-type">找到同仁心裡的卡點，觀念通了，執行力自然就來了</div>
+      </div>
+      <div class="case-body">
+
+        <div class="q-block">
+          <div class="q-label">Q1</div>
+          <div class="q-text">妳是用什麼方式讓同仁有目標感、願意主動推？</div>
+        </div>
+
+        <div class="quote-box">
+          🔍 同仁原本的卡關點：「我不想讓客人花錢在用不到的商品上。」→ 同理心過強，反而成為推薦的阻力。加上咖啡因養髮液在這個館吃過虧（介紹完顧客跑去別家買），同仁對養髮液的信心跌到谷底。
+        </div>
+
+        <div class="strategy-title">翻轉策略：分兩步走</div>
+
+        <div class="mgmt-steps">
+          <div class="mgmt-step">
+            <div class="mgmt-step-num">1</div>
+            <div class="mgmt-step-body">
+              <div class="mgmt-step-title">先談現實，再談意義</div>
+              <div class="mgmt-step-desc">「做業績本來就有壓力，但達到目標、看到抽成的時候，會有另一種成就感。這剛好可以證明你也可以。」不迴避壓力，幫同仁把壓力轉化成成就感的來源。</div>
+            </div>
+          </div>
+          <div class="mgmt-step">
+            <div class="mgmt-step-num">2</div>
+            <div class="mgmt-step-body">
+              <div class="mgmt-step-title">找到當下機會點，建立新信心</div>
+              <div class="mgmt-step-desc">「之前咖養在我們家吃虧，但四胜肽單價低、好入手，剛好是我們現在的機會！」讓同仁看到：「現在這個時間點，這個商品，就是我們的優勢。」</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="q-block">
+          <div class="q-label">Q2</div>
+          <div class="q-text">看到同仁卡關時，妳通常怎麼現場帶？</div>
+        </div>
+
+        <div class="strategy-title">核心觀念調整：給同仁一個「平常心」的出口</div>
+
+        <div class="script-card">
+          <div class="script-situation">📍 情境｜同仁預設「顧客不需要」而不開口</div>
+          <div class="script-text">「不要預設客人需不需要，那不是我們主觀判定的。客人需不需要，讓客人自己決定——我們的工作是介紹，不是替他決定。」</div>
+        </div>
+
+        <div class="strategy-title" style="margin-top:14px;">給同仁的現場執行邏輯</div>
+        <div class="mgmt-steps">
+          <div class="mgmt-step">
+            <div class="mgmt-step-num">①</div>
+            <div class="mgmt-step-body">
+              <div class="mgmt-step-title">客人進櫃，先不預設</div>
+              <div class="mgmt-step-desc">大多顧客找洗髮精，但很多人不知道養髮液是什麼——這就是介紹的機會，先介紹、頭皮檢測、讓客人試用。</div>
+            </div>
+          </div>
+          <div class="mgmt-step">
+            <div class="mgmt-step-num">②</div>
+            <div class="mgmt-step-body">
+              <div class="mgmt-step-title">從洗髮精需求轉換養髮液</div>
+              <div class="mgmt-step-desc">「洗髮精打底＋養髮液補充功效，搭配效果更穩定。」如果客人真的不需要頭皮保養，轉換成「頭皮香氛」角度繼續推四胜肽。</div>
+            </div>
+          </div>
+          <div class="mgmt-step">
+            <div class="mgmt-step-num">③</div>
+            <div class="mgmt-step-body">
+              <div class="mgmt-step-title">結合優惠邏輯，拉高客單</div>
+              <div class="mgmt-step-desc">洗髮精第二件8折 → 加一瓶四胜肽變第二件6折 → 入金卡再打97折。讓顧客感受到「加了反而更划算」。</div>
+            </div>
+          </div>
+          <div class="mgmt-step">
+            <div class="mgmt-step-num">④</div>
+            <div class="mgmt-step-body">
+              <div class="mgmt-step-title">介紹完，平常心收尾</div>
+              <div class="mgmt-step-desc">「介紹後客人還是不需要，平常心。」同仁壓力小了，開口率反而更高，達成率實際上去了。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-box" style="margin-top:14px;">
+          💬 同仁轉變後說的話：「我決定先不要預設、介紹再說，客人要不要由他們決定——如果介紹後還是不需要，那也沒有關係，平常心。」→ 接受這個觀念後，實際執行的達成率非常好。
+        </div>
+
+        <div class="tip-box">
+          🏆 <strong>可複製要點</strong><br>
+          同仁不推養髮液，通常不是「不會說」，而是「心裡有顧慮」。找出那個顧慮，正面回應它，比給話術更有效。觀念通了，執行力自然就來了。
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── 整合摘要 ── -->
+  <div class="section-label">兩位櫃長共同的管理邏輯</div>
+  <div class="summary-list">
+    <div class="summary-item">
+      <div class="summary-num">1</div>
+      <div class="summary-body">
+        <div class="summary-title">先解決同仁心裡的障礙，再給工具</div>
+        <div class="summary-desc">嘉義新光給的是「開口的理由」（天氣就是話題）；台中三井給的是「信心的來源」（四胜肽是我們的機會）。同仁沒有動力，通常不是懶，而是心裡有個卡點沒被解決。</div>
+      </div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">2</div>
+      <div class="summary-body">
+        <div class="summary-title">現場示範比說教有效</div>
+        <div class="summary-desc">嘉義新光：直接給話術腳本，卡關時介入示範。台中三井：幫同仁分析完邏輯後，讓同仁自己說出「我決定這樣做」。兩種方式不同，但都是讓同仁「自己走進去」，而不是被推進去。</div>
+      </div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">3</div>
+      <div class="summary-body">
+        <div class="summary-title">一個好的配班默契，業績才能放大</div>
+        <div class="summary-desc">嘉義新光：主客由同仁顧，家人由櫃長顧——一組兩人，服務覆蓋翻倍。台中三井：急性子的櫃長＋願意溝通的同仁，兩人磨合出節奏。「一個櫃位的默契，都是從每個溝通慢慢達成的。」</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── FAQ ── -->
+  <div class="section-label">常見問題</div>
+  <div class="faq">
+    <div class="faq-item">
+      <div class="faq-q">這份資料前線同仁也看得到嗎？</div>
+      <div class="faq-a">這份是給各櫃長的管理版，與前線同仁版分開發送。前線同仁的版本聚焦話術與銷售步驟，管理版聚焦帶人邏輯。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">話術情境卡可以直接給同仁參考嗎？</div>
+      <div class="faq-a">可以。上方「查看完整話術情境卡」連結內容是前線版，可以列印或讓同仁在手機上對照使用。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">知識庫可以問哪些問題？</div>
+      <div class="faq-a">可以輸入管理相關問題，例如：「同仁不敢開口怎麼辦」「如何讓新人對養髮液有信心」「家庭客怎麼擴大服務」，知識庫會從案例裡給你答案。</div>
+    </div>
+  </div>
+
+  <div class="tip-box" style="margin-bottom:28px;">
+    💡 <strong>本月請各位主管想一個問題</strong><br>
+    你的同仁現在對養髮液的卡點是什麼？是不知道怎麼開口？還是心裡覺得不好意思推？還是試過幾次沒成交就放棄了？卡點不同，解法就不同。
+  </div>
+
+  <div class="footer">
+    O'right 歐萊德｜百貨教育訓練　2026
+  </div>
+
+</div>
+</body>
+</html>
