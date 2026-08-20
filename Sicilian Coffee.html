@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>西西里咖啡護髮素｜教育速查手冊</title>
+<style>
+  :root{
+    --coffee-deep:#3e2f26;
+    --coffee-mid:#6b5647;
+    --mint:#5fae8c;
+    --mint-deep:#3d8468;
+    --mint-pale:#e7f3ee;
+    --gold:#b9945f;
+    --gold-pale:#f1e8d8;
+    --ivory:#faf8f2;
+    --card:#ffffff;
+    --ink:#2b2420;
+    --ink-soft:#7a6e63;
+    --line:#e3dcd3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Microsoft JhengHei","PMingLiU",sans-serif;
+    background:var(--ivory);
+    color:var(--ink);
+    line-height:1.8;
+  }
+  .serif{font-family:"Cambria","Times New Roman",serif;}
+
+  header.top{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,248,242,0.95);
+    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 48px;
+  }
+  header.top .brand{display:flex; align-items:center; gap:12px;}
+  header.top .dot{width:13px;height:13px;border-radius:50%;background:var(--mint);}
+  header.top .word{font-size:17px;color:var(--ink-soft);letter-spacing:2px;font-family:"Cambria",serif;font-style:italic;}
+  nav.quick{display:flex; gap:22px; flex-wrap:wrap;}
+  nav.quick a{font-size:12px; color:var(--ink-soft); text-decoration:none; letter-spacing:1px; padding-bottom:3px; border-bottom:1px solid transparent;}
+  nav.quick a:hover{color:var(--mint-deep); border-bottom-color:var(--gold);}
+
+  .hero{max-width:1000px; margin:0 auto; padding:88px 48px 52px 48px; text-align:center; position:relative;}
+  .hero::after{content:""; display:block; width:64px; height:2px; background:var(--gold); margin:32px auto 0 auto;}
+  .hero .eyebrow{font-family:"Calibri",sans-serif; font-size:12.5px; letter-spacing:7px; color:var(--gold); margin-bottom:24px; text-transform:uppercase;}
+  .hero h1{font-family:"Cambria",serif; font-size:42px; font-weight:400; color:var(--coffee-deep); line-height:1.55;}
+  .hero .sub{margin-top:16px; font-size:16px; color:var(--ink-soft); letter-spacing:1px;}
+  .hero .badges{margin-top:28px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
+  .badge{border:1px solid var(--gold); color:var(--coffee-deep); font-size:12.5px; padding:7px 18px; border-radius:2px; letter-spacing:0.5px;}
+
+  main{max-width:1000px; margin:0 auto; padding:10px 48px 110px 48px;}
+  section{padding-top:80px; scroll-margin-top:90px;}
+  section .kicker{display:flex; align-items:center; gap:16px; margin-bottom:8px;}
+  section .kicker .idx{font-family:"Cambria",serif; font-size:15px; color:var(--gold); letter-spacing:3px;}
+  section .kicker .line{flex:1; height:1px; background:var(--line);}
+  section h2{font-family:"Cambria",serif; font-size:28px; font-weight:400; color:var(--coffee-deep); margin-bottom:6px;}
+  section .section-en{font-family:"Calibri",sans-serif; font-size:11px; letter-spacing:3px; color:#b3ac9a; margin-bottom:28px; text-transform:uppercase;}
+  section > p.lead{font-size:15px; color:var(--ink); margin-bottom:20px; max-width:820px;}
+
+  h3.sub-h{font-family:"Cambria",serif; font-size:18px; color:var(--coffee-deep); margin:30px 0 14px 0; font-weight:400; padding-bottom:6px; border-bottom:1px solid var(--line);}
+
+  /* summary / stat cards */
+  .stat-grid{display:flex; gap:1px; margin-top:14px; flex-wrap:wrap; background:var(--line);}
+  .stat-card{flex:1; min-width:200px; background:var(--card); padding:24px 22px;}
+  .stat-card .tag{font-family:"Cambria",serif; font-size:12.5px; letter-spacing:1px; color:var(--gold); margin-bottom:10px;}
+  .stat-card .value{font-size:22px; font-weight:700; color:var(--mint-deep); margin-bottom:8px;}
+  .stat-card .desc{font-size:12.5px; color:var(--ink-soft); line-height:1.7;}
+
+  .rule-list{display:flex; flex-direction:column; gap:1px; margin-top:18px; background:var(--line);}
+  .rule{background:var(--mint-pale); padding:18px 24px; display:flex; align-items:flex-start; gap:18px;}
+  .rule .num{font-family:"Cambria",serif; font-size:22px; color:var(--mint-deep); flex:0 0 30px;}
+  .rule .body .title{font-size:14.5px; font-weight:700; color:var(--ink); margin-bottom:4px;}
+  .rule .body .desc{font-size:13px; color:var(--ink-soft); line-height:1.7;}
+
+  /* items table, two columns */
+  .items-cols{display:flex; gap:32px; margin-top:16px; flex-wrap:wrap;}
+  .items-col{flex:1; min-width:320px;}
+  table.items{width:100%; border-collapse:collapse; font-size:13.5px;}
+  table.items tr{border-bottom:1px solid var(--line);}
+  table.items tr:nth-child(even){background:#f5f1ea;}
+  table.items td{padding:11px 10px;}
+  table.items td.price{text-align:right; font-weight:700; color:var(--mint-deep); white-space:nowrap;}
+  table.items .star{color:var(--gold); font-weight:700; margin-right:2px;}
+  .note-box{background:var(--gold-pale); border:1px solid #e6d6b8; border-radius:4px; padding:14px 18px; margin-top:20px; font-size:13px; color:var(--ink);}
+
+  /* three causes / solutions */
+  .causes{display:flex; gap:1px; margin-top:16px; flex-wrap:wrap; background:var(--line);}
+  .cause{flex:1; min-width:220px; background:var(--card);}
+  .cause .head{padding:12px 18px; font-weight:700; font-size:14px; color:#fff; text-align:center;}
+  .cause .body{padding:14px 18px 18px 18px; font-size:13px; color:var(--ink);}
+  .cause .body div{padding:4px 0;}
+  .cause.env .head{background:var(--mint-deep);}
+  .cause.phy .head{background:var(--gold);}
+  .cause.chem .head{background:var(--coffee-mid);}
+
+  .result-bar{background:var(--coffee-deep); color:#f3ede4; padding:16px 24px; margin-top:16px; font-size:13.5px; line-height:1.8;}
+
+  .solutions{display:flex; gap:1px; margin-top:16px; flex-wrap:wrap; background:var(--line);}
+  .solution{flex:1; min-width:230px; background:var(--mint-pale); padding:18px 22px;}
+  .solution .t{font-size:14px; font-weight:700; color:var(--mint-deep); margin-bottom:8px;}
+  .solution .d{font-size:12.5px; color:var(--ink); line-height:1.75;}
+
+  /* ingredient cards */
+  .ing-grid{display:flex; gap:1px; margin-top:16px; flex-wrap:wrap; background:var(--line);}
+  .ing-card{flex:1; min-width:260px; background:var(--card);}
+  .ing-card .head{padding:16px 20px; color:#fff;}
+  .ing-card .head .t{font-size:15px; font-weight:700;}
+  .ing-card .head .en{font-family:"Cambria",serif; font-style:italic; font-size:11px; opacity:0.85; margin-top:2px;}
+  .ing-card ul{list-style:none; padding:16px 20px 20px 20px;}
+  .ing-card li{font-size:12.5px; color:var(--ink); line-height:1.7; padding:6px 0; display:flex; gap:8px;}
+  .ing-card li::before{content:"✓"; font-weight:700;}
+  .ing-card.c1 .head{background:var(--mint-deep);} .ing-card.c1 li::before{color:var(--mint-deep);}
+  .ing-card.c2 .head{background:var(--coffee-mid);} .ing-card.c2 li::before{color:var(--coffee-mid);}
+  .ing-card.c3 .head{background:var(--gold);} .ing-card.c3 li::before{color:var(--gold);}
+
+  table.compare, table.family{width:100%; border-collapse:collapse; margin:16px 0 8px 0; font-size:13.5px;}
+  table.compare thead th, table.family thead th{background:var(--coffee-deep); color:#f3ede4; text-align:left; padding:12px 16px; font-weight:600; letter-spacing:0.5px;}
+  table.compare tbody td, table.family tbody td{padding:12px 16px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink);}
+  table.compare tbody tr:nth-child(even), table.family tbody tr:nth-child(even){background:#f5f1ea;}
+  table.compare tbody td:first-child, table.family tbody td:first-child{font-weight:700; color:var(--mint-deep); white-space:nowrap;}
+
+  .quote{background:var(--card); border:1px solid var(--line); border-left:3px solid var(--gold); padding:20px 26px; margin:16px 0; font-size:14.5px; color:var(--ink); line-height:1.9; font-style:italic;}
+  .quote.dark{background:var(--coffee-deep); color:#f3ede4; border-left-color:var(--mint);}
+
+  .scenario-grid{display:flex; gap:1px; margin-top:16px; flex-wrap:wrap; background:var(--line);}
+  .scenario-row{background:var(--card); width:100%; display:flex; border-bottom:1px solid var(--line);}
+  .scn-label{flex:0 0 220px; padding:14px 18px; font-size:13px; font-weight:700; color:var(--coffee-deep); background:#f5f1ea;}
+  .scn-line{flex:1; padding:14px 18px; font-size:13px; color:var(--ink); line-height:1.7;}
+
+  .closing{margin-top:64px; background:var(--coffee-deep); color:#f3ede4; padding:52px 56px; text-align:center; position:relative;}
+  .closing::before, .closing::after{content:""; display:block; width:40px; height:1px; background:var(--gold); margin:0 auto 22px auto;}
+  .closing .en{display:block; font-size:11px; letter-spacing:4px; color:#c9bcae; margin-bottom:20px; text-transform:uppercase;}
+  .closing p{font-family:"Cambria",serif; font-size:18px; line-height:2.05;}
+
+  footer{text-align:center; padding:44px 20px 64px 20px; font-size:11.5px; color:#b3ac9a; font-family:"Calibri",sans-serif; letter-spacing:1px;}
+
+  @media (max-width:720px){
+    nav.quick{display:none;}
+    .hero h1{font-size:28px;}
+    .scn-label{flex:0 0 150px; font-size:12px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand"><div class="dot"></div><div class="word">right</div></div>
+  <nav class="quick">
+    <a href="#campaign">活動重點</a>
+    <a href="#items">適用品項</a>
+    <a href="#summer">為什麼夏天</a>
+    <a href="#ingredients">核心成分</a>
+    <a href="#compare">產品比較</a>
+    <a href="#family">全系列定位</a>
+    <a href="#script">銷售話術</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="eyebrow">SICILY CONDITIONER PLAYBOOK</div>
+  <h1>西西里咖啡護髮素<br>教育速查手冊</h1>
+  <div class="sub">咖啡因系列限定買贈專案｜活動期間 2026/8/20 – 9/8</div>
+  <div class="badges">
+    <div class="badge">活動規則</div>
+    <div class="badge">產品知識</div>
+    <div class="badge">前線銷售話術</div>
+  </div>
+</div>
+
+<main>
+
+  <section id="campaign">
+    <div class="kicker"><div class="idx serif">壹</div><div class="line"></div></div>
+    <h2>活動重點速覽</h2>
+    <div class="section-en">Campaign Briefing</div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="tag">活動期間</div>
+        <div class="value">8/20 – 9/8</div>
+        <div class="desc">咖啡因系列限定買贈專案</div>
+      </div>
+      <div class="stat-card">
+        <div class="tag">贈品項目</div>
+        <div class="value">西西里咖啡護髮素 250mL</div>
+        <div class="desc">原價 $980／1瓶</div>
+      </div>
+      <div class="stat-card">
+        <div class="tag">適用門檻</div>
+        <div class="value">任一件</div>
+        <div class="desc">購買品項(2)–(14)咖啡因系列任一件即贈</div>
+      </div>
+      <div class="stat-card">
+        <div class="tag">最低門檻款</div>
+        <div class="value">$880</div>
+        <div class="desc">咖啡因洗髮精250mL_PLA，全系列最低單價，比買一贈一還划算</div>
+      </div>
+    </div>
+
+    <h3 class="sub-h">執行鐵則</h3>
+    <div class="rule-list">
+      <div class="rule">
+        <div class="num">01</div>
+        <div class="body">
+          <div class="title">贈品僅可擇一</div>
+          <div class="desc">若同檔期顧客同時符合其他買贈活動資格，贈品只能二選一，先跟顧客確認想要哪一份再結帳，避免結完帳才反悔。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="items">
+    <div class="kicker"><div class="idx serif">貳</div><div class="line"></div></div>
+    <h2>適用品項一覽</h2>
+    <div class="section-en">Eligible Items · 咖啡因系列 (2)–(14)</div>
+    <div class="items-cols">
+      <div class="items-col">
+        <table class="items">
+          <tr><td>咖啡因麥拉寧養髮液 100mL</td><td class="price">$5,980</td></tr>
+          <tr><td>咖啡因養髮液 100mL</td><td class="price">$4,980</td></tr>
+          <tr><td>咖啡因麥拉寧養髮液 50mL</td><td class="price">$3,880</td></tr>
+          <tr><td>咖啡因養髮液 50mL</td><td class="price">$3,280</td></tr>
+          <tr><td><span class="star">★</span>咖啡因麥拉寧養髮液 10mL</td><td class="price">$1,080</td></tr>
+          <tr><td><span class="star">★</span>咖啡因養髮液 10mL</td><td class="price">$1,080</td></tr>
+          <tr><td>咖啡因洗髮精 1000mL</td><td class="price">$1,980</td></tr>
+        </table>
+      </div>
+      <div class="items-col">
+        <table class="items">
+          <tr><td>咖啡因護髮素 1000mL</td><td class="price">$2,280</td></tr>
+          <tr><td>咖啡因洗髮精 Re補充薄瓶 1000mL</td><td class="price">$1,780</td></tr>
+          <tr><td>咖啡因洗髮精 400mL</td><td class="price">$1,080</td></tr>
+          <tr><td><span class="star">★</span>咖啡因洗髮精 250mL_PLA</td><td class="price">$880</td></tr>
+          <tr><td><span class="star">★</span>咖啡因護髮素 250mL</td><td class="price">$980</td></tr>
+          <tr><td><span class="star">★</span>咖啡因養眉液 11mL</td><td class="price">$1,080</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="note-box">★ 等同買一送一，適合放櫃台加購。</div>
+    <div class="note-box" style="margin-top:10px;">提醒：贈品「西西里咖啡護髮素250mL」本身不列入適用購買品項，購買它不會再送一瓶。</div>
+  </section>
+
+  <section id="summer">
+    <div class="kicker"><div class="idx serif">參</div><div class="line"></div></div>
+    <h2>為什麼夏天要推薦西西里咖啡護髮素</h2>
+    <div class="section-en">Why Summer</div>
+    <p class="lead">夏天的秀髮，同時承受三種傷害：</p>
+    <div class="causes">
+      <div class="cause env"><div class="head">環境傷害</div><div class="body"><div>紫外線曝曬</div><div>空氣污染物累積</div></div></div>
+      <div class="cause phy"><div class="head">物理傷害</div><div class="body"><div>吹整摩擦生熱</div><div>不當梳理、洗髮</div></div></div>
+      <div class="cause chem"><div class="head">化學傷害</div><div class="body"><div>過度漂染燙</div><div>造型品頻繁使用</div></div></div>
+    </div>
+    <div class="result-bar">結果：髮絲乾燥糾結、分岔斷裂、失去光澤——顧客夏天最常抱怨的頭皮悶熱、頭髮難整理，根源都在這裡。</div>
+
+    <h3 class="sub-h">西西里咖啡護髮素怎麼對應這三種傷害</h3>
+    <div class="solutions">
+      <div class="solution"><div class="t">天然精萃咖啡油</div><div class="d">100%咖啡渣萃取，優質保水力，強化保濕修護，對抗環境與熱傷害。</div></div>
+      <div class="solution"><div class="t">西西里冰鎮薄荷</div><div class="d">新鮮薄荷葉萃取薄荷醇，抹上即感舒適涼感，吹整前後都降溫消暑。</div></div>
+      <div class="solution"><div class="t">蕓薹精華</div><div class="d">高效抗靜電、調理滑順不糾結，減少悶熱天氣的摩擦與造型困擾。</div></div>
+    </div>
+    <p class="note" style="font-size:12px;color:var(--ink-soft);font-style:italic;margin-top:14px;">延伸自：夏日髮絲超解渴！涼感補水髮妝消暑神器（歐萊德新聞稿）／因應全球極端氣候，2026年夏季再次推出。</p>
+  </section>
+
+  <section id="ingredients">
+    <div class="kicker"><div class="idx serif">肆</div><div class="line"></div></div>
+    <h2>核心成分三重奏</h2>
+    <div class="section-en">Key Ingredients</div>
+    <div class="ing-grid">
+      <div class="ing-card c1">
+        <div class="head"><div class="t">天然精萃咖啡油</div><div class="en">Coffee Oil</div></div>
+        <ul>
+          <li>100%咖啡渣精萃，歐萊德獨家國際INCI成分</li>
+          <li>優質保水力，強化保濕修護</li>
+          <li>抗氧化、防護紫外線與熱傷害</li>
+        </ul>
+      </div>
+      <div class="ing-card c2">
+        <div class="head"><div class="t">西西里冰鎮薄荷</div><div class="en">Sicily Mint</div></div>
+        <ul>
+          <li>新鮮薄荷葉萃取之薄荷醇</li>
+          <li>另添加些許檸檬精油，風味更沁涼</li>
+          <li>舒適涼感，清新感受</li>
+        </ul>
+      </div>
+      <div class="ing-card c3">
+        <div class="head"><div class="t">蕓薹精華</div><div class="en">Brassica Extract</div></div>
+        <ul>
+          <li>高效能抗靜電</li>
+          <li>調理秀髮好梳理、滑順不糾結</li>
+          <li>增添秀髮立體造型感，潤髮效果持久</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note" style="font-size:12px;color:var(--ink-soft);font-style:italic;margin-top:16px;">TANGLE-FREE：全新升級護髮素的專屬標示，代表打造髮絲「零糾結」的滑順觸感。</p>
+  </section>
+
+  <section id="compare">
+    <div class="kicker"><div class="idx serif">伍</div><div class="line"></div></div>
+    <h2>西西里咖啡護髮素 vs 咖啡因護髮素</h2>
+    <div class="section-en">Product Comparison</div>
+    <p class="lead">兩款都內含蕓薹精華與天然精萃咖啡油的全方位修護力，差別在於「有沒有涼感」。顧客沒有特別偏好時，夏天優先推西西里咖啡。</p>
+    <table class="compare">
+      <thead><tr><th></th><th>咖啡因護髮素</th><th>西西里咖啡護髮素</th></tr></thead>
+      <tbody>
+        <tr><td>功效</td><td>全方位滋養修護</td><td>舒適涼感　全效修護</td></tr>
+        <tr><td>核心亮點</td><td>天然精萃咖啡油，超臨界萃取，抗氧化、防老化、防紫外線與熱傷害</td><td>延續咖啡因護髮素修護力，再加冰鎮薄荷，修護同時體驗涼感</td></tr>
+        <tr><td>香氣</td><td>多元植萃融合，清新淡香調</td><td>冰鎮薄荷＋些許檸檬精油，沁涼清新風味</td></tr>
+        <tr><td>涼感程度</td><td>無</td><td>介於零度C洗髮精與茶樹洗髮精之間，類似使用於手上接觸的涼感，但因產品使用特性不會直接接觸頭皮，故消費者感受的涼感程度會稍微降低</td></tr>
+        <tr><td>適用髮質</td><td>所有髮質</td><td>所有髮質</td></tr>
+        <tr><td>建議售價</td><td>$980／250mL</td><td>$980／250mL</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="family">
+    <div class="kicker"><div class="idx serif">陸</div><div class="line"></div></div>
+    <h2>全系列護髮素定位對照</h2>
+    <div class="section-en">Product Family Map</div>
+    <p class="lead">顧客不確定要選哪一瓶時，先問「髮質狀況」再對照這張表，不用死背成分。</p>
+    <table class="family">
+      <thead><tr><th>品項</th><th>功效／特色</th><th>適用</th></tr></thead>
+      <tbody>
+        <tr><td>西西里咖啡護髮素</td><td>舒適涼感　全效修護</td><td>所有髮質，夏天首選</td></tr>
+        <tr><td>咖啡因護髮素</td><td>強韌柔順</td><td>所有髮質，想預防、減緩髮絲問題</td></tr>
+        <tr><td>竹萃保濕護髮素</td><td>潤澤保濕</td><td>毛躁受損</td></tr>
+        <tr><td>香檳玫瑰／紫玫瑰護色護髮素</td><td>染燙護色　亮澤滋潤</td><td>染燙受損，尤其剛染完、想減緩掉色</td></tr>
+        <tr><td>曠野玫瑰護髮素</td><td>潤澤柔順　滋養包覆</td><td>專為漂染燙與嚴重受損髮設計</td></tr>
+      </tbody>
+    </table>
+    <div class="note-box">補充：以上5款皆含蕓薹精華（柔軟滑順不糾結）與水解小麥蛋白（深入髮芯滋養）。曠野玫瑰護髮素為特殊包覆劑型，是唯一例外設計。</div>
+  </section>
+
+  <section id="script">
+    <div class="kicker"><div class="idx serif">柒</div><div class="line"></div></div>
+    <h2>前線銷售話術　30秒成交公版</h2>
+    <div class="section-en">Sales Script</div>
+    <div class="quote dark">「這瓶是我們今年夏天最消暑的護髮素，用100%咖啡渣萃取的咖啡油幫髮絲保濕修護，再加西西里冰鎮薄荷，抹上去雖然不碰頭皮，還是感覺得到涼感竄出來，洗完頭摸起來滑順不糾結。現在買咖啡因系列任一件就直接送一瓶。」</div>
+  </section>
+
+</main>
+
+<footer>O'right 歐萊德　SICILY CONDITIONER PLAYBOOK　｜　教育速查手冊　2026-08-20</footer>
+
+</body>
+</html>
