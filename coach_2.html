@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>百貨專櫃教育訓練體系 2026 · O'right 歐萊德</title>
+<style>
+  :root {
+    --forest: #1B4332;
+    --forest-mid: #2D6A4F;
+    --forest-light: #40916C;
+    --sage: #74C69D;
+    --cream: #F8F6F1;
+    --warm-white: #FEFCF9;
+    --ink: #1A1A1A;
+    --mid: #555550;
+    --muted: #8A8A85;
+    --border: #E0DDD6;
+    --gold: #B5850A;
+    --gold-light: #FDF3DC;
+    --blue: #1D4E89;
+    --blue-light: #EBF2FB;
+    --red-light: #FDF0F0;
+    --red: #C0392B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--forest);
+    padding: 40px 48px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(116,198,157,0.08);
+  }
+  .header-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--sage);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .header-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .header-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ── Nav tabs ── */
+  .nav {
+    display: flex;
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .nav-btn {
+    padding: 16px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    border: none;
+    background: none;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .nav-btn.active {
+    color: var(--forest);
+    border-bottom-color: var(--forest);
+  }
+  .nav-btn:hover:not(.active) { color: var(--ink); }
+
+  /* ── Content ── */
+  .content { padding: 40px 48px; max-width: 1000px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── Section titles ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--forest-light);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Timeline (新人) ── */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 9px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--forest-light), var(--sage));
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 28px;
+  }
+  .timeline-dot {
+    position: absolute;
+    left: -28px; top: 6px;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--forest);
+    border: 3px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--forest-light);
+  }
+  .timeline-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+  }
+  .timeline-phase {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--forest-light);
+    margin-bottom: 4px;
+  }
+  .timeline-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 10px;
+  }
+  .timeline-body { font-size: 14px; color: var(--mid); line-height: 1.7; }
+  .timeline-verify {
+    margin-top: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--forest);
+    background: #E8F5EE;
+    padding: 5px 12px;
+    border-radius: 20px;
+  }
+  .timeline-verify a {
+    color: var(--forest);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ── Rhythm cards (現有同仁) ── */
+  .rhythm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .rhythm-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .rhythm-card.full { grid-column: 1 / -1; }
+  .rhythm-freq {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--forest-light);
+    margin-bottom: 4px;
+  }
+  .rhythm-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 8px;
+  }
+  .rhythm-body { font-size: 13.5px; color: var(--mid); line-height: 1.65; }
+  .rhythm-link {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--blue);
+    display: block;
+  }
+  .rhythm-link a { color: var(--blue); }
+
+  /* ── KPI bar chart ── */
+  .kpi-section {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-top: 8px;
+  }
+  .kpi-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .kpi-person {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 20px;
+  }
+  .kpi-item { margin-bottom: 18px; }
+  .kpi-label-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 13px;
+  }
+  .kpi-label { color: var(--mid); font-weight: 500; }
+  .kpi-val { color: var(--forest); font-weight: 700; }
+  .bar-track {
+    height: 8px;
+    background: #E8EDE8;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(to right, var(--forest-mid), var(--sage));
+    transition: width 0.8s ease;
+  }
+  .bar-fill.gold {
+    background: linear-gradient(to right, var(--gold), #E8B84B);
+  }
+  .kpi-months {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+    flex-wrap: wrap;
+  }
+  .kpi-month-tag {
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    background: #E8F5EE;
+    color: var(--forest);
+    font-weight: 600;
+  }
+  .kpi-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── Case studies ── */
+  .case-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .case-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .case-card:hover {
+    border-color: var(--forest-light);
+    box-shadow: 0 2px 12px rgba(27,67,50,0.08);
+  }
+  .case-source {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--forest-light);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .case-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .case-desc {
+    font-size: 12.5px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+  .case-tag {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: #E8F5EE;
+    color: var(--forest);
+    font-weight: 500;
+  }
+  .case-tag.mgr { background: var(--gold-light); color: var(--gold); }
+
+  /* ── AI tools ── */
+  .ai-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .ai-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .ai-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .ai-icon.green { background: #E8F5EE; }
+  .ai-icon.blue { background: var(--blue-light); }
+  .ai-icon.gold { background: var(--gold-light); }
+  .ai-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 6px;
+  }
+  .ai-desc { font-size: 13px; color: var(--mid); line-height: 1.6; margin-bottom: 10px; }
+  .ai-link a {
+    font-size: 13px;
+    color: var(--blue);
+    word-break: break-all;
+  }
+  .ai-card.full { grid-column: 1 / -1; }
+
+  /* ── Utility ── */
+  .gap { margin-bottom: 24px; }
+  .gap-sm { margin-bottom: 14px; }
+
+  @media (max-width: 600px) {
+    .header { padding: 28px 20px; }
+    .nav { padding: 0 12px; }
+    .content { padding: 24px 20px; }
+    .rhythm-grid { grid-template-columns: 1fr; }
+    .case-grid { grid-template-columns: 1fr; }
+    .ai-grid { grid-template-columns: 1fr; }
+    .header-title { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-eyebrow">O'right 歐萊德 · 百貨專櫃營業部門 · 2026</div>
+  <div class="header-title">百貨專櫃教育訓練體系</div>
+  <div class="header-sub">新人培育 × 現有同仁持續訓練 × AI 驗收機制</div>
+</div>
+
+<nav class="nav">
+  <button class="nav-btn active" onclick="switchTab('new')">新人培育軌</button>
+  <button class="nav-btn" onclick="switchTab('existing')">現有同仁訓練軌</button>
+  <button class="nav-btn" onclick="switchTab('kpi')">考核成效示範</button>
+  <button class="nav-btn" onclick="switchTab('cases')">每週一學案例</button>
+  <button class="nav-btn" onclick="switchTab('ai')">AI 工具總覽</button>
+</nav>
+
+<div class="content">
+
+  <!-- 新人培育軌 -->
+  <div id="tab-new" class="tab-panel active">
+    <div class="section-label">Track 01</div>
+    <div class="section-title">新人培育軌</div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-phase">到職第 1–2 天</div>
+          <div class="timeline-name">公司總部課程</div>
+          <div class="timeline-body">品牌理念、永續知識、產品基礎訓練。由總部統一安排，確保新人具備品牌認同與基礎產品知識後再進入前線。</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-phase">到職第 3 天</div>
+          <div class="timeline-name">百貨實地半天課程</div>
+          <div class="timeline-body">執行百貨實地培訓，涵蓋：專櫃服務規範、重點商品介紹與銷售切入點、AI 頭皮檢測流程操作。確保新人在進入專櫃排班前，具備初步銷售能力與專業認知。</div>
+          <div class="timeline-verify">✦ 驗收：現場觀察與銷售演練</div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-phase">第 1 個月</div>
+          <div class="timeline-name">第一階段考核</div>
+          <div class="timeline-body">著重新人個人適應與學習狀況，線上驗收項目涵蓋櫃務執行能力，包含：專櫃 LINE 操作、POS 結帳流程、專櫃進貨與理貨、盤點作業，以及行為態度與職場操守。</div>
+          <div class="timeline-verify">✦ <a href="https://docs.google.com/spreadsheets/d/1hRQp3wD5N-uEn5QWWUuUL-hlUtUrVtUn/edit?gid=280469617#gid=280469617" target="_blank">第一、二個月考核表</a></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-phase">第 2 個月</div>
+          <div class="timeline-name">第二階段考核</div>
+          <div class="timeline-body">此階段聚焦品牌永續理念內化與產品專業知識深化，同步評估分析判斷與現場應變能力，綜合考核工作技能的實際落地狀況，確認新人已具備獨立勝任前線工作的能力基礎。</div>
+          <div class="timeline-verify">✦ <a href="https://docs.google.com/spreadsheets/d/1hRQp3wD5N-uEn5QWWUuUL-hlUtUrVtUn/edit?gid=280469617#gid=280469617" target="_blank">第一、二個月考核表</a></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-phase">第 3 個月</div>
+          <div class="timeline-name">第三階段總考 → 核定轉正</div>
+          <div class="timeline-body">綜合三個月完整表現進行總考核，新增 AI 頭皮檢測實務驗收，確認新人能獨立完成檢測流程與邀約轉換。依總考結果核定轉正或延長試用。轉正後正式納入現有同仁持續訓練軌與年度 KPI 考績體系。</div>
+          <div class="timeline-verify">✦ <a href="https://docs.google.com/spreadsheets/d/1hRQp3wD5N-uEn5QWWUuUL-hlUtUrVtUn" target="_blank">第三個月總考表</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 現有同仁訓練軌 -->
+  <div id="tab-existing" class="tab-panel">
+    <div class="section-label">Track 02</div>
+    <div class="section-title">現有同仁持續訓練軌</div>
+
+    <div class="rhythm-grid gap">
+      <div class="rhythm-card">
+        <div class="rhythm-freq">每日</div>
+        <div class="rhythm-name">銷售小故事回報</div>
+        <div class="rhythm-body">各櫃於 LINE 群組回報當日銷售小故事，主管每週從中篩選成功案例，轉化為全省共學素材，形成「前線產出→全省複製」的學習閉環。</div>
+      </div>
+      <div class="rhythm-card">
+        <div class="rhythm-freq">每週</div>
+        <div class="rhythm-name">每週一學</div>
+        <div class="rhythm-body">依團隊當下需求與市場動態彈性規劃主題，涵蓋六大面向：歐萊德品牌經營、市場與產業趨勢、產品知識與定位、人才成長與學習、銷售與顧客經營、櫃務規範與制度，確保前線同仁的學習內容與實戰需求同步。</div>
+        <div class="rhythm-link">📁 <a href="https://drive.google.com/drive/folders/18uCF6gFR2qTPQKPM2PqxA3nMGuhgL_5Z" target="_blank">共學資料夾（Google Drive）</a></div>
+      </div>
+      <div class="rhythm-card full">
+        <div class="rhythm-freq">每月</div>
+        <div class="rhythm-name">線上共學 + AI 考核驗收</div>
+        <div class="rhythm-body">每月進行主題式線上共學，涵蓋產品知識更新、銷售技巧、顧客經營。共學完成後，同仁使用 AI 考核機器人進行測驗，成績直接納入年度 KPI 考績，確保訓練有驗收、考核有記錄。</div>
+        <div class="rhythm-link">🤖 <a href="https://chatgpt.com/g/g-69d489815e9c8191a63f33c691ac148e-bai-huo-ou-lai-de-gui-dian-ying-yun-ling-hang-yuan" target="_blank">AI 考核機器人（百貨歐萊德櫃點營運領航員）</a></div>
+      </div>
+      <div class="rhythm-card">
+        <div class="rhythm-freq">持續</div>
+        <div class="rhythm-name">AI 售後服務提醒</div>
+        <div class="rhythm-body">提供頭皮檢測邀約話術、售後追蹤引導，協助 BC 主動維繫顧客關係，提升回購率與頭皮檢測使用率。</div>
+        <div class="rhythm-link">🤖 <a href="https://chatgpt.com/g/g-6a4894f64168819197728677ffe4dd3f-bai-huo-zhi-neng-shou-hou-fu-wu-ti-xing-yu-tou-pi-jian-ce-yao-yue-zhu-li" target="_blank">AI 售後服務工具</a></div>
+      </div>
+      <div class="rhythm-card">
+        <div class="rhythm-freq">不定期</div>
+        <div class="rhythm-name">現場回訓與主管 Coaching</div>
+        <div class="rhythm-body">依業績數據與知識落差即時啟動，由主管親赴現場執行一對一 Coaching 或個人回訓。依據《門市顧客體驗 & 銷售流程三閉環 SOP》執行，涵蓋服務閉環（頭皮檢測邀約）、產品閉環（依檢測結果串聯洗髮精→養髮液）、關係閉環（永續小卡締結＋售後 CALL 客），6 大頭皮檢測衛教面向與 8 大髮質切點均有對應話術，確保執行有標準可依、考核有依據可查。</div>
+        <div class="rhythm-link">📋 <a href="https://oright-training.github.io/oright-training/premium.html" target="_blank">門市顧客體驗 & 銷售流程三閉環 SOP</a></div>
+        <div class="rhythm-link" style="margin-top:4px;">📊 <a href="https://drive.google.com/drive/folders/1_PX5_vPFietAt3q_8AXnaGu4u3yH-Aet" target="_blank">8 月現場三閉環考核成績資料夾</a></div>
+      </div>
+    </div>
+
+    <div style="background:var(--gold-light);border:1px solid #E8C96A;border-radius:10px;padding:16px 20px;font-size:13.5px;color:#6B4A00;line-height:1.7;">
+      <strong>執行回報追蹤</strong><br>
+      各月共學與售後執行狀況統一記錄於回報表單，供主管掌握全省執行進度。
+      <a href="https://docs.google.com/spreadsheets/d/1WgiCBuzC8K1VBaUjmN1iLBWbF7bumhWUcvMg7TQswqI/edit?resourcekey=&gid=1550757952#gid=1550757952" target="_blank" style="color:var(--gold);font-weight:600;display:block;margin-top:6px;">📋 查看回報追蹤表</a>
+    </div>
+  </div>
+
+  <!-- 考核成效示範 -->
+  <div id="tab-kpi" class="tab-panel">
+    <div class="section-label">成效驗證</div>
+    <div class="section-title">考核成效示範</div>
+
+    <div class="kpi-section">
+      <div class="kpi-name">示範同仁</div>
+      <div class="kpi-person">丁珮慈　高雄巨蛋</div>
+
+      <!-- 時間軸說明 -->
+      <div style="display:flex;gap:0;margin-bottom:24px;border-radius:8px;overflow:hidden;border:1px solid var(--border);">
+        <div style="flex:1;padding:12px 16px;background:var(--cream);border-right:1px solid var(--border);">
+          <div style="font-size:11px;color:var(--muted);margin-bottom:3px;">4 月</div>
+          <div style="font-size:13px;font-weight:700;color:var(--forest);">四胜肽養髮液上市</div>
+          <div style="font-size:12px;color:var(--mid);margin-top:2px;">訓練介入啟動</div>
+        </div>
+        <div style="flex:1;padding:12px 16px;background:var(--cream);border-right:1px solid var(--border);">
+          <div style="font-size:11px;color:var(--muted);margin-bottom:3px;">5 月</div>
+          <div style="font-size:13px;font-weight:700;color:var(--forest);">歐萊德櫃點營運領航員上線</div>
+          <div style="font-size:12px;color:var(--mid);margin-top:2px;">每月 AI 考核機制到位</div>
+        </div>
+        <div style="flex:1;padding:12px 16px;background:var(--cream);border-right:1px solid var(--border);">
+          <div style="font-size:11px;color:var(--muted);margin-bottom:3px;">7 月</div>
+          <div style="font-size:13px;font-weight:700;color:var(--forest);">AI 售後服務與頭皮檢測邀約助理上線</div>
+          <div style="font-size:12px;color:var(--mid);margin-top:2px;">智能邀約追蹤機制到位</div>
+        </div>
+        <div style="flex:1;padding:12px 16px;background:var(--forest);">
+          <div style="font-size:11px;color:var(--sage);margin-bottom:3px;">8 月</div>
+          <div style="font-size:13px;font-weight:700;color:#fff;">現場三閉環考核</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.7);margin-top:2px;">成績：98 分</div>
+          <div style="margin-top:8px;display:flex;flex-direction:column;gap:4px;">
+            <a href="https://oright-training.github.io/oright-training/premium.html" target="_blank" style="font-size:11px;color:var(--sage);text-decoration:underline;">三閉環 SOP →</a>
+            <a href="https://drive.google.com/drive/folders/1_PX5_vPFietAt3q_8AXnaGu4u3yH-Aet" target="_blank" style="font-size:11px;color:var(--sage);text-decoration:underline;">考核成績資料夾 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8月考核亮點 -->
+      <div style="background:var(--forest);border-radius:8px;padding:16px 20px;margin-bottom:24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:12px;color:var(--sage);margin-bottom:2px;">現場三閉環考核・8 月成績</div>
+          <div style="font-size:36px;font-weight:800;color:#fff;line-height:1;">98 <span style="font-size:16px;font-weight:500;color:rgba(255,255,255,0.6);">分</span></div>
+        </div>
+        <div style="color:rgba(255,255,255,0.75);font-size:13.5px;line-height:1.7;border-left:1px solid rgba(255,255,255,0.2);padding-left:20px;flex:1;">
+          現場三閉環考核涵蓋產品知識、銷售話術與顧客服務流程，<br>確保訓練成效能在實際銷售現場完整落地。
+          <div style="margin-top:10px;display:flex;gap:16px;flex-wrap:wrap;">
+            <a href="https://oright-training.github.io/oright-training/premium.html" target="_blank" style="font-size:13px;color:var(--sage);text-decoration:underline;">📋 三閉環 SOP 完整內容</a>
+            <a href="https://drive.google.com/drive/folders/1_PX5_vPFietAt3q_8AXnaGu4u3yH-Aet" target="_blank" style="font-size:13px;color:var(--sage);text-decoration:underline;">📊 考核成績資料夾</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 養髮液達成率：核心成長線 -->
+      <div class="kpi-item">
+        <div class="kpi-label-row">
+          <span class="kpi-label">養髮液達成率　<span style="font-size:11px;color:var(--forest-light);">4 月四胜肽上市後持續成長</span></span>
+          <span class="kpi-val">54% → 150%</span>
+        </div>
+        <div style="display:flex;gap:6px;margin:8px 0;flex-wrap:wrap;">
+          <span class="kpi-month-tag" style="opacity:0.5;">1月 54%</span>
+          <span class="kpi-month-tag" style="opacity:0.5;">2月 64%</span>
+          <span class="kpi-month-tag" style="opacity:0.5;">3月 130%</span>
+          <span class="kpi-month-tag" style="background:#E8F5EE;color:var(--forest);font-weight:700;">▲ 4月 48% 新品上市調適期</span>
+          <span class="kpi-month-tag" style="background:var(--forest);color:#fff;">5月 150% ✦</span>
+          <span class="kpi-month-tag">6月 94%</span>
+          <span class="kpi-month-tag" style="background:var(--forest);color:#fff;">7月 124%</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:100%;"></div>
+        </div>
+        <div style="font-size:12px;color:var(--forest-light);margin-top:4px;">歐萊德櫃點營運領航員 5 月上線後，達成率顯著回升並維持高水位</div>
+      </div>
+
+      <!-- 頭皮檢測個人成交率 -->
+      <div class="kpi-item">
+        <div class="kpi-label-row">
+          <span class="kpi-label">頭皮檢測個人成交率</span>
+          <span class="kpi-val">全年維持高水位</span>
+        </div>
+        <div style="display:flex;gap:6px;margin:8px 0;flex-wrap:wrap;">
+          <span class="kpi-month-tag" style="background:var(--gold-light);color:var(--gold);">1月 300%</span>
+          <span class="kpi-month-tag" style="background:var(--gold-light);color:var(--gold);">2月 467%</span>
+          <span class="kpi-month-tag" style="background:var(--gold-light);color:var(--gold);">3月 100%</span>
+          <span class="kpi-month-tag" style="background:var(--gold-light);color:var(--gold);">4月 300%</span>
+          <span class="kpi-month-tag" style="background:var(--gold-light);color:var(--gold);">5月 333%</span>
+          <span class="kpi-month-tag" style="background:var(--gold-light);color:var(--gold);">6月 333%</span>
+          <span class="kpi-month-tag" style="background:var(--gold-light);color:var(--gold);">7月 433%</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill gold" style="width:90%;"></div>
+        </div>
+        <div style="font-size:12px;color:var(--gold);margin-top:4px;">7 月 AI 智能售後服務提醒與頭皮檢測邀約助理上線後，持續強化邀約與成交效率</div>
+      </div>
+
+
+      <div class="kpi-note">
+        以上為 2026 年 1–7 月實際數據。四胜肽 4 月上市、歐萊德櫃點營運領航員 5 月上線、AI 智能售後服務提醒與頭皮檢測邀約助理 7 月上線、8 月現場三閉環考核 98 分，四個時間節點清楚反映訓練體系的系統性推進。全省 57 位正職同仁均適用相同考核機制，月月執行、成績有據可查。
+      </div>
+    </div>
+  </div>
+
+  <!-- 每週一學案例 -->
+  <div id="tab-cases" class="tab-panel">
+    <div class="section-label">知識複製</div>
+    <div class="section-title">每週一學・真實案例展示</div>
+    <div style="font-size:13.5px;color:var(--mid);margin-bottom:20px;line-height:1.7;">以下為 2026 年 5 月系統上線至今已發布之共學案例，均來自前線同仁真實銷售故事，每則均附可點擊連結。前線版與管理版分開設計，讓 BC 與櫃長各取所需。</div>
+
+    <div class="case-grid">
+
+      <a class="case-card" href="https://jovial-cupcake-7f9e2f.netlify.app" target="_blank">
+        <div class="case-source">台北時代</div>
+        <div class="case-title">傾聽銷售法｜遇到說「用過沒效」的顧客怎麼辦？</div>
+        <div class="case-desc">從真實拒絕情境出發，示範如何用傾聽與提問重建顧客信任，引導試用。</div>
+        <span class="case-tag">前線版</span>
+      </a>
+
+      <a class="case-card" href="https://oright-training.github.io/training/" target="_blank">
+        <div class="case-source">忠孝 SOGO</div>
+        <div class="case-title">品牌價值共鳴法｜顧客問起環保理念，你怎麼接住這個機會？</div>
+        <div class="case-desc">將顧客的環保好奇心轉化為購買動機，示範品牌故事的銷售應用。</div>
+        <span class="case-tag">前線版</span>
+      </a>
+
+      <a class="case-card" href="https://oright-training.github.io/training/yongkang.html" target="_blank">
+        <div class="case-source">台北永康</div>
+        <div class="case-title">用頭皮檢測數據做開場｜讓顧客自己看見改變</div>
+        <div class="case-desc">以檢測數據取代主觀推薦，降低顧客防衛心，提升成交信任度。</div>
+        <span class="case-tag">前線版</span>
+      </a>
+
+      <a class="case-card" href="https://oright-training.github.io/oright-training/index.html" target="_blank">
+        <div class="case-source">台北京站（兩則）</div>
+        <div class="case-title">同樣是不信任，你接住了嗎？｜線上轉線下 × 信任重建</div>
+        <div class="case-desc">處理顧客不信任的兩種情境，示範如何將線上詢問轉化為現場成交。</div>
+        <span class="case-tag">前線版</span>
+      </a>
+
+      <a class="case-card" href="https://oright-training.github.io/training/index_1.html" target="_blank">
+        <div class="case-source">台中三井・南紡・嘉義新光</div>
+        <div class="case-title">養髮液高績效實戰｜這個月，她們怎麼讓顧客主動想買？</div>
+        <div class="case-desc">三位同仁的真實轉變歷程，從被動介紹到主動成交的完整銷售思路。</div>
+        <span class="case-tag">前線版</span>
+      </a>
+
+      <a class="case-card" href="https://oright-training.github.io/training/manager_2.html" target="_blank">
+        <div class="case-source">台中三井・南紡・嘉義新光</div>
+        <div class="case-title">同仁卡關時，她們怎麼帶？管理實戰紀錄</div>
+        <div class="case-desc">同一批案例的管理視角，示範如何診斷同仁卡關點並給予有效輔導。</div>
+        <span class="case-tag mgr">管理版</span>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- AI 工具總覽 -->
+  <div id="tab-ai" class="tab-panel">
+    <div class="section-label">數位工具</div>
+    <div class="section-title">AI 工具總覽</div>
+
+    <div class="ai-grid">
+      <div class="ai-card">
+        <div class="ai-icon green">🤖</div>
+        <div class="ai-name">AI 考核機器人</div>
+        <div class="ai-desc">百貨歐萊德櫃點營運領航員。依百貨通路情境客製化設計，每月對同仁進行商品知識與銷售話術測驗，成績直接納入年度 KPI 考績。</div>
+        <div class="ai-link"><a href="https://chatgpt.com/g/g-69d489815e9c8191a63f33c691ac148e-bai-huo-ou-lai-de-gui-dian-ying-yun-ling-hang-yuan" target="_blank">開啟考核機器人 →</a></div>
+      </div>
+
+      <div class="ai-card">
+        <div class="ai-icon blue">💬</div>
+        <div class="ai-name">AI 售後服務工具</div>
+        <div class="ai-desc">提供頭皮檢測邀約話術提醒、售後追蹤引導，協助 BC 主動維繫顧客關係，提升回購率與頭皮檢測使用率。</div>
+        <div class="ai-link"><a href="https://chatgpt.com/g/g-6a4894f64168819197728677ffe4dd3f-bai-huo-zhi-neng-shou-hou-fu-wu-ti-xing-yu-tou-pi-jian-ce-yao-yue-zhu-li" target="_blank">開啟售後服務工具 →</a></div>
+      </div>
+
+      <div class="ai-card full">
+        <div class="ai-icon gold">📊</div>
+        <div class="ai-name">執行回報追蹤表</div>
+        <div class="ai-desc">各月共學執行狀況、AI 考核完成率、售後服務執行回報，統一記錄於此，供主管掌握全省 26 個專櫃的訓練執行進度，作為後續 Coaching 與業績管理的參考依據。</div>
+        <div class="ai-link"><a href="https://docs.google.com/spreadsheets/d/1WgiCBuzC8K1VBaUjmN1iLBWbF7bumhWUcvMg7TQswqI/edit?resourcekey=&gid=1550757952#gid=1550757952" target="_blank">查看回報追蹤表 →</a></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
