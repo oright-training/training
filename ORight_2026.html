@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O'right 歐萊德 · 前線話術工具 2026</title>
+<style>
+:root {
+  /* ── 精品化妝品色票 ── */
+  --ivory: #FAF8F5;          /* 主背景：溫暖象牙白 */
+  --cream: #F3F0EB;          /* 次背景、卡片 */
+  --warm-white: #FDFCFA;     /* 卡片內部 */
+  --parchment: #EDE9E2;      /* 邊框、分隔 */
+  
+  --ink: #0F0F0D;            /* 主文字：近黑 */
+  --stone: #3A3730;          /* 次文字 */
+  --mid: #6B6760;            /* 輔助文字 */
+  --muted: #9A9690;          /* 弱化文字 */
+
+  /* ── 品牌深綠（強調色）── */
+  --forest: #1C3D2E;
+  --forest-2: #2A5A42;
+  --sage: #5E8C72;
+  --sage-light: #C4D9CC;
+  --sage-pale: #EDF4EF;
+
+  /* ── 精品金色 ── */
+  --gold: #8B6914;
+  --gold-light: #F5EDD6;
+  --gold-line: #C8A84B;      /* 細金線 */
+
+  /* ── 狀態色 ── */
+  --red: #8B1A1A;
+  --red-light: #F7EDED;
+  --blue: #1A3A6B;
+  --blue-light: #EBF0F7;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Helvetica Neue', 'Arial', sans-serif;
+  background: var(--ivory);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER ── */
+.site-header {
+  background: linear-gradient(135deg, #0D2118 0%, #1C3D2E 60%, #152E22 100%);
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  border-bottom: 1px solid rgba(200,168,75,0.25);
+  position: relative;
+}
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(200,168,75,0.6) 30%, rgba(200,168,75,0.9) 50%, rgba(200,168,75,0.6) 70%, transparent 100%);
+}
+.brand-name {
+  font-size: 15px;
+  color: #fff;
+  letter-spacing: 0.18em;
+  font-weight: 300;
+  font-family: 'Georgia', serif;
+}
+.brand-name span {
+  color: var(--gold-line);
+  font-style: italic;
+}
+.brand-sub {
+  font-size: 9px;
+  color: rgba(200,168,75,0.7);
+  letter-spacing: 0.22em;
+  margin-top: 3px;
+  text-transform: uppercase;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+}
+.header-year {
+  font-size: 10px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.08em;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 300;
+}
+
+/* ── CATEGORY NAV ── */
+.cat-nav {
+  background: var(--warm-white);
+  border-bottom: 1px solid var(--parchment);
+  display: flex;
+  padding: 0 48px;
+  overflow-x: auto;
+  gap: 0;
+}
+.cat-btn {
+  padding: 18px 24px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-bottom: 1.5px solid transparent;
+  white-space: nowrap;
+  font-family: inherit;
+  font-weight: 500;
+  transition: color 0.2s, border-color 0.2s;
+  text-transform: uppercase;
+}
+.cat-btn:hover { color: var(--stone); }
+.cat-btn.active {
+  color: var(--forest);
+  border-bottom-color: var(--gold-line);
+}
+
+/* ── PRODUCT NAV ── */
+.prod-nav {
+  background: var(--ivory);
+  border-bottom: 1px solid var(--parchment);
+  padding: 14px 48px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.prod-btn {
+  padding: 6px 18px;
+  border-radius: 20px;
+  border: 1px solid var(--parchment);
+  background: transparent;
+  font-size: 12px;
+  color: var(--stone);
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.03em;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.prod-btn:hover { border-color: var(--sage); color: var(--forest); }
+.prod-btn.active {
+  background: var(--forest);
+  color: #fff;
+  border-color: var(--forest);
+}
+
+/* ── CONTENT ── */
+.main { padding: 44px 48px; max-width: 840px; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+.prod-card { display: none; }
+.prod-card.active { display: block; }
+
+/* ── PRODUCT HEADER ── */
+.prod-hd { margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--parchment); }
+.prod-series {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--sage);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.prod-title {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.prod-price {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+.target-tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 2px;
+  border: 1px solid var(--parchment);
+  color: var(--stone);
+  font-family: inherit;
+  letter-spacing: 0.04em;
+  margin-right: 6px;
+  margin-bottom: 4px;
+  background: transparent;
+}
+.target-tag.green-tag {
+  border-color: var(--sage-light);
+  color: var(--forest-2);
+  background: var(--sage-pale);
+}
+.target-tag.gold-tag {
+  border-color: #D4B46A;
+  color: var(--gold);
+  background: var(--gold-light);
+}
+
+/* ── USP BOX ── */
+.usp {
+  background: var(--forest);
+  border-radius: 2px;
+  padding: 22px 28px;
+  margin-bottom: 32px;
+  position: relative;
+}
+.usp::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-line), transparent);
+}
+.usp-label {
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: var(--sage-light);
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.usp-text {
+  font-size: 14.5px;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.75;
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ── SECTION RULE ── */
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.section-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--parchment);
+}
+
+/* ── SCRIPT STEPS ── */
+.step {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+.step-meta { flex-shrink: 0; width: 58px; text-align: right; }
+.step-time {
+  font-size: 9px;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+}
+.step-tag {
+  font-size: 9px;
+  padding: 2px 8px;
+  font-weight: 600;
+  display: inline-block;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 1px;
+}
+.step-tag.open { background: var(--blue-light); color: var(--blue); }
+.step-tag.core { background: var(--sage-pale); color: var(--forest-2); }
+.step-tag.close { background: var(--gold-light); color: var(--gold); }
+
+.step-body {
+  flex: 1;
+  background: var(--warm-white);
+  border: 1px solid var(--parchment);
+  border-left: 2px solid var(--parchment);
+  padding: 14px 18px;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--stone);
+}
+.step-body.open { border-left-color: var(--blue); }
+.step-body.core { border-left-color: var(--forest-2); }
+.step-body.close { border-left-color: var(--gold-line); }
+.step-body em { color: var(--forest); font-style: normal; font-weight: 600; }
+.hint { font-size: 11.5px; color: var(--muted); margin-top: 6px; font-style: italic; }
+
+/* ── INGREDIENTS ── */
+.ing-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.ing-pill {
+  font-size: 11px;
+  padding: 4px 14px;
+  border: 1px solid var(--sage-light);
+  color: var(--forest-2);
+  letter-spacing: 0.03em;
+  background: var(--sage-pale);
+}
+
+/* ── CERTIFICATIONS ── */
+.cert-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+.cert-badge {
+  font-size: 10px;
+  padding: 3px 12px;
+  border: 1px solid var(--gold-line);
+  color: var(--gold);
+  background: var(--gold-light);
+  letter-spacing: 0.05em;
+}
+
+/* ── MINE BOX ── */
+.mine {
+  background: var(--red-light);
+  border-left: 2px solid var(--red);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+}
+.mine-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.mine-item {
+  font-size: 12.5px;
+  color: #5A1414;
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 5px;
+  line-height: 1.6;
+}
+.mine-item::before { content: '×'; position: absolute; left: 0; color: var(--red); font-weight: 400; }
+
+/* ── UPSELL ── */
+.upsell {
+  border: 1px solid var(--parchment);
+  border-top: 2px solid var(--gold-line);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  background: var(--warm-white);
+}
+.upsell-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.upsell-text { font-size: 13px; color: var(--stone); line-height: 1.75; }
+
+/* ── FAQ ── */
+.faq-item { border-bottom: 1px solid var(--parchment); }
+.faq-q {
+  width: 100%;
+  text-align: left;
+  padding: 14px 0;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--stone);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  gap: 12px;
+  letter-spacing: 0.01em;
+}
+.faq-q-text { flex: 1; }
+.faq-toggle {
+  color: var(--sage);
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+  font-weight: 300;
+}
+.faq-q.open .faq-toggle { transform: rotate(45deg); }
+.faq-a {
+  display: none;
+  padding: 0 0 14px;
+  font-size: 12.5px;
+  color: var(--mid);
+  line-height: 1.8;
+}
+.faq-a.show { display: block; }
+
+/* ── NOTICE BOX（養髮液選用說明）── */
+.notice-box {
+  border: 1px solid var(--parchment);
+  border-top: 1px solid var(--gold-line);
+  padding: 14px 20px;
+  margin: 0 48px 0;
+  font-size: 12px;
+  color: var(--mid);
+  line-height: 1.8;
+  background: var(--warm-white);
+}
+.notice-box strong { color: var(--forest); }
+
+/* ── SPACING ── */
+.mb-24 { margin-bottom: 24px; }
+.mb-20 { margin-bottom: 20px; }
+
+/* ── SKIN TYPE TAG（洗髮精頭皮類型）── */
+.skin-tag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border: 1px solid var(--forest);
+  color: var(--forest);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ── TIPS BOX ── */
+.tips-box {
+  background: var(--sage-pale);
+  border-left: 2px solid var(--sage);
+  padding: 12px 16px;
+  margin-top: 12px;
+  font-size: 12.5px;
+  color: var(--forest);
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .site-header { padding: 0 20px; }
+  .cat-nav { padding: 0 20px; }
+  .prod-nav { padding: 12px 20px; }
+  .main { padding: 28px 20px; }
+  .notice-box { margin: 0 20px; }
+  .prod-title { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-brand">
+    <div>
+      <div class="brand-name">O'right <span>歐萊德</span></div>
+      <div class="brand-sub">1 Minute Unique Selling Point &nbsp;·&nbsp; 2026</div>
+    </div>
+  </div>
+  <div class="header-year">SALES TRAINING TOOLKIT</div>
+</header>
+
+<!-- 類別導覽 -->
+<nav class="cat-nav">
+  <button class="cat-btn active" onclick="switchCat('hair')">養髮液</button>
+  <button class="cat-btn" onclick="switchCat('shampoo')">洗髮精</button>
+  <button class="cat-btn" onclick="switchCat('conditioner')">護髮素</button>
+  <button class="cat-btn" onclick="switchCat('bodywash')">沐浴乳</button>
+  <button class="cat-btn" onclick="switchCat('oil')">護髮油</button>
+  <button class="cat-btn" onclick="switchCat('tooth')">牙膏</button>
+  <button class="cat-btn" onclick="switchCat('moringa')">洗手慕絲</button>
+  <button class="cat-btn" onclick="switchCat('spray')">噴霧</button>
+</nav>
+
+<!-- ════════════════════════════════════ -->
+<!-- TAB 1｜養髮液 -->
+<!-- ════════════════════════════════════ -->
+<div id="tab-hair" class="tab-panel active">
+  <div class="prod-nav" id="nav-hair">
+    <button class="prod-btn active" onclick="switchProd('hair','male')">四胜肽（男士）</button>
+    <button class="prod-btn" onclick="switchProd('hair','female')">四胜肽（女士）</button>
+    <button class="prod-btn" onclick="switchProd('hair','classic')">四胜肽經典</button>
+    <button class="prod-btn" onclick="switchProd('hair','melanin')">咖啡因麥拉寧</button>
+    <button class="prod-btn" onclick="switchProd('hair','caffeine')">咖啡因養髮液</button>
+  </div>
+  <div class="main">
+
+    <!-- 四胜肽男士 -->
+    <div class="prod-card active" id="hair-male">
+      <div class="prod-hd">
+        <div class="prod-series">四胜肽系列</div>
+        <div class="prod-title">四胜肽賦活養髮液（男士）</div>
+        <div class="prod-price">90mL $2,680 ／ 45mL $1,580</div>
+        <span class="target-tag">油脂失衡・頭皮悶熱</span>
+        <span class="target-tag">男性頭皮保養</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">專為男性頭皮環境設計，四胜肽強化髮根錨定，紅花苜蓿調節油脂微生態，讓頭皮從根本清爽穩定。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您平常頭皮到下午容易出油或有悶熱感嗎？」<div class="hint">（觀察顧客髮際線或頭頂自然帶入）</div></div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款是專為男性頭皮設計的。男性頭皮受 5α 還原酶影響，容易出油、微生態失衡。我們加了<em>紅花苜蓿花萃取</em>，幫助調節這個問題，搭配<em>四胜肽</em>強化髮根錨定，讓頭皮清爽起來。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「早上使用，頭皮分 5–8 個區塊輕壓按摩，讓有效成分直接滲透頭皮，不需沖洗帶走，吸收效率更好。建議先持續使用 2–3 個月感受頭皮的轉變，頭皮好了，頭髮自然跟著好。」</div>
+      </div>
+      <div class="mb-24"></div>
+      <div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">四胜肽賦活因子</span>
+        <span class="ing-pill">紅花苜蓿花萃取（5α 還原酶調節）</span>
+        <span class="ing-pill">頭皮安定因子</span>
+        <span class="ing-pill">活絡節律因子</span>
+      </div>
+      <div class="mine">
+        <div class="mine-label">話術地雷</div>
+                        <div class="mine-item">直接說「雄性禿」（降低防衛心，用問句引導）</div>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「白天男士款清爽，晚上搭配<strong>四胜肽經典款</strong>夜間修護，效果更全面。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">一定要依性別選嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">不是絕對。頭皮偏油、喜歡清爽感 → 男士款；頭皮敏感偏乾 → 女士款。不含荷爾蒙，依頭皮狀況選擇即可。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">敏弱頭皮可以用嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">可以，建議先在耳後少量測試。含食品等級植物發酵酒精（非工業酒精）；頭皮有傷口時暫緩使用。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">要用多久才有效果？</span><span class="faq-toggle">+</span></button><div class="faq-a">早晚各一次，約 2–3 個月有初步感受，4–6 個月更顯著。建議持續使用，看見改變。</div></div>
+    </div>
+
+    <!-- 四胜肽女士 -->
+    <div class="prod-card" id="hair-female">
+      <div class="prod-hd">
+        <div class="prod-series">四胜肽系列</div>
+        <div class="prod-title">四胜肽賦活養髮液（女士）</div>
+        <div class="prod-price">90mL $2,680 ／ 45mL $1,580</div>
+        <span class="target-tag">細軟塌髮・頭皮敏弱</span>
+        <span class="target-tag">女性頭皮保養</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">壓力與環境變化引起的頭皮問題，以四胜肽調節頭皮環境，山金車花舒緩修護，讓細軟塌髮重現豐盈。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「最近有沒有覺得頭髮比以前細，或頭皮有點敏感？」<div class="hint">（或問：「有產後或壓力比較大嗎？」）</div></div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款專為女性頭皮設計。裡面有<em>山金車花萃取</em>，舒緩壓力與環境變化引起的頭皮不適；搭配<em>四胜肽</em>強化髮根結構，讓細軟塌的髮絲慢慢恢復豐盈感。香氣是柔和花香調，使用起來很舒服。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「建議早上使用，噴在頭皮分區輕輕按摩，讓有效成分直接滲透頭皮，不需沖洗帶走。晚上搭配四胜肽經典款，讓頭皮在夜間的修護黃金時段得到集中養護，效果更全面。」</div>
+      </div>
+      <div class="mb-24"></div>
+      <div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">四胜肽賦活因子</span>
+        <span class="ing-pill">山金車花萃取（舒緩頭皮壓力）</span>
+        <span class="ing-pill">舒緩節律因子</span>
+        <span class="ing-pill">頭皮強韌因子</span>
+      </div>
+      <div class="mine">
+        <div class="mine-label">話術地雷</div>
+                <div class="mine-item">產後掉髮用這個就好（不能做醫療宣稱）</div>
+        <div class="mine-item">任何形式的保證（效果因人而異）</div>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「白天女士款舒緩，晚上搭配<strong>四胜肽經典款</strong>夜間修護，日夜全面養護。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">產後可以使用嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">不含西藥成分、通過 USDA Biobased 天然等級認證。考量每位媽媽體質不同，若有疑慮建議先諮詢婦科醫師。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">男生可以用女士款嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">可以。頭皮敏感或偏乾的男性也很適合女士款，不含荷爾蒙，依頭皮狀況選擇即可。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">有酒精嗎？會讓頭皮更乾嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">含天然植物發酵酒精（食品等級），同時配方中有多種植萃保濕成分，揮發後頭皮仍能維持舒爽感。</div></div>
+    </div>
+
+    <!-- 四胜肽經典 -->
+    <div class="prod-card" id="hair-classic">
+      <div class="prod-hd">
+        <div class="prod-series">四胜肽系列</div>
+        <div class="prod-title">四胜肽經典養髮液</div>
+        <div class="prod-price">90mL $2,880 ／ 45mL $1,680</div>
+        <span class="target-tag">熬夜・壓力大・作息不規律</span>
+        <span class="target-tag">夜間修護</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">現代壓力型頭皮的夜間修護首選——四胜肽穩定毛囊週期，自癒草萃取協助降低皮質醇，讓頭皮在睡眠中真正修復。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您平常睡眠規律嗎？還是有時候熬夜或壓力比較大？」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款是<em>夜間使用</em>的設計，很適合壓力大或作息不規律的人。裡面的<em>四胜肽</em>穩定毛囊生長週期，加上<em>自癒草萃取</em>協助降低皮質醇，讓頭皮在睡覺時真正得到修護。香氣是薰衣草木植調，助眠又舒壓。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「睡前噴在頭皮輕輕按摩，讓有效成分在夜間深入滲透頭皮——夜晚是頭皮修復的黃金時段，配合身體的自然修護節律，養護效率更完整。搭配白天的賦活款，日夜全方位養護。」</div>
+      </div>
+      <div class="mb-24"></div>
+      <div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">四胜肽賦活因子</span>
+        <span class="ing-pill">自癒草萃取（舒壓修護）</span>
+        <span class="ing-pill">紓壓節律因子</span>
+      </div>
+      <div class="mine">
+        <div class="mine-label">話術地雷</div>
+                <div class="mine-item">睡前用保證效果加倍（效果因人而異）</div>
+        <div class="mine-item">壓力掉髮用這個就好（不能做醫療宣稱）</div>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「日夜搭配：白天用<strong>四胜肽賦活款</strong>清爽保養，晚上用經典款集中修護，效果更完整。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">三款四胜肽要怎麼選？</span><span class="faq-toggle">+</span></button><div class="faq-a">先從使用時段和頭皮感受判斷：白天用 → 男士款（控油清爽）或女士款（舒緩溫和）；晚上集中修護 → 經典款。也可以日夜搭配使用。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">只用經典款，不搭賦活款可以嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">可以，單獨使用就有效果。搭配使用是為了日夜全面養護，不是必須。</div></div>
+    </div>
+
+    <!-- 咖啡因麥拉寧 -->
+    <div class="prod-card" id="hair-melanin">
+      <div class="prod-hd">
+        <div class="prod-series">咖啡因系列</div>
+        <div class="prod-title">咖啡因麥拉寧養髮液</div>
+        <div class="prod-price">100mL $5,980 ／ 50mL $3,880</div>
+        <span class="target-tag">在意頭髮本色光澤・頭皮老化</span>
+        <span class="target-tag">旗艦升級款</span>
+        
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">一次解決兩大頭髮根本問題——天然咖啡因強健髮根，獨家椰棗麥拉寧抵禦老化，養髮同時重現秀髮本色之美。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您有沒有覺得頭髮光澤感比以前少，或是有點乾燥沒有彈性？」<div class="hint">（已用咖啡因養髮液的顧客：「您用過咖啡因養髮液嗎？這款是升級版，多了一個獨家成分。」）</div></div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款是我們的旗艦養髮液，一次解決兩大頭髮根本問題。<em>天然咖啡因</em>活絡頭皮、強健髮根，獲英國皮膚科醫學期刊研究實證；獨家的<em>天然椰棗麥拉寧成分</em>獲國際 Antioxidants 期刊認可，能高效抵禦頭皮老化因子，養髮的同時重現秀髮本色之美。兩大成分均通過 SGS 人體試驗實證，是世界冠軍的養髮科技。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「如果現在不開始保養頭皮，等到頭髮越來越缺乏光澤、越來越乾燥，要逆轉就更難了。這款建議早晚各使用一次，噴在頭皮輕輕按摩，讓有效成分充分滲透頭皮，不需沖洗帶走。養髮功效通過 SGS 人體試驗實證，整體滿意度 90%，建議持續使用 2–3 個月感受頭皮真正的改變。」</div>
+      </div>
+      <div class="mb-24"></div>
+      <div class="cert-row">
+        <span class="cert-badge">USDA Biobased 96%</span>
+        <span class="cert-badge">① 英國皮膚科醫學期刊（咖啡因成分）</span>
+        <span class="cert-badge">② 國際權威期刊 Antioxidants（椰棗麥拉寧）</span>
+        <span class="cert-badge" style="background:var(--forest);color:#fff;border-color:var(--forest);">③ 養髮功效通過 SGS 人體試驗實證（JT00452023299956）</span>
+        <span class="cert-badge">世界七大獎</span>
+      </div>
+      <div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">天然咖啡因萃取（雲林古坑超音波萃取）</span>
+        <span class="ing-pill">椰棗麥拉寧（獨家 INCI 命名）</span>
+        <span class="ing-pill">毬果紫堇</span>
+        <span class="ing-pill">繡線菊</span>
+        <span class="ing-pill">生薑萃取</span>
+      </div>
+      <div class="mine">
+        <div class="mine-label">話術地雷</div>
+        <div class="mine-item">可以讓白髮變黑、恢復黑髮（法規紅線）</div>
+        <div class="mine-item">頭皮精華液（這是養髮液，不能說成精華液）</div>
+        <div class="mine-item">防掉髮、生髮（不能主動說）</div>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「搭配<strong>咖啡因洗髮精</strong>，洗後頭皮潔淨狀態下吸收效果更好。同時可帶入頭皮檢測服務。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">這跟咖啡因養髮液有什麼差別？</span><span class="faq-toggle">+</span></button><div class="faq-a">麥拉寧版是升級配方，延續咖啡因原有功效，再加上椰棗麥拉寧——多了「維護頭髮本色、抗老化」功效，一次解決兩個根本問題。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">有染頭髮的人可以用嗎？會掉色嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">可以，經實測不會對染色頭髮造成影響。這是頭皮保養品，不含染髮劑。</div></div>
+    </div>
+
+    <!-- 咖啡因養髮液 -->
+    <div class="prod-card" id="hair-caffeine">
+      <div class="prod-hd">
+        <div class="prod-series">咖啡因系列</div>
+        <div class="prod-title">咖啡因養髮液</div>
+        <div class="prod-price">100mL $4,980 ／ 50mL $3,280</div>
+        <span class="target-tag">問題頭皮</span>
+        <span class="target-tag">世界冠軍明星款</span>
+        
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">世界冠軍養髮液——台灣原生咖啡超音波萃取，黃金 5–25ppm 濃度精準活絡頭皮，打造健康養髮環境，重現髮絲豐盈。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「請問您有在保養頭皮嗎？很多人花很多心思保養臉，但其實頭皮老化的速度是臉部的 6 倍——一旦頭皮環境失衡，頭髮的問題就會一個接一個出現。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款咖啡因養髮液是我們的世界冠軍商品，榮獲世界七大獎。使用台灣<em>雲林古坑在地咖啡</em>，以超音波萃取技術保留最完整的植物活性，咖啡因濃度控制在 5–25ppm 黃金比例，經英國皮膚科醫學期刊研究確認，能對頭皮產生最佳的正向效果。搭配<em>繡線菊調節油脂</em>、<em>毬果紫堇鎮定舒緩</em>，幫助打造健康良好的養髮環境，讓頭髮從根本重現豐盈。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「如果現在不開始保養頭皮，等到頭髮開始稀疏的時候，可能就要花更多時間和金錢來補救。這款建議早晚各使用一次，噴在頭皮輕輕按摩，讓有效成分充分滲透頭皮，不需沖洗帶走。與弘光科技大學合作的頭皮保健研究顯示，整體滿意度高達 90%，建議持續使用 2–3 個月，感受頭皮真正的改變。」</div>
+      </div>
+      <div class="mb-24"></div>
+      <div class="cert-row">
+        <span class="cert-badge">USDA Biobased 92%</span>
+        <span class="cert-badge">英國皮膚科醫學期刊研究實證</span>
+        <span class="cert-badge">養髮功效通過 SGS 人體試驗實證（JT00452023299956）</span>
+        <span class="cert-badge">世界七大獎</span>
+      </div>
+      <div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">天然咖啡因萃取（5–25ppm 黃金濃度）</span>
+        <span class="ing-pill">毬果紫堇（鎮定舒緩）</span>
+        <span class="ing-pill">繡線菊（調節油脂）</span>
+        <span class="ing-pill">生薑萃取（促進代謝）</span>
+      </div>
+      <div class="mine">
+        <div class="mine-label">話術地雷</div>
+        <div class="mine-item">頭皮精華液（這是養髮液，不能說成精華液）</div>
+        <div class="mine-item">喝咖啡也有一樣效果（外用產品，原理完全不同）</div>
+        <div class="mine-item">保證改善（效果因人而異）</div>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「搭配<strong>咖啡因洗髮精</strong>洗後使用吸收更好。如預算許可，可升級<strong>咖啡因麥拉寧版</strong>，多了椰棗麥拉寧抗老化功效。」</div>
+      </div>
+      <div class="notice-box" style="margin:20px 0;">
+        <strong>養髮液選用邏輯：</strong>四胜肽系列協助調理頭皮微環境、穩定髮根基礎；咖啡因系列作為後續活力支持，進一步提升頭皮健康度與髮根活力表現。兩者屬不同作用面向的互補組合，可共同建構更完整的頭皮養護機制。
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">不喝咖啡的人可以用嗎？會失眠嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">完全可以，不影響睡眠。每次用量約 2mL，咖啡因含量不到 0.05 毫克，遠低於衛福部建議每日 300 毫克上限，是外用保養品。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">咖啡因濃度越高越好嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">不是。低於 5ppm 效果不明顯，高於 25ppm 反而可能刺激頭皮。我們控制在 5–25ppm 黃金比例，學術研究確認的最佳區間。</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- TAB 2｜牙膏 -->
+<!-- ════════════════════════════════════ -->
+<div id="tab-tooth" class="tab-panel">
+  <div class="prod-nav" id="nav-tooth">
+    <button class="prod-btn active" onclick="switchProd('tooth','zero')">源木綠藻淨白牙膏</button>
+    <button class="prod-btn" onclick="switchProd('tooth','black')">黑豆全效牙周防護</button>
+    <button class="prod-btn" onclick="switchProd('tooth','milk')">水飛薊潔白護齒</button>
+  </div>
+  <div class="main">
+
+    <!-- 源木牙膏 -->
+    <div class="prod-card active" id="tooth-zero">
+      <div class="prod-hd">
+        <div class="prod-series">天然牙膏系列</div>
+        <div class="prod-title">源木綠藻淨白牙膏 N° Zero</div>
+        <div class="prod-price">95mL ／ 40mL</div>
+        <span class="target-tag">口氣清新・維護牙齒健康・三歲以上適用</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">全台唯一 USDA Biobased 100% 天然認證牙膏——以食品等級原料、三種永續樹木粉末取代傳統研磨劑，30 億個綠藻細胞為口腔帶來天然植萃體驗。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您在意牙膏裡面的成分嗎？您知道一般牙膏的研磨劑長期使用可能磨損齒面嗎？」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「我們這款源木牙膏，是用<em>製作食品的態度</em>研發的。它不含一般牙膏常見的高硬度研磨劑、高刺激性起泡劑、人工色素和香精。改用<em>三種永續樹木粉末</em>——山毛櫸木、桃拓松木、木欒子，溫柔清潔齒面，遇水後還會變柔軟，不用擔心磨損。裡面還有 30 億個保健食品級綠藻細胞。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「第一次用可能不太習慣，因為泡沫比較少，這就是天然少添加的特色。是全台唯一 USDA Biobased 100% 認證的牙膏，三歲以上就能使用，全家都可以用。」</div>
+      </div>
+      <div class="mb-24"></div>
+      <div class="cert-row">
+        <span class="cert-badge">USDA Biobased 100%</span>
+        <span class="cert-badge">日本 Good Design Gold Award</span>
+        <span class="cert-badge">全球永續美妝新品獎冠軍</span>
+        <span class="cert-badge">食品等級原料</span>
+      </div>
+      <div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">30 億個綠藻細胞（保健食品級）</span>
+        <span class="ing-pill">山毛櫸木粉末（柔和去染色）</span>
+        <span class="ing-pill">有機桃拓羅漢松萃取（深層潔淨口腔）</span>
+        <span class="ing-pill">木欒子（清除牙菌斑）</span>
+        <span class="ing-pill">大茴香・丁香・留蘭精油</span>
+      </div>
+      <div class="mine">
+        <div class="mine-label">話術地雷</div>
+        <div class="mine-item">這個可以美白牙齒（只能說「柔和去除染色汙垢」）</div>
+        <div class="mine-item">保證用了牙齒變白（效果須配合正確刷牙習慣）</div>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「三款牙膏功效各有側重，可依口腔需求選擇：在意牙周健康 → 黑豆款；在意去色斑 → 水飛薊款。也可以推薦三款禮盒組合。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">為什麼牙膏是綠色的？</span><span class="faq-toggle">+</span></button><div class="faq-a">來自 30 億個綠藻細胞的天然色澤，不是人工色素。植萃原色可能隨時間、溫度有些微變化，屬正常自然現象。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">泡沫很少，有洗乾淨嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">潔淨力來自摩擦動作，不是泡沫多寡。我們不添加高刺激性起泡劑，少泡沫才是天然少添加的特色，反而更溫和安心。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">小孩可以用嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">三歲以上及成人皆適用。食品等級原料，無高風險成分，全家可以共用。</div></div>
+    </div>
+
+    <!-- 黑豆牙膏 -->
+    <div class="prod-card" id="tooth-black">
+      <div class="prod-hd">
+        <div class="prod-series">天然牙膏系列</div>
+        <div class="prod-title">黑豆全效牙周防護牙膏</div>
+        <div class="prod-price">40mL</div>
+        <span class="target-tag">牙周保養・鞏固牙齒・敏感牙齒</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">源自日本有機黑豆萃取，鞏固牙齒、降低牙周病風險，搭配紅柑精油維持口氣清新，守護整體牙周健康。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您有沒有牙齦偶爾腫脹或刷牙出血的狀況？或者牙醫有提醒過要注意牙周健康？」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款黑豆牙膏是專為牙周保養設計的。裡面有<em>日本有機黑豆萃取</em>，有助於清除牙菌斑、降低牙周病發生率；搭配<em>有機桃拓羅漢松萃取</em>深層潔淨口腔，打造防護屏障；還有紅柑精油，橙皮獨特香氣去除口中異味，保持口氣清新。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「全台唯一通過 USDA Biobased 100% 天然認證，不含高風險成分，牙周敏感的人也可以安心使用，配合正確刷牙習慣效果更佳。」</div>
+      </div>
+      <div class="mb-24"></div>
+      <div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">日本有機黑豆萃取</span>
+        <span class="ing-pill">有機桃拓羅漢松萃取</span>
+        <span class="ing-pill">天然紅柑精油</span>
+        <span class="ing-pill">永續樹木粉末纖維素</span>
+      </div>
+      <div class="mine">
+        <div class="mine-label">話術地雷</div>
+        <div class="mine-item">保證治療牙周病（牙膏無法治療疾病）</div>
+        <div class="mine-item">用了牙齦就不會再出血（效果須配合正確刷牙習慣）</div>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「三款牙膏可以搭配使用：在意牙周保護用黑豆款，需要去色斑可以換水飛薊款，日常基礎保養用源木款。」</div>
+      </div>
+    </div>
+
+    <!-- 水飛薊牙膏 -->
+    <div class="prod-card" id="tooth-milk">
+      <div class="prod-hd">
+        <div class="prod-series">天然牙膏系列</div>
+        <div class="prod-title">水飛薊潔白護齒牙膏</div>
+        <div class="prod-price">40mL</div>
+        <span class="target-tag">去除色斑・預防牙齒變色・敏感牙齒</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">有機水飛薊萃取輕柔去除外源性色斑，恢復牙齒自然潔白，薄荷與檸檬精油帶來純淨清新，不傷琺瑯質的溫和美白選擇。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您有在喝咖啡或茶嗎？或是擔心牙齒有染色的問題？」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款水飛薊牙膏是針對去除色斑設計的。裡面有<em>有機水飛薊萃取</em>與<em>雲杉、山毛櫸木木粉</em>，可以輕柔去除外源性色斑，讓牙齒恢復自然潔白，同時不傷害琺瑯質。添加薄荷與檸檬精油，清新的香氣讓口腔感覺非常舒適。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「不是傳統的化學美白，而是植萃溫和去除染色，適合擔心傳統美白牙膏太刺激或磨損的人，配合正確刷牙習慣就能看見改變。」</div>
+      </div>
+      <div class="mb-24"></div>
+      <div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">有機水飛薊萃取</span>
+        <span class="ing-pill">雲杉、山毛櫸木木粉</span>
+        <span class="ing-pill">天然檸檬・薄荷精油</span>
+        <span class="ing-pill">永續樹木粉末纖維素</span>
+      </div>
+      <div class="mine">
+        <div class="mine-label">話術地雷</div>
+        <div class="mine-item">這個可以讓牙齒變白（說「去除染色色斑、恢復自然潔白」）</div>
+        <div class="mine-item">保證效果（效果須配合正確刷牙習慣）</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- TAB 3｜辣木洗沐 -->
+<!-- ════════════════════════════════════ -->
+<div id="tab-moringa" class="tab-panel">
+  <div class="prod-nav" id="nav-moringa">
+    <button class="prod-btn active" onclick="switchProd('moringa','handwash')">辣木洗手慕絲</button>
+  </div>
+  <div class="main">
+
+    <!-- 辣木洗手慕絲 -->
+    <div class="prod-card active" id="moringa-handwash">
+      <div class="prod-hd">
+        <div class="prod-series">辣木系列</div>
+        <div class="prod-title">辣木洗手慕絲</div>
+        <div class="prod-price">【米其林餐廳指定】</div>
+        <span class="target-tag">滋潤護手・天然潔淨・居家與商務禮品</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">米其林餐廳指定使用——天然辣木籽萃取溫和潔淨雙手，繡線菊與醣基海藻糖深層保濕，洗後雙手柔嫩不緊繃。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您用過我們的辣木洗手慕絲嗎？這款是米其林餐廳指定使用的。」<div class="hint">（讓顧客感受質感定位）</div></div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「很多人洗手後手會變乾，是因為洗手乳含有刺激性起泡劑。我們用<em>天然辣木籽萃取</em>加上保濕成分，洗完手不只乾淨，還帶有淡雅的天然植萃香氣，手感柔嫩不緊繃。因為這個品質，被米其林餐廳選為指定用品。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「很適合放在辦公室、家裡，或是作為伴手禮——這個品牌背後有完整的永續理念，送禮也有溫度。」</div>
+      </div>
+      <div class="mb-24"></div>
+<div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">天然辣木籽萃取</span>
+        <span class="ing-pill">繡線菊萃取</span>
+        <span class="ing-pill">醣基海藻糖（親膚保護膜・柔軟保濕）</span>
+        <span class="ing-pill">天然植物起泡成分</span>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「人一天平均洗手 8–10 次，但手部不像臉部有皮脂膜保護，頻繁洗手容易越洗越乾、甚至出現乾燥脫皮。辣木洗手慕絲是台北米其林二星餐廳<strong>握達尼斯</strong>的指定用品——辣木成分具有天然淨化力，特別適合廚房料理後或用餐後使用，在潔淨雙手的同時幫助改善手部異味，洗後手感柔嫩不緊繃，讓每次洗手都變成一次小小的手部保養。」</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- TAB｜沐浴乳 -->
+<!-- ════════════════════════════════════ -->
+<div id="tab-bodywash" class="tab-panel">
+  <div class="prod-nav" id="nav-bodywash">
+    <button class="prod-btn active" onclick="switchProd('bodywash','moringa')">辣木沐浴乳</button>
+  </div>
+  <div class="main">
+
+    <div class="prod-card active" id="bodywash-moringa">
+      <div class="prod-hd">
+        <div class="prod-series">辣木系列</div>
+        <div class="prod-title">辣木沐浴乳</div>
+        <div class="prod-price">400mL ／ 1000mL</div>
+        <span class="target-tag">淨化舒緩・乾燥不適肌膚・深層保濕</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">天然辣木籽萃取舒緩肌膚乾燥不適，繡線菊平衡調理、收斂緊緻，醣基海藻糖形成獨特親膚保護膜，洗後肌膚柔嫩緊緻、水潤不緊繃。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您的肌膚洗完澡後有沒有緊繃或乾燥的感覺？」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款辣木沐浴乳主打淨化舒緩與深層保濕。裡面有<em>天然辣木籽萃取</em>，舒緩肌膚乾燥不適感，同時穩定肌膚天然保護力；搭配<em>繡線菊萃取</em>溫和潔淨、平衡調理、收斂緊緻，溫柔呵護肌膚；<em>醣基海藻糖</em>形成獨特親膚保護膜，呵護肌膚柔軟觸感，讓肌膚洗後柔嫩緊緻，完全不會有緊繃感。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「取適量於沐浴球或掌心搓揉起泡後，輕柔塗抹全身洗淨，溫和不刺激。歐盟有機認證天然起泡成分，從肌膚保養到環境永續，都是每個細節的選擇。」</div>
+      </div>
+      <div class="mb-24"></div>
+<div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">辣木籽萃取（淨化舒緩・穩定防護力）</span>
+        <span class="ing-pill">繡線菊萃取（溫和潔淨・收斂緊緻）</span>
+        <span class="ing-pill">醣基海藻糖（親膚保護膜・柔軟保濕）</span>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「可搭配同系列<strong>辣木洗手慕絲</strong>，延續淨化舒緩的植萃體驗，也是人氣居家禮盒與伴手禮組合。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">洗完需要再擦乳液嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">醣基海藻糖有保濕鎖水效果，洗後肌膚柔嫩不緊繃。一般肌膚洗後感受良好；特別乾燥的肌膚建議搭配身體乳效果更佳。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">敏感肌可以用嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">辣木籽萃取和繡線菊萃取都具有舒緩特性，配方親膚不易刺激，敏感肌膚也可以使用。若有特殊肌膚狀況，建議先在局部小範圍試用。</div></div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════ -->
+<!-- TAB 4｜護髮油 -->
+<!-- ════════════════════════════════════ -->
+<div id="tab-oil" class="tab-panel">
+  <div class="prod-nav" id="nav-oil">
+    <button class="prod-btn active" onclick="switchProd('oil','rose')">曠野玫瑰護髮油</button>
+    <button class="prod-btn" onclick="switchProd('oil','golden')">香檳玫瑰護髮油</button>
+    <button class="prod-btn" onclick="switchProd('oil','purple')">紫玫瑰護髮油</button>
+    <button class="prod-btn" onclick="switchProd('oil','camellia')">山茶花精萃油</button>
+  </div>
+  <div class="main">
+    <div class="prod-card active" id="oil-rose">
+      <div class="prod-hd">
+        <div class="prod-series">曠野玫瑰系列</div>
+        <div class="prod-title">曠野玫瑰護髮油</div>
+        <div class="prod-price">免沖洗護髮</div>
+        <span class="target-tag">染燙・嚴重受損髮</span><span class="target-tag" style="border-color:#C4D9CC;color:#2A5A42;background:#EDF4EF;">強韌結構</span><span class="target-tag" style="border-color:#C4D9CC;color:#2A5A42;background:#EDF4EF;">潤澤修護</span><span class="target-tag" style="border-color:#C4D9CC;color:#2A5A42;background:#EDF4EF;">輕盈</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">針對漂染燙受損髮設計，添加天然黑玫瑰萃取強化髮絲防護力，植物角鯊烷滋潤保濕，讓受損秀髮放光彩亮澤、輕盈順滑不油膩。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您有在染髮或燙髮嗎？受損的頭髮有沒有特別容易毛躁或沒有光澤感？」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款曠野玫瑰護髮油是專為漂染燙受損髮設計的免沖洗護髮。裡面有<em>天然黑玫瑰萃取</em>，可以對抗外在環境傷害，強化髮絲防護力；搭配<em>植物角鯊烷</em>滋潤保濕，撫平毛躁，讓秀髮放光彩亮澤。質地輕盈，不會讓頭髮有油膩感。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「洗後擦至半乾，取少量均勻塗抹於髮中至髮尾，讓有效成分在吹整過程中逐層滲透髮絲，鎖住修護成果，增添光澤柔順；造型前使用效果尤佳。乾髮時可少量補用撫平毛躁。」</div>
+      </div>
+      <div class="mb-24"></div>
+<div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">有機認證野玫瑰果精萃油（加倍滋養・深層修護）</span>
+        <span class="ing-pill">海甘藍籽油（強韌髮絲・改善分岔斷裂）</span>
+        <span class="ing-pill">油橄欖葉萃取（撫平毛躁・保濕鎖水）</span>
+      </div>
+      <div class="mine">
+        <div class="mine-label">話術地雷</div>
+        <div class="mine-item">保證修復受損髮（只能說「幫助修護、改善」）</div>
+        <div class="mine-item">讓頭髮永久不再受損（這是護理品，不能過度宣稱）</div>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「可搭配<strong>曠野玫瑰洗髮精</strong>與<strong>護髮素</strong>，三步驟完整護髮體驗，洗、護、養一次到位。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">護髮油會讓頭髮很油嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">不會。我們的護髮油質地輕盈，植物角鯊烷的分子小，容易被髮絲吸收，用量控制適當（幾滴即可）就不會有油膩感，反而讓頭髮更有光澤。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">洗頭後什麼時候用？</span><span class="faq-toggle">+</span></button><div class="faq-a">洗後擦至半乾後使用，取適量均勻塗抹於髮中至髮尾，讓有效成分在吹整過程中逐層滲透髮絲，鎖住修護成果；也可於乾髮時少量補用，撫平毛躁。避免直接塗抹頭皮。</div></div>
+    </div>
+
+    <!-- 香檳玫瑰護髮油 -->
+    <div class="prod-card" id="oil-golden">
+      <div class="prod-hd">
+        <div class="prod-series">香檳玫瑰系列</div>
+        <div class="prod-title">香檳玫瑰護髮油</div>
+        <div class="prod-price">100mL ／ 10mL</div>
+        <span class="target-tag">染燙髮</span><span class="target-tag" style="border-color:#C4D9CC;color:#2A5A42;background:#EDF4EF;">護色柔順</span><span class="target-tag" style="border-color:#C4D9CC;color:#2A5A42;background:#EDF4EF;">滋潤</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">玫瑰萃取豐厚滋養、修護受損毛鱗片，植物角鯊烷高度保濕滋潤，賦予髮絲絲絨般柔細觸感，護色亮澤，適合染燙髮的日常護色養護。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您有在染髮嗎？染後最怕髮色漸漸暗沉，或吹整後頭髮毛躁不柔順？」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款香檳玫瑰護髮油是染燙髮護色專用。<em>玫瑰萃取精華</em>豐厚滋養秀髮、修護髮尾；搭配<em>植物角鯊烷</em>高度保濕滋潤，抗老化並防止熱傷害，增加髮絲光亮度及滑順感，完整包覆每根髮絲，清爽不油膩，給秀髮絲絨般的柔細觸感，讓染燙後的髮色更亮澤持久。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「洗後擦至半乾，取適量均勻塗抹於髮中至髮尾，吹整時讓有效成分深入滲透、鎖住護色成果。搭配<strong>香檳玫瑰護色護髮素</strong>，護色持久度更完整。」</div>
+      </div>
+      <div class="mb-24"></div>
+      <div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">玫瑰萃取精華（豐厚滋養・修護髮尾・純淨香氛）</span>
+        <span class="ing-pill">植物角鯊烷（高度保濕滋潤・抗老化・防熱傷害・增加光亮度）</span>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「染後的髮色就像新衣服越洗越容易褪色，搭配<strong>香檳玫瑰護色護髮素</strong>讓護色持久度更完整。若顧客同時在意頭皮保養，加推<strong>咖啡因養髮液</strong>，頭皮護理一步到位。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">香檳玫瑰油和紫玫瑰油有什麼差別？</span><span class="faq-toggle">+</span></button><div class="faq-a">兩款功效定位相同，都是護色柔順、適合染燙髮，主要差異在香氣與品牌色彩：香檳玫瑰油帶玫瑰金暖調香氣；紫玫瑰油帶紫羅蘭清雅香氣。可依顧客喜好的香味方向推薦，或搭配對應的護色洗護系列。</div></div>
+    </div>
+
+    <!-- 紫玫瑰護髮油 -->
+    <div class="prod-card" id="oil-purple">
+      <div class="prod-hd">
+        <div class="prod-series">紫玫瑰系列</div>
+        <div class="prod-title">紫玫瑰護髮油</div>
+        <div class="prod-price">100mL ／ 10mL</div>
+        <span class="target-tag">染燙髮</span><span class="target-tag" style="border-color:#C4D9CC;color:#2A5A42;background:#EDF4EF;">護色柔順</span><span class="target-tag" style="border-color:#C4D9CC;color:#2A5A42;background:#EDF4EF;">滋潤</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">玫瑰萃取精華搭配質光鏡亮因子，深入修護受損毛鱗片、重建髮絲上質光感，植物角鯊烷高度保濕滋潤包覆每根髮絲，給秀髮絲絨般柔細觸感與持久晶亮光澤。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您的髮色偏亮色、灰色或冷色調嗎？這類髮色特別容易氧化偏黃，失去原本的清亮感。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款紫玫瑰護髮油的核心在於<em>質光鏡亮因子</em>——修護受損毛鱗片，重建髮絲上質光感，讓髮色更清亮透明；<em>玫瑰萃取</em>豐厚滋養，搭配<em>植物角鯊烷</em>高度保濕包覆每根髮絲，撫平毛躁，絲絨般柔細觸感，輕盈不黏膩。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「洗後擦至半乾，取適量均勻塗抹於髮中至髮尾，吹整時讓有效成分深入滲透髮絲，重建質光感與亮澤。若顧客有白髮困擾，進一步推薦<strong>咖啡因麥拉寧養髮液</strong>。」</div>
+      </div>
+      <div class="mb-24"></div>
+      <div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">玫瑰萃取精華（豐厚滋養・修護髮尾・純淨香氛）</span>
+        <span class="ing-pill">質光鏡亮因子（修護髮絲毛鱗片・秀髮絲滑柔順・散發晶亮光澤）</span>
+        <span class="ing-pill">植物角鯊烷（高度保濕滋潤・抗老化・防熱傷害・增加光亮度）</span>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「想讓髮色更持久亮澤，搭配<strong>紫玫瑰護色護髮素</strong>一起使用，護色效果更完整。若顧客有白髮困擾，進一步推薦<strong>咖啡因麥拉寧養髮液</strong>。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">質光鏡亮因子是什麼？</span><span class="faq-toggle">+</span></button><div class="faq-a">質光鏡亮因子能深入修護受損毛鱗片，重建髮絲上質光感，讓髮絲重新呈現光澤與絲滑觸感，是紫玫瑰護髮油的獨特差異化成分。</div></div>
+    </div>
+
+    <!-- 山茶花精萃油 -->
+    <div class="prod-card" id="oil-camellia">
+      <div class="prod-hd">
+        <div class="prod-series">山茶花系列</div>
+        <div class="prod-title">山茶花精萃油</div>
+        <div class="prod-price">100mL ／ 10mL</div>
+        <span class="target-tag">染燙・受損乾燥髮</span><span class="target-tag" style="border-color:#C4D9CC;color:#2A5A42;background:#EDF4EF;">保濕鎖水</span><span class="target-tag" style="border-color:#C4D9CC;color:#2A5A42;background:#EDF4EF;">絲滑</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">山茶花菁萃油、澳洲胡桃油與蔬食埃塔棕果油三重植萃精華融合，密集保濕修護、預防髮絲熱損傷，溫和調理減少毛躁與靜電，絲緞般質地不黏膩，護髮保養的最佳入門款。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您平常洗完頭吹整前有在用護髮油嗎？很多人覺得護髮油會讓頭髮油膩，其實選對款完全不會。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「山茶花精萃油是很多人第一次嘗試護髮油的入門首選。融合了<em>山茶花菁萃油、澳洲胡桃油與蔬食埃塔棕果油</em>三種珍貴植萃精華：澳洲胡桃油密集保濕修護、預防髮絲熱損傷；蔬食埃塔棕果油溫和調理、減少毛躁與靜電，再現光澤；山茶花菁萃油恢復柔潤煥活鎖水。絲緞般質地好吸收不黏膩。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「洗後擦至半乾，取適量均勻塗抹於髮中至髮尾，吹整時高效保濕成分逐層滲透，防高溫熱傷害、增添光澤柔順；乾髮時少量補用亦可撫平毛躁。頭髮與頭皮的保養要同步進行，若只有保養髮絲、忽略頭皮，可以搭配我們的養髮液系列。」</div>
+      </div>
+      <div class="mb-24"></div>
+      <div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">山茶花菁萃油（恢復柔潤・煥活鎖水）</span>
+        <span class="ing-pill">澳洲胡桃油（密集保濕修護・預防熱損傷）</span>
+        <span class="ing-pill">蔬食埃塔棕果油（減少毛躁與靜電・再現光澤）</span>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「山茶花精萃油的話術切點：很多人只保養臉、忘了頭皮也是皮膚。從護髮油帶入——『髮絲保養做了，頭皮呢？』，順勢推薦<strong>咖啡因養髮液</strong>，頭皮與髮絲保養同步進行。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">和曠野玫瑰護髮油有什麼差別？</span><span class="faq-toggle">+</span></button><div class="faq-a">山茶花精萃油是密集保濕鎖水型，質地絲緞般，適合乾燥、受損染燙髮質及護髮入門者；曠野玫瑰護髮油是輕盈強韌修護型，特別適合多次漂染燙、髮尾嚴重分岔斷裂的重度受損髮質。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">沒有染燙也可以用嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">完全可以。適合所有受損、乾燥或毛躁髮質，是日常髮絲保養的通用入門款。</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- TAB 5｜零度 C 噴霧 -->
+<!-- ════════════════════════════════════ -->
+<!-- TAB 5｜零度 C 噴霧 -->
+<!-- ════════════════════════════════════ -->
+<div id="tab-spray" class="tab-panel">
+  <div class="prod-nav" id="nav-spray">
+    <button class="prod-btn active" onclick="switchProd('spray','fabric')">衣物冰凍噴霧</button>
+    <button class="prod-btn" onclick="switchProd('spray','body')">身體涼感噴霧</button>
+  </div>
+  <div class="main">
+
+    <!-- 衣物冰凍噴霧 -->
+    <div class="prod-card active" id="spray-fabric">
+      <div class="prod-hd">
+        <div class="prod-series">零度 C 系列</div>
+        <div class="prod-title">零度 C 衣物冰凍噴霧</div>
+        <div class="prod-price">180mL $780</div>
+        <span class="target-tag">夏季必備・通勤・戶外活動・衣物降溫</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">噴灑後衣物表面溫度變化達 −11°C（室溫 28°C 測試），冰霜薄荷＋BioAir 生物發酵氣體技術，即刻帶走衣物熱能，消臭抑菌維持穿著清爽。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「夏天出門穿著悶熱，有沒有想過可以直接讓衣服降溫？」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款衣物冰凍噴霧，噴在衣物表面，冰霜薄荷加上我們獨家的<em>BioAir 生物發酵氣體技術</em>，可以快速帶走衣物表面熱能，實驗測試在室溫 28°C 下，衣物表面溫度降了約 10.8°C。同時還有消臭、抑菌效果，保持穿著清爽舒適。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「距離衣物 15–20 公分均勻噴灑就好，如果表面出現一點冰霜是正常的物理降溫現象，等消退再貼身穿就可以。很適合通勤、戶外活動或運動後使用。」</div>
+      </div>
+      <div class="mb-24"></div>
+<div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">冰霜薄荷（冰涼降溫感）</span>
+        <span class="ing-pill">BioAir 腐木發酵可燃性氣體（均勻覆蓋）</span>
+      </div>
+      <div class="mine">
+        <div class="mine-label">話術地雷 ⚠ 安全提醒</div>
+        <div class="mine-item">噴完衣服能馬上降到零下 11 度（是「溫度變化值」約 10.8°C，非實際溫度）</div>
+        <div class="mine-item">直接說止汗或除臭（衣物款有消臭抑菌效果，但請說「維持穿著清爽」，避免與止汗劑混淆）</div>
+        <div class="mine-item">噴在身體肌膚上（衣物款絕對不能直接噴肌膚，有凍傷風險）</div>
+        <div class="mine-item">皮革、毛皮、絲、螺縈等特殊材質可噴（需先在不明顯處測試）</div>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯——「雙管齊下」話術</div>
+        <div class="upsell-text">「衣物款降衣物熱感，搭配<strong>身體涼感噴霧</strong>噴在肌膚，內外齊下，整體涼感體驗更完整。建議先噴衣物款等冰霜消退，再噴身體款。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">衣服噴了出現白色痕跡正常嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">正常。當產品快速物理降溫時，衣物表面可能短暫出現結冰或結霜現象，等冰霜自然消退就好，再貼身接觸。若乾燥後仍留有白色水痕，依衣物洗滌標示清潔即可。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">內含可燃性氣體，使用要注意什麼？</span><span class="faq-toggle">+</span></button><div class="faq-a">遠離火源、高溫與日光直射處，勿置於 45°C 以上環境。避免近距離或長時間集中噴灑，使用時保持空氣流通。</div></div>
+    </div>
+
+    <!-- 身體涼感噴霧 -->
+    <div class="prod-card" id="spray-body">
+      <div class="prod-hd">
+        <div class="prod-series">零度 C 系列</div>
+        <div class="prod-title">零度 C 身體涼感噴霧</div>
+        <div class="prod-price">220mL $780</div>
+        <span class="target-tag">肌膚降溫・運動後・戶外・夏日必備</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">極凍薄荷帶來體感瞬降 −10°C 的沁涼感，持續約 99 分鐘，天然保濕因子維持肌膚水分平衡，舒緩悶熱與汗後黏膩不適。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「夏天外出最怕流汗後黏膩的感覺，有沒有想要一個隨時可以補噴、讓肌膚感覺瞬間涼爽的東西？」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款身體涼感噴霧，裡面有<em>極凍薄荷</em>成分，噴在肌膚可以帶來體感瞬降 10°C 的沁涼感受，這是我們實驗室測得的體感數據；涼感持續大約 99 分鐘。同時添加<em>天然保濕因子</em>，讓肌膚清涼之後依然舒適，不會越噴越乾。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「距離肌膚 10–15 公分，噴在手臂、頸部、腿部等悶熱部位。透過極凍薄荷的沁涼感，舒緩肌膚悶熱與汗後黏膩不適，夏天隨身攜帶，需要時補噴就好。」</div>
+      </div>
+      <div class="mb-24"></div>
+<div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">極凍薄荷（體感瞬降 10°C）</span>
+        <span class="ing-pill">天然保濕因子（維持水分平衡）</span>
+      </div>
+      <div class="mine">
+        <div class="mine-label">話術地雷 ⚠</div>
+        <div class="mine-item">噴子皮膚可以真的降下 10 度（是「體感變化」，非肌膚實際降溫）</div>
+        <div class="mine-item">主動說「可以除臭、消除汗味」（應說「透過涼感減少汗後黏膩不適感」）</div>
+        
+        <div class="mine-item">臉部、眼周、黏膜、傷口可以噴（這些部位不建議使用）</div>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯——「雙管齊下」話術</div>
+        <div class="upsell-text">「搭配<strong>衣物冰凍噴霧</strong>，先讓衣物降溫，再讓肌膚涼感，內外兼顧，夏日悶熱感全面擊退。」</div>
+        <div class="tips-box">
+          💡 <strong>小 TIPS：</strong>衣物款先噴衣物，身體款再噴肌膚，兩款搭配使用可讓整體涼感層次更豐富、清爽持續感更完整。
+        </div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">敏感肌膚可以用嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">不建議敏感肌膚、兒童及孕婦使用。若不慎進入眼睛，立即以大量清水沖洗；使用後若有持續刺痛或紅腫，請停止使用並尋求醫療協助。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">99 分鐘是真的嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">這是在室溫 28°C 條件下的測試數據。實際感受會因環境溫度、活動量、出汗程度及個人敏感度而有所不同，以實際使用感受為準。</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════ -->
+<!-- TAB 6｜洗髮精 -->
+<!-- ════════════════════════════════════ -->
+<div id="tab-shampoo" class="tab-panel">
+  <div class="prod-nav" id="nav-shampoo">
+    <button class="prod-btn active" onclick="switchProd('shampoo','caffeine')">咖啡因洗髮精</button>
+    <button class="prod-btn" onclick="switchProd('shampoo','wildrose')">曠野玫瑰洗髮精</button>
+    <button class="prod-btn" onclick="switchProd('shampoo','myrtle')">香桃木控油洗髮精</button>
+    <button class="prod-btn" onclick="switchProd('shampoo','moringa')">辣木洗髮精</button>
+  </div>
+  <div class="main">
+
+    <!-- 曠野玫瑰洗髮精 -->
+    <!-- 咖啡因洗髮精 -->
+    <div class="prod-card active" id="shampoo-caffeine"><div class="skin-tag">問題頭皮</div>
+      <div class="prod-hd">
+        <div class="prod-series">咖啡因系列</div>
+        <div class="prod-title">咖啡因洗髮精</div>
+        <div class="prod-price">400mL ／ 1000mL</div>
+        <span class="target-tag">問題頭皮・一般髮質・活絡頭皮・強健髮根</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">台灣原生咖啡超音波萃取，天然咖啡因活絡頭皮、深入強健髮根，多種珍貴植物萃取調理頭皮油脂分泌，洗後自然蓬鬆、頭皮健康煥活。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您的頭皮有時候會悶熱、出油，或是感覺髮絲越來越沒有活力嗎？」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款咖啡因洗髮精是我們的人氣明星商品。採用<em>台灣原生咖啡</em>，以超音波萃取技術保留最完整的植物活性，天然咖啡因萃取物可以有效活絡頭皮細胞，深入滋養髮絲；同時融合多種珍貴植物萃取，調理頭皮油脂分泌、平緩不適感，讓頭皮恢復健康，洗後髮絲自然蓬鬆有活力。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「使用歐盟有機認證天然起泡成分，USDA Biobased 認證、100% PCR 再生塑膠瓶身，從成分到包裝都是永續。建議搭配咖啡因護髮素或護髮油，整個洗護體驗更完整。」</div>
+      </div>
+      <div class="mb-24"></div>
+<div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">天然咖啡因萃取（台灣原生咖啡超音波萃取）</span>
+        <span class="ing-pill">繡線菊萃取（調節油脂）</span>
+        <span class="ing-pill">毬果紫堇萃取（鎮定舒緩）</span>
+        <span class="ing-pill">歐盟有機認證天然起泡成分</span>
+      </div>
+      <div class="mine">
+        <div class="mine-label">話術地雷</div>
+        <div class="mine-item">防掉髮、生髮（洗髮精不能做此宣稱）</div>
+        <div class="mine-item">這個和喝咖啡一樣效果（原理完全不同）</div>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「搭配<strong>咖啡因護髮素</strong>洗護一組，或是洗後使用<strong>咖啡因養髮液</strong>，從清潔到頭皮保養全系列咖啡因呵護，效果加乘。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">咖啡因洗髮精和咖啡因養髮液可以一起用嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">可以，而且建議搭配。洗髮精是清潔步驟，養髮液是洗後噴在頭皮的保養步驟，兩個功能不同，一起用咖啡因系列可以讓頭皮養護更全面。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">每天用可以嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">可以，使用歐盟有機認證天然起泡成分，溫和不刺激，每天使用也安心。油性頭皮每天使用；中乾性頭皮依需求調整。</div></div>
+    </div>
+
+    <div class="prod-card" id="shampoo-wildrose"><div class="skin-tag">漂染燙受損髮</div>
+      <div class="prod-hd">
+        <div class="prod-series">曠野玫瑰系列</div>
+        <div class="prod-title">曠野玫瑰洗髮精</div>
+        <div class="prod-price">400mL ／ 1000mL</div>
+        <span class="target-tag">漂染燙受損髮・深層修護・潤澤保濕</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">針對漂染燙受損髮專屬設計——天然黑玫瑰萃取抵禦環境傷害、強化髮絲防護力，維生素 B 調理收斂受損處，歐盟有機驗證起泡成分溫和不殘留，洗後秀髮彈韌光亮。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您有在染髮或燙髮嗎？受損過的頭髮是不是洗完會特別毛躁、或是感覺髮絲越來越沒有彈性？」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款曠野玫瑰洗髮精是專為漂染燙受損髮設計的。裡面有<em>野玫瑰萃取</em>，可以幫助抵禦外在環境傷害、強化髮絲防護力，讓秀髮綻放光彩亮澤；搭配<em>維生素 B</em> 調理收斂受損處，讓髮絲重現彈韌健康。使用歐盟有機認證天然起泡成分，不破壞自然生態，易沖洗不殘留，洗感溫和舒適。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「香氛是曠野玫瑰的淡雅清香，交織粉紅胡椒辛香，中調有香甜莓果點綴，層次很豐富。建議搭配曠野玫瑰護髮素，修護效果更完整。」</div>
+      </div>
+      <div class="mb-24"></div>
+<div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">野玫瑰萃取（深層修護・強化髮絲防護力）</span>
+        <span class="ing-pill">維生素 B（調理收斂受損處）</span>
+        <span class="ing-pill">歐盟有機認證天然起泡成分</span>
+      </div>
+      <div class="mine">
+        <div class="mine-label">話術地雷</div>
+        <div class="mine-item">洗了頭髮就不會再受損（洗髮精是清潔與基礎修護，不是永久修復）</div>
+        <div class="mine-item">保證讓頭髮變健康（說「幫助修護、改善」）</div>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「搭配<strong>曠野玫瑰護髮素</strong>，洗護同系列，修護效果加乘，香氛也一致，整個洗頭體驗非常有質感。另外也有<strong>曠野玫瑰護髮油</strong>免沖洗護髮，三步驟完整呵護。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">剛染燙完可以用嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">可以。曠野玫瑰系列非常適合剛染燙的髮質，是針對漂染燙受損髮專屬設計，溫和修護不刺激。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">跟其他修護洗髮精有什麼差別？</span><span class="faq-toggle">+</span></button><div class="faq-a">曠野玫瑰的特色在於黑玫瑰萃取帶來的防護力與亮澤感，同時使用歐盟有機認證起泡成分，對頭皮和環境都更友善，香氛也特別有層次。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">香味聞起來是什麼感覺？</span><span class="faq-toggle">+</span></button><div class="faq-a">以曠野玫瑰淡雅清香為主調，交織粉紅胡椒的辛香氣息，中調有香甜莓果點綴，層層堆疊，富含層次的魅力芬芳，整個洗髮過程很療癒。</div></div>
+    </div>
+
+    <!-- 香桃木控油洗髮精 -->
+    <div class="prod-card" id="shampoo-myrtle"><div class="skin-tag">油性頭皮・細軟髮</div>
+      <div class="prod-hd">
+        <div class="prod-series">香桃木系列</div>
+        <div class="prod-title">香桃木控油洗髮精</div>
+        <div class="prod-price">400mL ／ 1000mL</div>
+        <span class="target-tag">中度油性頭皮・細軟髮・蓬鬆清爽</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">澳洲檸檬香桃木精準調理過度出油的髮肌，赤藻糖醇深層補水讓髮絲水潤柔順，油控同時蓬鬆有型，頭髮長時間維持髮根蓬鬆感。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您的頭皮容易出油嗎？還是頭髮比較細軟，洗完沒多久就塌了？」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款香桃木控油洗髮精很適合您。我們選用<em>澳洲檸檬香桃木</em>，可以精準平衡頭皮皮脂含量，調理過度出油的髮肌，讓頭髮長時間維持髮根蓬鬆感；同時加入保濕因子<em>赤藻糖醇</em>深層滲透補水，讓頭髮不會因為控油而變得乾澀，洗後水潤柔順又清爽。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「歐盟有機認證天然起泡成分，全面升級 16FREE 綠色標準，不添加 16 大高風險物質，洗感溫和安心。油性頭皮每天使用都可以，乾性或中性頭皮建議一週 1–2 次，搭配護髮素效果更好。」</div>
+      </div>
+      <div class="mb-24"></div>
+<div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">澳洲檸檬香桃木萃取（控油調理）</span>
+        <span class="ing-pill">赤藻糖醇（深層補水保濕）</span>
+        <span class="ing-pill">歐盟有機認證天然起泡成分</span>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「油性頭皮可以搭配<strong>竹萃保濕護髮素</strong>或<strong>咖啡因護髮素</strong>，控油的同時補充髮絲養分，讓頭髮既清爽又柔順。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">剛染燙完可以用嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">剛染燙完頭皮較敏感，不建議使用。建議選擇曠野玫瑰洗髮精、紫玫瑰護色或香檳玫瑰護色洗髮精，更適合剛染燙的髮質。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">跟茶花控油洗髮精有什麼不同？</span><span class="faq-toggle">+</span></button><div class="faq-a">茶花控油適合輕度油性頭皮（★★），香桃木控油適合中度油性及細軟髮（★★★），控油力更強，並加入赤藻糖醇補水，讓頭髮控油同時不失水潤感。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">乾性頭皮也可以用嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">可以，但建議一週使用 1–2 次，一定要搭配護髮素使用，避免頭皮過度清潔導致乾燥。</div></div>
+    </div>
+
+    <!-- 辣木洗髮精 -->
+    <div class="prod-card" id="shampoo-moringa">
+      <div class="skin-tag">失衡・油性頭皮・細軟扁塌髮</div>
+      <div class="prod-hd">
+        <div class="prod-series">辣木系列</div>
+        <div class="prod-title">辣木洗髮精</div>
+        <div class="prod-price">400mL ／ 1000mL</div>
+        <span class="target-tag">失衡・油性頭皮・細軟扁塌髮・頭皮淨化舒緩</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">天然辣木籽萃取深層淨化頭皮、高效鎖水；控油調理因子調節油脂分泌；七葉樹萃取舒緩乾癢不適，長效清爽，讓細軟扁塌髮重現輕盈彈韌。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您的頭皮容易出油，或是頭髮洗完很快就塌了、沒什麼蓬鬆感嗎？」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款辣木洗髮精很適合您。裡面有<em>天然辣木籽萃取</em>，深層淨化頭皮同時具有高度保水力，形成天然鎖水保護屏障，不會讓頭皮因清潔而乾燥；搭配<em>控油調理因子</em>調節油脂分泌、改善頭皮出油問題；<em>七葉樹萃取</em>舒緩頭皮乾癢不適感，讓頭皮長效保持清爽，髮絲維持柔順自然彈性。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「特別適合頭皮失衡出油、或髮絲細軟扁塌的顧客。洗後頭皮清爽不緊繃、髮絲輕盈有彈性，搭配護髮素效果更完整。」</div>
+      </div>
+      <div class="mb-24"></div>
+<div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">辣木籽萃取（深層淨化・天然鎖水）</span>
+        <span class="ing-pill">控油調理因子（調節油脂分泌）</span>
+        <span class="ing-pill">七葉樹萃取（舒緩乾癢・長效清爽）</span>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「可搭配<strong>辣木洗手慕絲</strong>，延續辣木植萃淨化體驗。頭皮失衡的顧客也可推薦<strong>咖啡因養髮液</strong>，洗後頭皮保養效果更完整。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">辣木洗髮精和咖啡因洗髮精有什麼差別？</span><span class="faq-toggle">+</span></button><div class="faq-a">咖啡因洗髮精主打活絡頭皮、深入強健髮根，適合問題頭皮；辣木洗髮精著重深層淨化、控油調理與舒緩乾癢，特別適合頭皮失衡出油或髮絲細軟扁塌的顧客。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">洗完頭皮會不會太乾？</span><span class="faq-toggle">+</span></button><div class="faq-a">不會。辣木籽萃取具有高度保水力，在清潔頭皮的同時形成天然鎖水保護屏障，頭皮清爽不緊繃。</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- TAB 7｜護髮素 -->
+<!-- ════════════════════════════════════ -->
+<div id="tab-conditioner" class="tab-panel">
+  <div class="prod-nav" id="nav-conditioner">
+    <button class="prod-btn active" onclick="switchProd('conditioner','caffeine')">咖啡因護髮素</button>
+    <button class="prod-btn" onclick="switchProd('conditioner','sicily')">西西里咖啡護髮素</button>
+    <button class="prod-btn" onclick="switchProd('conditioner','wildrose')">曠野玫瑰護髮素</button>
+  </div>
+  <div class="main">
+
+    <!-- 曠野玫瑰護髮素 -->
+    <!-- 咖啡因護髮素 -->
+    <div class="prod-card active" id="conditioner-caffeine">
+      <div class="prod-hd">
+        <div class="prod-series">咖啡因系列</div>
+        <div class="prod-title">咖啡因護髮素</div>
+        <div class="prod-price">250mL</div>
+        <span class="target-tag">所有髮質・強韌柔順・預防髮絲問題</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">天然咖啡因萃取＋精萃咖啡油深層滋養髮芯，水解小麥蛋白強健髮絲，蕓薹精華讓髮絲柔軟滑順不糾結，適合所有髮質的全方位修護護髮素。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您平常洗頭有搭配護髮素嗎？護髮素是幫助洗後把打開的毛鱗片閉合、鎖住水分的關鍵步驟。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款咖啡因護髮素適合所有髮質。裡面有<em>天然咖啡因萃取</em>與<em>精萃咖啡油</em>，可以深入髮芯滋養，讓髮絲更強健有活力；<em>水解小麥蛋白</em>深入補充髮絲所需養分；<em>蕓薹精華</em>讓髮絲柔軟滑順不糾結，梳頭更蓬鬆好梳理。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「均勻塗抹於髮中至髮尾，停留 1–3 分鐘讓有效成分充分滲透後再沖洗。搭配<strong>咖啡因洗髮精</strong>使用效果更完整，洗後以護髮油鎖住修護成果，形成完整的洗護養三步驟。」</div>
+      </div>
+      <div class="mb-24"></div>
+<div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">天然咖啡因萃取（活絡強健）</span>
+        <span class="ing-pill">精萃咖啡油（USDA 100% Biobased・保濕修護）</span>
+        <span class="ing-pill">水解小麥蛋白（深入髮芯滋養）</span>
+        <span class="ing-pill">蕓薹精華（柔軟滑順・抗靜電）</span>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「<strong>咖啡因洗髮精</strong>（洗）→<strong>咖啡因護髮素</strong>（護）→<strong>咖啡因養髮液</strong>（保養頭皮）三步驟完整咖啡因系列，再搭配<strong>護髮油</strong>免沖洗鎖住修護效果。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">咖啡因護髮素和西西里咖啡護髮素有什麼差別？</span><span class="faq-toggle">+</span></button><div class="faq-a">咖啡因護髮素是全方位滋養修護的基礎款；西西里咖啡護髮素延續相同修護力，再加入冰鎮薄荷帶來涼感體驗，特別適合夏天使用。如果不需要涼感，咖啡因護髮素是全年適用的經典款。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">護髮素要停留多久？</span><span class="faq-toggle">+</span></button><div class="faq-a">停留 1–3 分鐘再沖洗即可。效果最好是洗完用毛巾稍微吸去多餘水分後，再接著使用護髮油鎖住修護成果。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">可以用在頭皮上嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">建議塗在髮中至髮尾，避免直接塗在頭皮，以免頭皮過於滋潤導致出油。如果需要頭皮保養，洗後搭配咖啡因養髮液噴在頭皮即可。</div></div>
+    </div>
+
+    <div class="prod-card" id="conditioner-wildrose">
+      <div class="prod-hd">
+        <div class="prod-series">曠野玫瑰系列</div>
+        <div class="prod-title">曠野玫瑰護髮素</div>
+        <div class="prod-price">250mL</div>
+        <span class="target-tag">漂染燙・嚴重受損髮・深層滋養修護</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">特殊包覆劑型攜載滋養成分精準鞏固受損處，植物角鯊烷滋潤撫平毛躁，黑玫瑰萃取強化防護力，洗後髮絲亮澤柔順、彈韌有型。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您有用護髮素的習慣嗎？如果有在染燙，護髮素對受損髮絲的修護非常重要。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款曠野玫瑰護髮素是針對漂染燙嚴重受損髮的專屬配方。它有特殊的<em>包覆劑型</em>，可以攜載滋養成分精準到達受損處鞏固修護，而不是只是包在髮絲表面；搭配<em>植物角鯊烷</em>滋潤保濕、撫平毛躁，讓秀髮增加光亮度和滑順感；<em>黑玫瑰萃取</em>同時強化髮絲防護力，讓秀髮的修護效果從裡到外。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「均勻塗抹於髮中至髮尾，停留 1–3 分鐘讓特殊包覆劑型充分滲透受損處再沖洗，修護成效更集中。與<strong>曠野玫瑰洗髮精</strong>搭配使用，同系列香氛一致，洗護體驗更完整；再以<strong>曠野玫瑰護髮油</strong>收尾，三步驟完整呵護受損髮絲。」</div>
+      </div>
+      <div class="mb-24"></div>
+<div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">特殊包覆劑型（攜載滋養成分）</span>
+        <span class="ing-pill">黑玫瑰萃取（防護修護）</span>
+        <span class="ing-pill">植物角鯊烷（滋潤保濕）</span>
+        <span class="ing-pill">維生素 B（強韌髮絲）</span>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「洗護搭配最完整：<strong>曠野玫瑰洗髮精</strong>潔淨修護，接著用這款護髮素深層鞏固，再以<strong>曠野玫瑰護髮油</strong>免沖洗收尾，三步驟受損髮全方位呵護。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">護髮素和護髮油的差別？</span><span class="faq-toggle">+</span></button><div class="faq-a">護髮素是沖洗式，洗頭時使用，深層修護為主；護髮油是免沖洗式，洗完擦乾後使用，鎖住水分、增亮光澤為主。建議兩者搭配使用效果最好。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">護髮素要停多久？</span><span class="faq-toggle">+</span></button><div class="faq-a">一般停留 1–3 分鐘再沖洗即可。受損較嚴重的髮質可以稍微延長時間，讓包覆劑型有更多時間滲透到受損處。</div></div>
+    </div>
+
+    <!-- 西西里咖啡護髮素 -->
+    <div class="prod-card" id="conditioner-sicily">
+      <div class="prod-hd">
+        <div class="prod-series">咖啡系列</div>
+        <div class="prod-title">西西里咖啡護髮素</div>
+        <div class="prod-price">250mL</div>
+        <span class="target-tag">所有髮質・涼感修護・蓬鬆好梳理</span>
+      </div>
+      <div class="usp">
+        <div class="usp-label">核心一句話</div>
+        <div class="usp-text">延續熱銷咖啡因護髮素全效修護，再加入西西里冰鎮薄荷帶來舒適涼感，蕓薹精華讓髮絲柔軟滑順不糾結、蓬鬆好梳理，是夏天的護髮首選。</div>
+      </div>
+      <div class="section-rule">1 分鐘話術</div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">0–10 秒</span><span class="step-tag open">開場</span></div>
+        <div class="step-body open">「您洗頭有在用護髮素嗎？夏天洗頭如果能順便感受一下涼感，是不是很不錯？」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">10–40 秒</span><span class="step-tag core">主打</span></div>
+        <div class="step-body core">「這款西西里咖啡護髮素非常特別，它延續了我們最熱銷的咖啡因護髮素的全效修護，再加入<em>西西里冰鎮薄荷</em>，護髮的同時帶來舒適涼感，非常適合夏天使用。裡面還有<em>蕓薹精華</em>，雙鏈型立體結構，讓髮絲柔軟、滑順、不糾結，梳頭更蓬鬆好梳理；<em>100% 咖啡渣精萃咖啡油</em>則強化保濕修護力。」</div>
+      </div>
+      <div class="step">
+        <div class="step-meta"><span class="step-time">40–60 秒</span><span class="step-tag close">收尾</span></div>
+        <div class="step-body close">「均勻塗抹於髮中至髮尾，停留 1–3 分鐘讓冰鎮薄荷與蕓薹精華充分滲透後再沖洗。適合所有髮質，沁涼清新的薄荷香氣讓洗護過程更舒適。您目前有在使用護髮素嗎？這款是咖啡因護髮素的夏日升級版，很值得試試。」</div>
+      </div>
+      <div class="mb-24"></div>
+<div class="section-rule">核心成分</div>
+      <div class="ing-grid mb-24">
+        <span class="ing-pill">西西里冰鎮薄荷（舒適涼感）</span>
+        <span class="ing-pill">100% 咖啡渣精萃咖啡油（保濕修護）</span>
+        <span class="ing-pill">蕓薹精華（柔軟滑順・抗靜電）</span>
+        <span class="ing-pill">水解小麥蛋白（深入髮芯滋養）</span>
+      </div>
+      <div class="upsell">
+        <div class="upsell-label">延伸串聯</div>
+        <div class="upsell-text">「搭配<strong>咖啡因洗髮精</strong>或<strong>曠野玫瑰洗髮精</strong>洗護一起用，效果更完整。夏天推薦搭配<strong>零度 C 身體涼感噴霧</strong>，從頭到身全面涼爽。」</div>
+      </div>
+      <div class="section-rule">顧客常問</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">跟咖啡因護髮素有什麼差別？</span><span class="faq-toggle">+</span></button><div class="faq-a">西西里咖啡護髮素延續咖啡因護髮素的全方位滋養修護，差別在於多了西西里冰鎮薄荷帶來涼感體驗，以及蕓薹精華讓梳理效果更好、更蓬鬆不糾結，是夏日升級版。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">香味是什麼感覺？和咖啡因護髮素一樣嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">不一樣。咖啡因護髮素是多元植萃清新淡香；西西里咖啡護髮素加了冰鎮薄荷與些許檸檬精油，香氛更有沁涼清新的感覺，夏天使用特別舒服。</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">所有髮質都可以用嗎？</span><span class="faq-toggle">+</span></button><div class="faq-a">是的，適合所有髮質使用。蕓薹精華和水解小麥蛋白是通用型修護成分，不分髮質都能感受到柔軟滑順的效果。</div></div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+function switchCat(cat) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + cat).classList.add('active');
+  event.target.classList.add('active');
+  // reset all FAQ
+  document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('show'));
+}
+function switchProd(cat, prod) {
+  const panel = document.getElementById('tab-' + cat);
+  panel.querySelectorAll('.prod-card').forEach(c => c.classList.remove('active'));
+  panel.querySelectorAll('.prod-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(cat + '-' + prod).classList.add('active');
+  event.target.classList.add('active');
+  panel.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
+  panel.querySelectorAll('.faq-a').forEach(a => a.classList.remove('show'));
+}
+function toggleFaq(el) {
+  const ans = el.nextElementSibling;
+  const isOpen = ans.classList.contains('show');
+  el.closest('.main').querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
+  el.closest('.main').querySelectorAll('.faq-a').forEach(a => a.classList.remove('show'));
+  if (!isOpen) { el.classList.add('open'); ans.classList.add('show'); }
+}
+</script>
+</body>
+</html>
