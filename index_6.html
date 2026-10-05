@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新城段0234地號｜私有林地執行指引</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:       #1b3a4b;
+  --navy-mid:   #2e5f6e;
+  --navy-pale:  #ebf4f7;
+  --navy-light: #d4e8ee;
+  --forest:     #2d4a2d;
+  --forest-mid: #3d6b3d;
+  --forest-pale:#eef5ee;
+  --forest-light:#c8e0c8;
+  --gold:       #a07830;
+  --gold-pale:  #faf4e8;
+  --ink:        #1a1a1a;
+  --paper:      #f7f6f3;
+  --white:      #ffffff;
+  --muted:      #888;
+  --border:     #dde4e8;
+  --line:       #c8d8dc;
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--forest) 100%);
+  padding: 48px 28px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: rgba(160,120,48,0.12);
+}
+.hero-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+.hero h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.hero-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 16px;
+}
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-badge {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.9);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+.hero-badge.gold {
+  background: var(--gold);
+  color: #fff;
+}
+
+/* ── CONTAINER ── */
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 28px 18px 60px;
+}
+
+/* ── SECTION ── */
+.section { margin-bottom: 36px; }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--navy);
+}
+.section-num {
+  width: 28px; height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 900;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--navy);
+}
+
+/* ── DATA TABLE ── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.data-table th {
+  background: var(--navy);
+  color: #fff;
+  font-weight: 700;
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+.data-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.7;
+}
+.data-table tr:nth-child(even) td { background: var(--navy-pale); }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table .label {
+  font-weight: 700;
+  color: var(--navy-mid);
+  white-space: nowrap;
+  min-width: 100px;
+}
+
+/* ── INFO CARD ── */
+.info-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.info-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.info-card p {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.8;
+}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box {
+  background: var(--navy-pale);
+  border-left: 4px solid var(--navy-mid);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: #1e3a47;
+  line-height: 1.8;
+}
+.highlight-box strong { color: var(--navy); }
+
+.forest-box {
+  background: var(--forest-pale);
+  border-left: 4px solid var(--forest-mid);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: #1e3a1e;
+  line-height: 1.8;
+}
+.forest-box strong { color: var(--forest); }
+
+.gold-box {
+  background: var(--gold-pale);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: #5a3c00;
+  line-height: 1.8;
+}
+.gold-box strong { color: var(--gold); }
+
+/* ── COMPARE TABLE ── */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+.compare-table th {
+  padding: 9px 10px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.compare-table th:first-child { background: var(--navy); color: #fff; text-align: left; }
+.compare-table th:nth-child(2) { background: var(--forest); color: #fff; }
+.compare-table th:nth-child(3) { background: var(--navy-mid); color: #fff; }
+.compare-table th:nth-child(4) { background: #6b7280; color: #fff; }
+.compare-table td {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.6;
+}
+.compare-table td:first-child {
+  font-weight: 700;
+  color: var(--navy);
+  background: var(--navy-pale);
+  white-space: nowrap;
+}
+.compare-table tr:nth-child(even) td:not(:first-child) { background: #fafafa; }
+.tag-best {
+  display: inline-block;
+  background: var(--forest);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 10px;
+  margin-left: 4px;
+}
+
+/* ── CHECKLIST ── */
+.checklist { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.check-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.check-box {
+  width: 20px; height: 20px;
+  min-width: 20px;
+  border: 2px solid var(--navy-mid);
+  border-radius: 4px;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--navy);
+}
+.check-text {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.7;
+  flex: 1;
+}
+.check-text strong { color: var(--navy); }
+
+/* ── STEP CARDS ── */
+.step-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 14px; }
+.step-card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.step-num-lg {
+  width: 36px; height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: #fff;
+  font-family: 'Noto Serif TC', serif;
+  font-weight: 900;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-body-lg { flex: 1; }
+.step-title-lg {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.step-desc-lg {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.8;
+}
+
+/* ── UNIT TABLE ── */
+.unit-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+.unit-table th {
+  background: var(--forest);
+  color: #fff;
+  padding: 9px 10px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.unit-table td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.7;
+}
+.unit-table tr:nth-child(even) td { background: var(--forest-pale); }
+.unit-table tr:last-child td { border-bottom: none; }
+.unit-table .phase {
+  font-weight: 700;
+  color: var(--forest);
+  white-space: nowrap;
+}
+
+/* ── SDG TAGS ── */
+.tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.sdg-tag {
+  background: var(--navy-pale);
+  color: var(--navy-mid);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--navy-light);
+}
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: var(--border); margin: 28px 0; }
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  line-height: 1.8;
+}
+
+/* ── OVERFLOW SCROLL FOR WIDE TABLES ── */
+.table-wrap { overflow-x: auto; margin-bottom: 14px; }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-label">私有林地執行指引報告</div>
+  <h1>新城段 0234 地號<br>中後期撫育補助與自然碳匯媒合</h1>
+  <div class="hero-sub">雙軌執行策略｜資產活化指引</div>
+  <div class="hero-badges">
+    <span class="hero-badge">面積 1.0669 公頃</span>
+    <span class="hero-badge">山坡地保育區林業用地</span>
+    <span class="hero-badge">肖楠・楠木・樟樹</span>
+    <span class="hero-badge gold">雙軌策略：撫育補助 ＋ 碳匯媒合</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ── 一、現況盤點 ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">一</div>
+      <div class="section-title">標的林地現況盤點</div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table">
+        <tr><th>盤點項目</th><th>內容與數據</th></tr>
+        <tr>
+          <td class="label">地號</td>
+          <td>新城段 0234 地號</td>
+        </tr>
+        <tr>
+          <td class="label">面積</td>
+          <td>1.0669 公頃（10,669 平方公尺 / 3,227.37 坪）</td>
+        </tr>
+        <tr>
+          <td class="label">使用分區</td>
+          <td>山坡地保育區林業用地（法定得從事林業使用）</td>
+        </tr>
+        <tr>
+          <td class="label">地形坡度</td>
+          <td>45～50 度（高陡度山坡地，開發受限但適合保育）</td>
+        </tr>
+        <tr>
+          <td class="label">林相現況</td>
+          <td>20 多年前由公所輔導造林，現為肖楠、楠木與樟樹等成熟林木，具備極佳碳儲量與生態價值</td>
+        </tr>
+        <tr>
+          <td class="label">公告現值（114年）</td>
+          <td>4,958 元/坪，總價約 <strong>1,600.4 萬元</strong>（1,500 元/平方公尺）</td>
+        </tr>
+        <tr>
+          <td class="label">公告地價（114年）</td>
+          <td>120 元/平方公尺，總價約 <strong>128 萬元</strong></td>
+        </tr>
+        <tr>
+          <td class="label">獎勵狀態</td>
+          <td>原 20 年造林獎勵期已屆滿，依法同一批成熟林木<strong>無法重複領取</strong>傳統造林獎勵金</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="highlight-box">
+      📌 <strong>政策轉型路徑</strong>：舊造林獎勵已結案，無須砍伐既有林木，可直接銜接林業署最新「中後期撫育補助」與「自然碳匯專案媒合」雙軌機制，達成土地資產轉型。
+    </div>
+  </div>
+
+  <!-- ── 二、政策定位 ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">二</div>
+      <div class="section-title">最新政府政策定位釐清</div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">📋 母計畫與子項目關係</div>
+      <p>
+        <strong>母計畫</strong>：《林業永續多元輔導方案（公私有林整合經營與輔導執行注意事項）》<br>
+        <strong>子項目</strong>：「獎勵造林地中後期撫育及疏伐補助」——專門針對造林期滿／成熟私有林地，資助修枝、撫育（除藤、刈草）或選擇性疏伐，提升林木品質。
+      </p>
+    </div>
+
+    <div class="forest-box">
+      🌿 <strong>本案最適路徑</strong>：申請「中後期撫育補助」。本案已具備 20 多年成熟林木，若不進行伐採重植，此為最佳路徑，可避免破壞既有碳儲量。
+    </div>
+
+    <div class="section-header" style="margin-top:24px; border-bottom:1px solid var(--line);">
+      <div style="font-size:13px;font-weight:700;color:var(--navy);">三種政策路徑對比</div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="compare-table">
+        <tr>
+          <th>評估維度</th>
+          <th>中後期撫育補助<span class="tag-best">本案首選</span></th>
+          <th>疏伐作業補助</th>
+          <th>造林 2.0 新制</th>
+        </tr>
+        <tr>
+          <td>施工內容</td>
+          <td>修枝、除藤、刈草、林地維護</td>
+          <td>選擇性疏伐、殘材處理</td>
+          <td>全面伐採、整地、重新栽植</td>
+        </tr>
+        <tr>
+          <td>水土保持</td>
+          <td>零破壞，維持完整林相</td>
+          <td>影響較小，須防集材破壞</td>
+          <td>地表裸露，風險極高</td>
+        </tr>
+        <tr>
+          <td>林木伐採</td>
+          <td>無須伐採，完整保留</td>
+          <td>選擇性伐採部分林木</td>
+          <td>必須全面伐採</td>
+        </tr>
+        <tr>
+          <td>審查門檻</td>
+          <td>最低（最友善）提出5年規劃即可</td>
+          <td>中等，須疏伐規劃與現場評估</td>
+          <td>嚴格，須合法伐採許可與重植驗收</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── 三、碳匯上架指引 ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">三</div>
+      <div class="section-title">自然碳匯專案媒合｜上架指引</div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">✅ 資格確認</div>
+      <p>
+        依據《公私有土地自然碳匯專案媒合計畫》（114年9月17日版），私有土地面積達 <strong>0.1 公頃</strong>以上即可申請。<br>
+        本案面積 <strong>1.0669 公頃</strong>，顯著高於門檻，資格確認符合。
+      </p>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">📂 刊登類型｜選擇「土地刊登」</div>
+      <p>
+        舊造林計畫已期滿結案，目前未備有主管機關核定之造林計畫書，應選擇<strong>「土地刊登」</strong>類型，可免費在官方平台曝光，尋求企業資源或專業團隊進場整合 ESG 專案。
+      </p>
+    </div>
+
+    <div class="gold-box">
+      💡 <strong>免自行計算碳匯</strong>：填寫「土地刊登申請書」時，「預估碳匯效益」欄位由系統依地籍與地上物數據<strong>自動計算</strong>，業主完全無需自費聘請專家或自行估計碳匯噸數。
+    </div>
+
+    <div class="section-header" style="margin-top:24px; border-bottom:1px solid var(--line);">
+      <div style="font-size:13px;font-weight:700;color:var(--navy);">應備文件清單</div>
+    </div>
+
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-box">□</div>
+        <div class="check-text">
+          <strong>土地刊登申請書（附件二）</strong><br>
+          精準填寫地號、面積、現況（肖楠、楠木與樟樹）及聯絡窗口。「是否已申請相關獎勵」欄位應勾選<strong>「林業永續多元輔導方案」</strong>，並於現況說明中特別註明「20年前造林獎勵期滿」。
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box">□</div>
+        <div class="check-text">
+          <strong>申請人身分證明文件影本</strong><br>
+          自然人檢附身分證正反面影本；若涉及繼承，應確認為繼承登記完成後之所有權人。
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box">□</div>
+        <div class="check-text">
+          <strong>最近 3 個月內土地登記謄本及地籍圖</strong><br>
+          向在地地政事務所申請核發最新謄本與地籍圖。
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-box">□</div>
+        <div class="check-text">
+          <strong>現場照片與交通狀況說明</strong><br>
+          檢附附有拍攝日期之現場照片，填寫開車/步行路線與時間，提供 WGS84 或 TWD97 地理座標或顯著地標，以利分署線上審核與實地勘查。
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      🗓 <strong>審核時程</strong>：收到完整申請文件起算 <strong>30 個日曆天</strong>內完成資格審核並通知結果。<br>
+      📅 <strong>上架效期</strong>：刊登效期以 <strong>1 年</strong>為原則，期滿可申請展延，每次展延半年，最多展延 2 次。
+    </div>
+  </div>
+
+  <!-- ── 四、雙軌策略 ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">四</div>
+      <div class="section-title">雙軌併行策略｜撫育補助 ✕ 碳匯刊登</div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">🔗 兩軌行政資格完全不衝突</div>
+      <p>在碳匯平台申請書中，政府已主動納入「林業永續多元輔導方案」選項。勾選該項不僅合法合規，更展現業主積極配合國家林業政策之態度。</p>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:14px;">
+      <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:14px;">雙軌綜效示意</div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;">
+        <div style="background:var(--navy-pale);border-radius:8px;padding:12px 14px;">
+          <div style="font-weight:700;color:var(--navy);margin-bottom:4px;">🏛 行政軌｜申請林業署中後期撫育補助</div>
+          <div style="color:#444;">政府資助修枝、除藤、刈草 → 林相健康度優化</div>
+        </div>
+        <div style="text-align:center;font-size:18px;color:var(--border);">↕</div>
+        <div style="background:var(--forest-pale);border-radius:8px;padding:12px 14px;">
+          <div style="font-weight:700;color:var(--forest);margin-bottom:4px;">🌍 市場軌｜碳匯平台辦理「土地刊登」</div>
+          <div style="color:#444;">勾選輔導方案，系統自動計算碳匯 → 企業媒合曝光</div>
+        </div>
+        <div style="text-align:center;font-size:18px;color:var(--border);">↓</div>
+        <div style="background:var(--gold-pale);border-radius:8px;padding:12px 14px;border:1px solid #e0c878;">
+          <div style="font-weight:700;color:var(--gold);margin-bottom:4px;">✨ 雙軌閉環</div>
+          <div style="color:#5a3c00;">生態與碳匯價值大增 → 企業 ESG 進場意願倍增 → 達成資產活化</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 五、風險與市場定位 ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">五</div>
+      <div class="section-title">高陡坡林地風險與 ESG 市場定位</div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">⚠️ 風險與限制（45～50度高陡坡）</div>
+      <p>
+        ・依法嚴格禁止任何建築開發，無法興建農舍或農業資材室<br>
+        ・高陡坡導致集材與運輸極為困難，伐木商採購意願低或報價嚴重折價<br>
+        ・土地所有權人依法負有水土保持義務，不得隨意進行大面積砍伐
+      </p>
+    </div>
+
+    <div class="forest-box">
+      🎯 <strong>劣勢轉化為市場優勢</strong>：不宜頻繁開發或伐採之高陡坡成熟林地，極度適合定位為「<strong>自然碳匯與生態保育保護區</strong>」。陡坡林地公告現值相較平緩地實惠，能吸引預算有限但需要大面積自然碳匯與生物多樣性指標的企業合作。
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">📊 企業碳額度分配保障</div>
+      <p>依據媒合計畫第七點規定，若合作企業欲申請自願減量專案之碳額度，應取得土地所有人之<strong>書面同意</strong>，並約定額度分配比例。此規定保障業主在企業合作中之實質權益與額度議價空間。</p>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">🌐 國際永續指標對接</div>
+      <div class="tag-row">
+        <span class="sdg-tag">昆明-蒙特婁 GBF Target 2</span>
+        <span class="sdg-tag">GBF Target 3（30x30）</span>
+        <span class="sdg-tag">GBF Target 11</span>
+        <span class="sdg-tag">GBF Target 15</span>
+        <span class="sdg-tag">SDG 13 氣候行動</span>
+        <span class="sdg-tag">SDG 15 陸域生態</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 六、行動流程 ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">六</div>
+      <div class="section-title">具體 4 步驟行動流程</div>
+    </div>
+
+    <div class="step-list">
+      <div class="step-card">
+        <div class="step-num-lg">1</div>
+        <div class="step-body-lg">
+          <div class="step-title-lg">土地權屬與產權確認</div>
+          <div class="step-desc-lg">確保土地已完成繼承登記（登記於所有權人名下），並向在地地政事務所申請核發最近 3 個月內之土地登記謄本與地籍圖。</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num-lg">2</div>
+        <div class="step-body-lg">
+          <div class="step-title-lg">申請碳匯平台「土地刊登」</div>
+          <div class="step-desc-lg">備妥附件二（土地刊登申請書，勾選多元輔導方案）、現場照片（附日期）、謄本及交通說明（含 WGS84/TWD97 座標），向林業署各地區分署或工作站提出申請。</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num-lg">3</div>
+        <div class="step-body-lg">
+          <div class="step-title-lg">諮詢並申請「中後期撫育補助」</div>
+          <div class="step-desc-lg">向在地鄉鎮市區公所農經課、直轄市/縣市政府農業局（林業科）或林業署工作站諮詢，提出未來 5 年經營規劃，申請修枝、刈草、除藤等撫育作業補助。</div>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num-lg">4</div>
+        <div class="step-body-lg">
+          <div class="step-title-lg">企業 ESG 對接與資產活化定位</div>
+          <div class="step-desc-lg">以「1.06公頃私有林地，具肖楠、楠木與樟樹等成熟林木，符合政府 ESG 自然碳匯媒合條件」為賣點，對接尋求 ESG 減碳與生物多樣性效益之企業合作，或對接私人林場買家。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 七、諮詢單位 ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">七</div>
+      <div class="section-title">臨櫃諮詢與辦理單位對照</div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="unit-table">
+        <tr>
+          <th>執行階段</th>
+          <th>權責諮詢單位</th>
+          <th>主要協助事項</th>
+        </tr>
+        <tr>
+          <td class="phase">中後期撫育及疏伐補助</td>
+          <td>
+            ① 在地區公所農經課<br>
+            ② 直轄市、縣（市）政府農業局／林業科<br>
+            ③ 林業保育署各地區分署及工作站<br>
+            ④ 在地林農團體／林業合作社
+          </td>
+          <td>諮詢資格、領取申請表單、輔導編製5年經營規劃、協助送件與現場查驗核撥補助款</td>
+        </tr>
+        <tr>
+          <td class="phase">自然碳匯平台上架</td>
+          <td>林業及自然保育署各地區分署及工作站</td>
+          <td>輔導填寫土地刊登申請書（附件二）、檢視照片與座標資料、辦理資格審查與協助系統上架刊登</td>
+        </tr>
+        <tr>
+          <td class="phase">產權登記與謄本申請</td>
+          <td>在地地政事務所</td>
+          <td>辦理土地繼承登記確認、核發 3 個月內之最新土地登記謄本與地籍圖</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="gold-box">
+    📌 <strong>核心策略總結</strong>：本案最優路徑為「雙軌並行」——同時申請林業署中後期撫育補助（行政軌）與碳匯平台土地刊登（市場軌）。兩軌行政資格不衝突，撫育補助提升林地健康度，碳匯刊登擴大企業媒合機會，共同達成土地資產活化與效益最大化。
+  </div>
+
+  <div class="footer">
+    新城段 0234 地號｜私有林地執行指引報告<br>
+    依據農業部林業及自然保育署相關法規整理｜僅供參考，正式申請請洽權責單位
+  </div>
+
+</div>
+</body>
+</html>
